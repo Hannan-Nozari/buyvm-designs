@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BuyVM — Five Design Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0F0F12;
+    --panel:#17171C;
+    --panel-2:#1E1E25;
+    --line:rgba(255,255,255,.08);
+    --line-2:rgba(255,255,255,.16);
+    --ink:#F5F5F7;
+    --ink-2:#A6A6B0;
+    --ink-3:#6F6F7B;
+    --accent:#FF4800;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+  body{
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,72,0,.08), transparent 60%),
+      var(--bg);
+    min-height:100vh;
+  }
+  .wrap{max-width:1320px;margin:0 auto;padding:0 32px}
+  a{color:inherit;text-decoration:none}
+
+  /* SAME SWITCHER BAR */
+  .ds-bar{position:relative;z-index:99999;background:#000;color:#fff;font-family:ui-monospace,'JetBrains Mono','SFMono-Regular',Menlo,Consolas,monospace;font-size:12px;letter-spacing:.04em;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid #1a1a1a;height:42px;box-sizing:border-box;font-weight:400;text-transform:none}
+  .ds-bar *{box-sizing:border-box}
+  .ds-bar a{color:#fff;text-decoration:none;opacity:.55;padding:5px 10px;transition:.12s;border-radius:3px;font-weight:500;border:0;background:none;font-family:inherit;font-size:12px;letter-spacing:.04em;text-transform:none;line-height:1;display:inline-flex;align-items:center}
+  .ds-bar a:hover{opacity:1;background:#1a1a1a;color:#fff}
+  .ds-bar a.active{opacity:1;background:#fff;color:#000;font-weight:600}
+  .ds-bar .ds-l,.ds-bar .ds-c,.ds-bar .ds-r{display:flex;align-items:center;gap:2px}
+  .ds-bar .ds-pos{opacity:.5;margin:0 12px 0 4px;font-size:11px;letter-spacing:.15em;font-weight:500}
+  .ds-bar .ds-arrow{font-size:13px;padding:5px 10px;opacity:.65}
+  .ds-bar .ds-title{opacity:.65;margin-right:12px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+  @media (max-width:820px){.ds-bar .ds-title,.ds-bar .ds-pos{display:none}.ds-bar a .ds-lab{display:none}.ds-bar a.active .ds-lab{display:inline}}
+
+  header{padding:80px 0 56px;border-bottom:1px solid var(--line)}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(255,72,0,.1);border:1px solid rgba(255,72,0,.2);color:#FF8A4D;padding:6px 14px;border-radius:99px;font-size:12px;font-weight:500;margin-bottom:24px}
+  .eyebrow .live{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+  h1{font-size:clamp(40px,5.5vw,76px);line-height:1;letter-spacing:-.04em;font-weight:700;margin-bottom:20px}
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{color:var(--ink-2);font-size:18px;line-height:1.55;max-width:720px}
+  .lede b{color:var(--ink);font-weight:500}
+  .meta{display:flex;gap:24px;margin-top:32px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-3);flex-wrap:wrap}
+  .meta b{color:var(--ink)}
+  .meta kbd{font-family:'JetBrains Mono',monospace;background:rgba(255,255,255,.08);border:1px solid var(--line-2);border-radius:4px;padding:2px 8px;font-size:11px;color:var(--ink);font-weight:500}
+
+  main{padding:64px 0 96px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:24px}
+
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:20px;
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:.2s;text-decoration:none;color:inherit;
+  }
+  .card:hover{border-color:var(--line-2);transform:translateY(-4px)}
+
+  .preview{aspect-ratio:4/3;border-bottom:1px solid var(--line);position:relative;overflow:hidden;background:#000}
+
+  /* mini design thumbnails — scaled-down compositions of each */
+  .preview.brutalist{
+    background:#F2EFE6;color:#0A0A0A;
+    background-image:
+      linear-gradient(transparent 11px, rgba(10,10,10,.04) 12px),
+      linear-gradient(90deg, transparent 11px, rgba(10,10,10,.04) 12px);
+    background-size:12px 12px;
+    padding:18px;display:flex;flex-direction:column;justify-content:space-between;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .preview.brutalist .topbar{background:#0A0A0A;color:#F2EFE6;font-size:8px;padding:4px 8px;letter-spacing:.1em;display:flex;justify-content:space-between;border:1.5px solid #0A0A0A;margin:-8px -8px 0}
+  .preview.brutalist .head{font-family:'Inter',sans-serif;font-weight:700;font-size:30px;line-height:.95;letter-spacing:-.03em;margin-top:14px}
+  .preview.brutalist .head em{font-style:normal;background:#0A0A0A;color:#F2EFE6;padding:0 4px;box-shadow:3px 3px 0 #FF4800}
+  .preview.brutalist .strip{background:#0A0A0A;color:#F2EFE6;padding:5px 8px;font-size:8px;letter-spacing:.1em;display:flex;justify-content:space-between;margin:8px -8px 0}
+  .preview.brutalist .strip span:nth-child(2){color:#FF4800}
+  .preview.brutalist .table{margin-top:8px;border:1.5px solid #0A0A0A;background:#fff;font-size:8px;display:grid;grid-template-columns:1fr auto;gap:0;box-shadow:4px 4px 0 #0A0A0A}
+  .preview.brutalist .table .r{display:contents}
+  .preview.brutalist .table .r > div{padding:5px 7px;border-top:1px solid #0A0A0A}
+  .preview.brutalist .table .r:first-child > div{border-top:0;background:#0A0A0A;color:#F2EFE6}
+  .preview.brutalist .table .r.h > div{background:#FFE38A}
+  .preview.brutalist .table .r > div:last-child{font-weight:700;text-align:right}
+
+  .preview.cosmic{
+    background:
+      radial-gradient(circle at 30% 30%, rgba(124,58,237,.6), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(255,61,203,.5), transparent 50%),
+      radial-gradient(circle at 60% 50%, rgba(0,240,255,.3), transparent 60%),
+      #06030F;
+    color:#F5F2FF;padding:18px;display:flex;flex-direction:column;justify-content:space-between;
+    font-family:'Inter',sans-serif;
+  }
+  .preview.cosmic .nav{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:6px 8px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(10px);font-size:9px}
+  .preview.cosmic .nav .mark{width:14px;height:14px;border-radius:4px;background:conic-gradient(from 220deg,#00F0FF,#FF3DCB,#7C3AED,#00F0FF)}
+  .preview.cosmic .head{font-size:30px;line-height:.95;letter-spacing:-.03em;font-weight:700;margin-top:14px;background:linear-gradient(180deg,#fff,#B8B0E0);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .preview.cosmic .head em{font-style:normal;background:linear-gradient(135deg,#00F0FF,#FF3DCB);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .preview.cosmic .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:10px}
+  .preview.cosmic .stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 8px;font-size:8px;color:#B8B0E0}
+  .preview.cosmic .stat b{color:#fff;font-size:14px;font-weight:700;display:block;letter-spacing:-.02em}
+  .preview.cosmic .pcards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px}
+  .preview.cosmic .pc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 6px;font-size:8px;text-align:center;color:#B8B0E0}
+  .preview.cosmic .pc.feat{background:linear-gradient(180deg,rgba(124,58,237,.4),rgba(255,61,203,.15));border-color:rgba(255,61,203,.4)}
+  .preview.cosmic .pc b{color:#fff;font-size:14px;font-weight:700;display:block;letter-spacing:-.02em}
+
+  .preview.arcade{
+    background:
+      radial-gradient(circle at 10% 20%, rgba(255,46,99,.18), transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(8,217,214,.18), transparent 40%),
+      #1A0F2E;
+    color:#FFF4E6;padding:14px;display:flex;flex-direction:column;justify-content:space-between;
+    font-family:'JetBrains Mono',monospace;position:relative;
+  }
+  .preview.arcade::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0 1px,transparent 1px 3px);pointer-events:none}
+  .preview.arcade .frame{border:2px solid #FFF4E6;border-radius:4px;padding:10px;background:rgba(0,0,0,.2);height:100%;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:1}
+  .preview.arcade .top{background:#0A0418;padding:3px 6px;font-size:7px;display:flex;justify-content:space-between;color:#FFD93D;letter-spacing:.1em;margin:-6px -6px 0;border-bottom:2px solid #FFF4E6}
+  .preview.arcade .top span:nth-child(2){color:#08D9D6}
+  .preview.arcade .head{font-family:'Inter',sans-serif;font-weight:800;font-size:24px;line-height:1.05;letter-spacing:-.02em;color:#FFF4E6;text-shadow:2px 2px 0 #FF2E63,4px 4px 0 #0A0418;text-align:center;margin-top:14px}
+  .preview.arcade .head .y{color:#FFD93D}
+  .preview.arcade .head .m{color:#08D9D6}
+  .preview.arcade .bosses{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;margin-top:8px}
+  .preview.arcade .b{background:#2A1648;border:2px solid #FFF4E6;text-align:center;padding:5px 2px;font-size:7px;box-shadow:2px 2px 0 #0A0418}
+  .preview.arcade .b.feat{border-color:#FFD93D;box-shadow:2px 2px 0 #FF2E63}
+  .preview.arcade .b b{color:#FFD93D;font-size:10px;display:block;font-family:'Inter',sans-serif;font-weight:800;text-shadow:1px 1px 0 #FF2E63}
+
+  /* EDITORIAL preview */
+  .preview.editorial{
+    background:#F5F0E6;color:#1A1612;padding:16px;display:flex;flex-direction:column;
+    font-family:'Source Serif 4','Charter',Georgia,serif;
+  }
+  .preview.editorial .top{border-top:3px solid #1A1612;border-bottom:1px solid #1A1612;padding:6px 0;display:flex;justify-content:space-between;font-family:'Inter',sans-serif;font-size:7px;letter-spacing:.15em;text-transform:uppercase;color:#6B6259;font-weight:500;margin-bottom:6px}
+  .preview.editorial .top b{color:#1A1612}
+  .preview.editorial .ttl{text-align:center;font-style:italic;font-weight:800;font-size:24px;letter-spacing:-.01em;line-height:1;font-family:Georgia,serif;margin:6px 0 4px}
+  .preview.editorial .ttl .sm{display:block;font-style:normal;font-weight:400;font-size:.3em;letter-spacing:.5em;color:#6B6259;text-transform:uppercase;font-family:'Inter',sans-serif;margin-bottom:4px}
+  .preview.editorial .row2{border-top:1px solid #1A1612;border-bottom:1px solid #1A1612;padding:5px 0;font-family:'Inter',sans-serif;font-size:7px;display:flex;justify-content:space-between;align-items:center;font-weight:500}
+  .preview.editorial .body{display:grid;grid-template-columns:1.5fr 1fr;gap:14px;margin-top:14px;align-items:start}
+  .preview.editorial .kicker{font-family:'Inter',sans-serif;font-size:8px;letter-spacing:.25em;color:#A52A2A;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+  .preview.editorial .head{font-family:Georgia,serif;font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:.95}
+  .preview.editorial .head em{color:#A52A2A;font-style:italic;font-weight:400}
+  .preview.editorial .head .accent{background:#1A1612;color:#F5F0E6;padding:0 4px;display:inline-block;font-style:normal}
+  .preview.editorial .deck{font-style:italic;font-size:9px;color:#3A322B;line-height:1.4;margin-top:6px;font-family:Georgia,serif}
+  .preview.editorial .plate{aspect-ratio:3/4;background:#1A1612;background-image:radial-gradient(rgba(245,240,230,.5) 0.6px, transparent 1px);background-size:3px 3px;border:1px solid #1A1612;position:relative;overflow:hidden}
+  .preview.editorial .plate::after{content:"";position:absolute;inset:14% 22%;background:repeating-linear-gradient(0deg,#0E0B08 0 4px, transparent 4px 6px);opacity:.7}
+
+  /* SWISS preview */
+  .preview.swiss{
+    background:#F4F1EA;color:#0A0A0A;padding:16px;display:flex;flex-direction:column;
+    font-family:'Inter',sans-serif;position:relative;overflow:hidden;
+  }
+  .preview.swiss::before{content:"";position:absolute;width:100px;height:100px;border-radius:50%;background:#E63946;right:-20px;top:60px;mix-blend-mode:multiply;opacity:.92}
+  .preview.swiss::after{content:"";position:absolute;width:60px;height:60px;background:#F4C430;right:60px;top:140px;mix-blend-mode:multiply;opacity:.95}
+  .preview.swiss .nav{display:flex;justify-content:space-between;align-items:center;padding-bottom:6px;border-bottom:2px solid #0A0A0A;font-size:8px;font-weight:600;position:relative;z-index:2}
+  .preview.swiss .nav .mark{width:14px;height:14px;background:#E63946;position:relative;display:inline-block;margin-right:4px;vertical-align:middle}
+  .preview.swiss .nav .mark::before{content:"";position:absolute;width:7px;height:7px;background:#2A4D9C;top:0;right:0}
+  .preview.swiss .nav .mark::after{content:"";position:absolute;width:5px;height:5px;background:#F4C430;bottom:0;left:2px;border-radius:50%}
+  .preview.swiss .grid-num{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;font-family:'JetBrains Mono',monospace;font-size:6px;color:#6B6258;border-bottom:1px solid #0A0A0A;padding:4px 0;letter-spacing:.05em;position:relative;z-index:2}
+  .preview.swiss .grid-num span:first-child{color:#E63946;font-weight:700}
+  .preview.swiss .head{font-size:36px;font-weight:900;letter-spacing:-.06em;line-height:.85;margin-top:16px;position:relative;z-index:2}
+  .preview.swiss .head .red{color:#E63946}
+  .preview.swiss .head .blue{color:#2A4D9C}
+  .preview.swiss .head .y{background:#F4C430;padding:0 4px;display:inline-block}
+  .preview.swiss .stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;margin-top:auto;border-top:2px solid #0A0A0A;position:relative;z-index:2}
+  .preview.swiss .st{padding:6px 4px;border-right:1px solid #0A0A0A;font-size:6px;color:#6B6258;font-family:'JetBrains Mono',monospace;letter-spacing:.05em;text-transform:uppercase}
+  .preview.swiss .st:last-child{border-right:0}
+  .preview.swiss .st b{font-family:'Inter',sans-serif;font-size:18px;font-weight:900;letter-spacing:-.04em;display:block;color:#0A0A0A;line-height:1;margin-top:2px}
+  .preview.swiss .st:nth-child(1) b{color:#E63946}
+  .preview.swiss .st:nth-child(2) b{color:#2A4D9C}
+  .preview.swiss .st:nth-child(4) b{color:#3D8B5C}
+
+  .body{padding:24px}
+  .tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+  .body h3{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+  .body h3 em{font-style:normal;color:var(--accent)}
+  .body p{color:var(--ink-2);font-size:14px;line-height:1.55;margin-bottom:18px;min-height:66px}
+  .props{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+  .props span{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--ink-2);font-size:11px;padding:4px 9px;border-radius:99px;font-family:'JetBrains Mono',monospace}
+  .open{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#0A0A0A;padding:11px 16px;border-radius:10px;font-weight:600;font-size:14px;width:100%;justify-content:center}
+  .open:hover{filter:brightness(1.1)}
+
+  .compare{margin-top:64px;border-top:1px solid var(--line);padding-top:48px}
+  .compare h2{font-size:24px;font-weight:600;margin-bottom:24px;letter-spacing:-.01em}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  table th,table td{padding:14px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  table th{font-size:12px;color:var(--ink-3);font-weight:500;letter-spacing:.05em;text-transform:uppercase}
+  table td b{color:var(--ink);font-weight:500}
+  table td:first-child{color:var(--ink-3);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.05em;text-transform:uppercase;width:140px;white-space:nowrap}
+
+  footer{border-top:1px solid var(--line);padding:32px 0;color:var(--ink-3);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+
+  @media (max-width:900px){
+    .grid{grid-template-columns:1fr}
+    table{font-size:12px}
+    table td:first-child{width:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="ds-bar">
+  <div class="ds-l">
+    <span class="ds-pos">— / 05</span>
+    <span class="ds-title">BuyVM · Design Explorations</span>
+  </div>
+  <div class="ds-c">
+    <a href="01-brutalist-terminal.html"><span>1 · </span><span class="ds-lab">Brutalist</span></a>
+    <a href="02-cosmic-glass.html"><span>2 · </span><span class="ds-lab">Cosmic</span></a>
+    <a href="03-retro-arcade.html"><span>3 · </span><span class="ds-lab">Arcade</span></a>
+    <a href="04-editorial-magazine.html"><span>4 · </span><span class="ds-lab">Editorial</span></a>
+    <a href="05-swiss-grid.html"><span>5 · </span><span class="ds-lab">Swiss</span></a>
+  </div>
+  <div class="ds-r">
+    <a href="index.html" class="active"><span class="ds-lab">Gallery</span></a>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow"><span class="live"></span> 5 directions · same brief</span>
+    <h1>BuyVM, five<br>different <em>personalities</em>.</h1>
+    <p class="lede">Same content brief — KVM slices from $2/mo, free DDoS filter, 1&nbsp;Gbps unmetered, 14 yrs uptime — pulled in five directions. Each is a complete, self-contained landing page. Click any card to open the full design, or use the bar at top of every page (or the <kbd>←</kbd>/<kbd>→</kbd> keys) to flip between them.</p>
+    <div class="meta">
+      <span>brief / <b>buyvm.net</b></span>
+      <span>output / <b>5 × landing pages</b></span>
+      <span>format / <b>HTML + CSS, no deps</b></span>
+      <span>nav / <kbd>←</kbd> <kbd>→</kbd> <kbd>1</kbd>—<kbd>5</kbd></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="grid">
+
+      <a href="01-brutalist-terminal.html" class="card">
+        <div class="preview brutalist">
+          <div>
+            <div class="topbar"><span>NETWORK 100% — LUX</span><span>EST. 2010</span></div>
+            <div class="head">VPS without<br>the <em>bullshit</em>.</div>
+          </div>
+          <div>
+            <div class="strip"><span>1 GBPS UNMETERED</span><span>●</span><span>FULL ROOT KVM</span></div>
+            <div class="table">
+              <div class="r"><div>PLAN</div><div>$/MO</div></div>
+              <div class="r"><div>PIGLET · 1c · 512M · 10G</div><div>$2</div></div>
+              <div class="r h"><div>★ SLICE-2 · 2c · 2G · 40G</div><div>$7</div></div>
+              <div class="r"><div>SLICE-4 · 4c · 4G · 80G</div><div>$15</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="tag">Direction 01</div>
+          <h3>Brutalist <em>Terminal</em></h3>
+          <p>Confident, technical, raw. Cream + ink + sharp orange. Monospace voice. Reads like a sysadmin&rsquo;s honest memo to other sysadmins. Plays directly to the BuyVM audience.</p>
+          <div class="props">
+            <span>JetBrains Mono</span>
+            <span>Space Grotesk</span>
+            <span>#FF4800</span>
+            <span>5px hard shadows</span>
+          </div>
+          <span class="open">Open full page →</span>
+        </div>
+      </a>
+
+      <a href="02-cosmic-glass.html" class="card">
+        <div class="preview cosmic">
+          <div>
+            <div class="nav"><div style="display:flex;gap:6px;align-items:center"><span class="mark"></span> BuyVM</div><div style="display:flex;gap:8px;color:rgba(255,255,255,.6)"><span>Slices</span><span>Net</span><span style="background:rgba(0,240,255,.18);color:#fff;padding:2px 6px;border-radius:4px">Deploy</span></div></div>
+            <div class="head">Servers, lit<br>from <em>within</em>.</div>
+            <div class="stats">
+              <div class="stat">LIVE<b>14,287</b></div>
+              <div class="stat">NET<b>100%</b></div>
+              <div class="stat">BOOT<b>54s</b></div>
+            </div>
+          </div>
+          <div class="pcards">
+            <div class="pc">PIGLET<b>$2</b></div>
+            <div class="pc feat">SLICE-2<b>$7</b></div>
+            <div class="pc">SLICE-8<b>$30</b></div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="tag">Direction 02</div>
+          <h3>Cosmic <em>Glass</em></h3>
+          <p>Modern, premium, futuristic. Deep violet base with cyan/magenta gradients. Glassmorphism panels, animated gradient orb, conic-gradient logo. Reads more &ldquo;Linear&rdquo; than &ldquo;LowEndTalk.&rdquo;</p>
+          <div class="props">
+            <span>Inter</span>
+            <span>backdrop-blur</span>
+            <span>#00F0FF / #FF3DCB</span>
+            <span>conic gradients</span>
+          </div>
+          <span class="open">Open full page →</span>
+        </div>
+      </a>
+
+      <a href="03-retro-arcade.html" class="card">
+        <div class="preview arcade">
+          <div class="frame">
+            <div>
+              <div class="top"><span>★ COINS: 003</span><span>HI: 14287</span><span>1P / READY</span></div>
+              <div class="head">INSANE HOSTING.<br><span class="y">SERIOUS</span> <span class="m">UPTIME.</span></div>
+            </div>
+            <div class="bosses">
+              <div class="b">PIGLET<b>$2</b></div>
+              <div class="b">SLICE-1<b>$3.5</b></div>
+              <div class="b feat">SLICE-2<b>$7</b></div>
+              <div class="b">SLICE-8<b>$30</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="tag">Direction 03</div>
+          <h3>Retro <em>Arcade</em></h3>
+          <p>Leans hard into the &ldquo;touch of insanity&rdquo; tagline. Cabinet frame, CRT scanlines, pixel logo, plans-as-bosses, testimonials as a high-score table. Polarising on purpose — memorable, shareable.</p>
+          <div class="props">
+            <span>Press Start 2P</span>
+            <span>VT323</span>
+            <span>#FF2E63 / #FFD93D / #08D9D6</span>
+            <span>scanline overlay</span>
+          </div>
+          <span class="open">Open full page →</span>
+        </div>
+      </a>
+
+      <a href="04-editorial-magazine.html" class="card">
+        <div class="preview editorial">
+          <div class="top"><span><b>VOL. XIV · NO. 057</b></span><span>Wednesday</span><span>14¢</span></div>
+          <div class="ttl"><span class="sm">— The —</span>BuyVM Quarterly</div>
+          <div class="row2"><span>Cover · Pricing · Features · Interview</span><span>STATUS · GREEN</span></div>
+          <div class="body">
+            <div>
+              <div class="kicker">— Cover Story</div>
+              <div class="head">The case<br>for the<br><em>small,</em><br><span class="accent">honest</span><br>server.</div>
+              <div class="deck">In which a Luxembourg shop has been quietly running KVM slices for fourteen years &mdash; without acquisitions, rebrandings, or price hikes.</div>
+            </div>
+            <div class="plate"></div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="tag">Direction 04</div>
+          <h3>Editorial <em>Magazine</em></h3>
+          <p>Long-form magazine spread &mdash; large italic serifs, drop caps, multi-column body, pull quotes, an "interview" Q&amp;A, a halftoned server &ldquo;photograph.&rdquo; Reads premium and considered.</p>
+          <div class="props">
+            <span>Playfair Display</span>
+            <span>Source Serif 4</span>
+            <span>IBM Plex</span>
+            <span>#A52A2A · #9C7C42</span>
+          </div>
+          <span class="open">Open full page →</span>
+        </div>
+      </a>
+
+      <a href="05-swiss-grid.html" class="card">
+        <div class="preview swiss">
+          <div class="nav"><div><span class="mark"></span>BuyVM</div><div>Plans · System · Network · Deploy</div></div>
+          <div class="grid-num"><span>BuyVM</span><span>2026</span><span></span><span></span><span>49°N</span><span>6°E</span><span></span><span>UTC+1</span><span></span><span>NET 100</span><span>SLA 99.99</span><span style="text-align:right">v.05</span></div>
+          <div class="head">A <span class="red">system</span><br>for <span class="y">servers.</span><br>Since <span class="blue">2010.</span></div>
+          <div class="stats">
+            <div class="st">FROM<b>$2</b></div>
+            <div class="st">BOOT<b>54s</b></div>
+            <div class="st">NET<b>1Gb</b></div>
+            <div class="st">SLA<b>99.9</b></div>
+          </div>
+        </div>
+        <div class="body">
+          <div class="tag">Direction 05</div>
+          <h3>Swiss <em>Grid</em></h3>
+          <p>Strict 12-col modular grid, big numbers, primary colors and pure geometric shapes. Müller-Brockmann meets a 1960s industrial brochure. Rigorous, design-conscious, hard to misread.</p>
+          <div class="props">
+            <span>Inter 900</span>
+            <span>12-col grid</span>
+            <span>#E63946 · #2A4D9C · #F4C430</span>
+            <span>geometric glyphs</span>
+          </div>
+          <span class="open">Open full page →</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="compare">
+      <h2>Quick comparison</h2>
+      <table>
+        <thead>
+          <tr><th></th><th>01 · Brutalist</th><th>02 · Cosmic</th><th>03 · Arcade</th><th>04 · Editorial</th><th>05 · Swiss</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vibe</td>
+            <td><b>Honest, technical, raw</b></td>
+            <td><b>Premium, modern, lit</b></td>
+            <td><b>Loud, playful, polarising</b></td>
+            <td><b>Considered, longform, classy</b></td>
+            <td><b>Rigorous, designed, modern</b></td>
+          </tr>
+          <tr>
+            <td>Sells to</td>
+            <td>Sysadmins, self-hosters, devs who already know KVM</td>
+            <td>Founders, agencies, anyone comparing to DO/Vultr/Linode</td>
+            <td>Hobbyists, fediverse, gamers, &ldquo;weird internet&rdquo;</td>
+            <td>Engineers who read longform, journalists, decision-makers</td>
+            <td>Designers, design-savvy buyers, B2B procurement</td>
+          </tr>
+          <tr>
+            <td>Lever</td>
+            <td>Trust + price clarity</td>
+            <td>Polish + perceived premium</td>
+            <td>Memorability + share-ability</td>
+            <td>Authority + permanence</td>
+            <td>Confidence + clarity</td>
+          </tr>
+          <tr>
+            <td>Risk</td>
+            <td>Reads &ldquo;cheap&rdquo; to non-technical buyers</td>
+            <td>Looks like every YC company</td>
+            <td>Some buyers bounce on first glance</td>
+            <td>Reads slow / overwrought to skim-readers</td>
+            <td>Reads &ldquo;corporate&rdquo; if not handled with humour</td>
+          </tr>
+          <tr>
+            <td>Best as</td>
+            <td>Main marketing site</td>
+            <td>Main site, going up-market</td>
+            <td>Campaign / launch / sub-brand</td>
+            <td>About / company / story page</td>
+            <td>Main site for design-led brand refresh</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:16px">
+    <span>5 directions · self-contained HTML · open in any browser</span>
+    <span style="font-family:'JetBrains Mono',monospace">github.com/Hannan-Nozari/buyvm-designs</span>
+  </div>
+</footer>
+
+</body>
+</html>

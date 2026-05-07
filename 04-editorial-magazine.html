@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BuyVM — A small server, a long story.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F0E6;
+    --paper-2:#EDE7D8;
+    --ink:#1A1612;
+    --ink-2:#3A322B;
+    --muted:#6B6259;
+    --rule:#1A1612;
+    --red:#A52A2A;
+    --gold:#9C7C42;
+    --moss:#3D5A3D;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Source Serif 4','Charter',serif;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    font-feature-settings:"liga","kern","onum","dlig";
+  }
+  body{
+    background-image:
+      radial-gradient(rgba(26,22,18,.018) 1px, transparent 1.5px);
+    background-size:3px 3px;
+    background-attachment:fixed;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  .serif{font-family:'Playfair Display','Source Serif 4',serif}
+  .sans{font-family:'IBM Plex Sans',sans-serif}
+  .mono{font-family:'IBM Plex Mono',monospace}
+
+  /* MASTHEAD */
+  .masthead{border-top:6px solid var(--ink);border-bottom:1px solid var(--ink);padding:18px 0;background:var(--paper)}
+  .masthead .row1{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .masthead .row1 b{color:var(--ink)}
+  .masthead .row1 .dot{width:6px;height:6px;background:var(--red);border-radius:50%;display:inline-block;margin-right:6px}
+  .masthead .title{
+    font-family:'Playfair Display',serif;font-weight:800;font-style:italic;
+    font-size:clamp(48px,7vw,96px);letter-spacing:-.02em;line-height:.95;text-align:center;
+  }
+  .masthead .title .sm{font-style:normal;font-weight:400;font-size:.32em;letter-spacing:.5em;display:block;color:var(--muted);margin-bottom:8px;text-transform:uppercase;font-family:'IBM Plex Sans',sans-serif}
+  .masthead .row2{display:flex;justify-content:space-between;align-items:center;margin-top:14px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:10px 0;font-family:'IBM Plex Sans',sans-serif;font-size:13px}
+  .masthead nav{display:flex;gap:28px}
+  .masthead nav a{font-weight:500;color:var(--ink);position:relative;padding-bottom:2px}
+  .masthead nav a:hover{color:var(--red)}
+  .masthead .right{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:12px;letter-spacing:.05em}
+  .masthead .right a.btn{
+    background:var(--ink);color:var(--paper);padding:8px 16px;letter-spacing:.06em;font-size:11px;font-weight:600;text-transform:uppercase;border-radius:0
+  }
+  .masthead .right a.btn:hover{background:var(--red)}
+
+  /* HERO ARTICLE */
+  .hero{padding:64px 0 48px;border-bottom:2px solid var(--ink);position:relative}
+  .hero .grid{display:grid;grid-template-columns:1.5fr 1fr;gap:60px;align-items:end}
+  .kicker{font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:18px;font-weight:600;display:flex;align-items:center;gap:14px}
+  .kicker::before{content:"";width:36px;height:1px;background:var(--red)}
+  .hero h1{
+    font-family:'Playfair Display',serif;font-weight:800;
+    font-size:clamp(48px,7.5vw,108px);line-height:.96;letter-spacing:-.02em;
+    margin-bottom:24px;color:var(--ink);
+  }
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--red)}
+  .hero h1 .accent{
+    background:var(--ink);color:var(--paper);padding:0 .15em;
+    font-style:normal;display:inline-block;transform:rotate(-1deg);
+  }
+  .hero .deck{font-family:'Source Serif 4',serif;font-size:22px;line-height:1.45;color:var(--ink-2);max-width:620px;font-style:italic;margin-bottom:28px}
+  .hero .byline{font-family:'IBM Plex Sans',sans-serif;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:flex;gap:18px;align-items:center}
+  .hero .byline b{color:var(--ink);font-weight:600}
+  .hero .byline span:not(:first-child)::before{content:"·";margin-right:18px;color:var(--muted);font-weight:bold}
+
+  /* PHOTO PLATE — server illustration as if it were a halftoned photograph */
+  .plate{
+    position:relative;aspect-ratio:3/4;
+    background:
+      linear-gradient(135deg, #2C261F, #1A1612),
+      var(--ink);
+    overflow:hidden;border:1px solid var(--ink);
+  }
+  .plate::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(245,240,230,.55) 1px, transparent 1.6px);
+    background-size:4px 4px;mix-blend-mode:overlay;opacity:.6;
+  }
+  .plate::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(245,240,230,.18), transparent 30%),
+      radial-gradient(circle at 70% 70%, rgba(165,42,42,.25), transparent 35%);
+  }
+  .plate .rack{position:absolute;inset:14% 18%;display:flex;flex-direction:column;gap:8px}
+  .plate .u{
+    height:38px;background:#0E0B08;border:1px solid #2C261F;border-radius:2px;
+    display:flex;align-items:center;padding:0 10px;gap:6px;
+    box-shadow:inset 0 1px 0 rgba(245,240,230,.04);
+  }
+  .plate .u i{display:block;width:6px;height:6px;border-radius:50%;background:#3D5A3D;box-shadow:0 0 6px #5A8A5A}
+  .plate .u i.r{background:#A52A2A;box-shadow:0 0 6px #C94545}
+  .plate .u i.y{background:#9C7C42;box-shadow:0 0 6px #C9A55A}
+  .plate .u .vent{flex:1;height:14px;background:repeating-linear-gradient(90deg,#1A1612 0 2px,transparent 2px 4px);margin-left:10px;opacity:.7}
+  .plate .caption{
+    position:absolute;bottom:-32px;left:0;right:0;
+    font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);
+    letter-spacing:.08em;text-align:center;
+  }
+  .plate-wrap{position:relative;padding-bottom:40px}
+
+  /* BIG OPENING / DROP CAP ARTICLE */
+  .feature{padding:72px 0;border-bottom:1px solid var(--ink)}
+  .feature .article{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+  .feature h2{
+    grid-column:1/4;font-family:'Playfair Display',serif;font-weight:400;font-style:italic;
+    font-size:clamp(34px,4vw,52px);letter-spacing:-.01em;line-height:1.1;margin-bottom:32px;max-width:880px;
+  }
+  .feature .col{font-size:17px;line-height:1.65;color:var(--ink-2);font-family:'Source Serif 4',serif}
+  .feature .col p{margin-bottom:18px;text-align:justify;hyphens:auto}
+  .feature .col:first-child p:first-child::first-letter{
+    font-family:'Playfair Display',serif;font-weight:800;font-size:5.4em;
+    float:left;line-height:.85;margin:6px 10px 0 0;color:var(--red);
+  }
+  .feature .pull{
+    grid-column:1/4;
+    font-family:'Playfair Display',serif;font-style:italic;font-weight:400;
+    font-size:clamp(28px,3.5vw,40px);line-height:1.25;color:var(--ink);
+    border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+    padding:32px 0;margin:24px 0;text-align:center;
+  }
+  .feature .pull::before,.feature .pull::after{content:"";display:block;width:40px;height:2px;background:var(--red);margin:0 auto 18px}
+  .feature .pull::after{margin:18px auto 0}
+  .feature .pull cite{display:block;font-style:normal;font-family:'IBM Plex Sans',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+
+  /* PRICING — like a sidebar/box in a magazine */
+  .pricing-section{padding:72px 0;border-bottom:1px solid var(--ink);background:var(--paper-2)}
+  .section-head{display:grid;grid-template-columns:1fr 1.6fr;gap:48px;margin-bottom:48px}
+  .section-head .left .num{font-family:'Playfair Display',serif;font-style:italic;font-size:96px;color:var(--red);line-height:.9;margin-bottom:8px}
+  .section-head .left .label{font-family:'IBM Plex Sans',sans-serif;font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .section-head h3{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(36px,4.5vw,64px);line-height:1;letter-spacing:-.02em;margin-bottom:18px}
+  .section-head h3 em{font-style:italic;color:var(--red);font-weight:400}
+  .section-head p{font-family:'Source Serif 4',serif;font-size:18px;line-height:1.55;color:var(--ink-2);max-width:640px;font-style:italic}
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--paper);border:1px solid var(--ink)}
+  .pcard{
+    padding:36px 28px;border-right:1px solid var(--ink);position:relative;
+    display:flex;flex-direction:column;
+  }
+  .pcard:last-child{border-right:0}
+  .pcard.featured{background:var(--ink);color:var(--paper)}
+  .pcard.featured .num,.pcard.featured h4{color:var(--paper)}
+  .pcard.featured .price-num{color:var(--paper)}
+  .pcard.featured .price-num em{color:#E0B560}
+  .pcard.featured .specs li{color:#C7BFB3;border-color:#3A322B}
+  .pcard.featured .footnote{color:#9C9489}
+  .pcard.featured .ribbon{display:block}
+  .pcard .ribbon{
+    display:none;position:absolute;top:0;right:0;
+    background:#9C7C42;color:var(--paper);font-family:'IBM Plex Sans',sans-serif;
+    font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+    padding:6px 12px;
+  }
+  .pcard .num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--muted);margin-bottom:18px}
+  .pcard h4{font-family:'Playfair Display',serif;font-weight:800;font-size:32px;letter-spacing:-.01em;margin-bottom:6px;line-height:1}
+  .pcard .role{font-family:'Source Serif 4',serif;font-size:13px;font-style:italic;color:var(--muted);margin-bottom:24px;min-height:38px}
+  .pcard .price-num{font-family:'Playfair Display',serif;font-weight:800;font-size:64px;letter-spacing:-.02em;line-height:1;margin-bottom:6px;color:var(--ink)}
+  .pcard .price-num em{font-style:italic;font-weight:400;color:var(--red);font-size:.5em;margin-left:4px}
+  .pcard .per{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px}
+  .pcard .specs{list-style:none;margin-bottom:28px;flex:1}
+  .pcard .specs li{padding:10px 0;border-bottom:1px dotted var(--ink);font-family:'Source Serif 4',serif;font-size:14px;display:flex;justify-content:space-between;color:var(--ink-2)}
+  .pcard .specs li b{color:var(--ink);font-weight:600}
+  .pcard.featured .specs li b{color:var(--paper)}
+  .pcard .footnote{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .pcard .deploy{
+    display:inline-block;font-family:'IBM Plex Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+    padding:14px 0;text-align:center;border:1px solid var(--ink);transition:.15s;
+  }
+  .pcard .deploy:hover{background:var(--ink);color:var(--paper)}
+  .pcard.featured .deploy{border-color:var(--paper);color:var(--paper)}
+  .pcard.featured .deploy:hover{background:var(--paper);color:var(--ink)}
+
+  /* COLUMNS / FEATURES */
+  .features-section{padding:72px 0;border-bottom:1px solid var(--ink)}
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;column-gap:48px}
+  .features-grid .col{position:relative}
+  .features-grid .col h4{font-family:'Playfair Display',serif;font-weight:800;font-size:28px;letter-spacing:-.01em;line-height:1.1;margin-bottom:14px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+  .features-grid .col h4 em{color:var(--red);font-style:italic;font-weight:400}
+  .features-grid .col p{font-family:'Source Serif 4',serif;font-size:15.5px;line-height:1.6;color:var(--ink-2)}
+  .features-grid .col .label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--red);margin-bottom:14px;font-weight:500}
+
+  /* INTERVIEW / TESTIMONIAL */
+  .interview{padding:72px 0;border-bottom:1px solid var(--ink);background:var(--paper-2)}
+  .interview .grid{display:grid;grid-template-columns:1fr 1.5fr;gap:64px;align-items:start}
+  .interview h3{font-family:'Playfair Display',serif;font-weight:400;font-style:italic;font-size:42px;letter-spacing:-.01em;line-height:1.1;margin-bottom:18px}
+  .interview .label{font-family:'IBM Plex Sans',sans-serif;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:18px}
+  .interview .lead{font-family:'Source Serif 4',serif;font-size:17px;line-height:1.6;color:var(--ink-2);font-style:italic}
+  .qa{display:flex;flex-direction:column;gap:24px;font-family:'Source Serif 4',serif;font-size:17px;line-height:1.65}
+  .qa .q{display:flex;gap:18px}
+  .qa .q .marker{font-family:'Playfair Display',serif;font-style:italic;font-weight:800;color:var(--red);font-size:24px;flex-shrink:0;width:24px}
+  .qa .q.a .marker{color:var(--ink)}
+  .qa .q p{color:var(--ink-2)}
+  .qa .q.a p{color:var(--ink)}
+  .qa .source{font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:12px;padding-top:18px;border-top:1px solid var(--ink)}
+
+  /* CLOSING / CTA */
+  .closing{padding:96px 0 80px;text-align:center}
+  .closing .seal{
+    width:96px;height:96px;border:2px solid var(--ink);border-radius:50%;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-family:'Playfair Display',serif;font-style:italic;font-weight:800;font-size:42px;color:var(--red);
+    margin-bottom:32px;position:relative;
+  }
+  .closing .seal::before{content:"";position:absolute;inset:6px;border:1px dashed var(--ink);border-radius:50%}
+  .closing h3{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(40px,5.5vw,76px);letter-spacing:-.02em;line-height:1;margin-bottom:24px}
+  .closing h3 em{font-style:italic;color:var(--red);font-weight:400}
+  .closing p{font-family:'Source Serif 4',serif;font-size:19px;line-height:1.55;color:var(--ink-2);max-width:560px;margin:0 auto 36px;font-style:italic}
+  .closing .actions{display:inline-flex;gap:14px}
+  .closing .btn-l{
+    display:inline-flex;align-items:center;gap:12px;
+    background:var(--ink);color:var(--paper);
+    font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+    padding:18px 28px;border:0;
+  }
+  .closing .btn-l:hover{background:var(--red)}
+  .closing .btn-l.outline{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .closing .btn-l.outline:hover{background:var(--ink);color:var(--paper)}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:var(--paper);padding:64px 0 28px}
+  .foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:48px}
+  .foot .brand .title{font-family:'Playfair Display',serif;font-weight:800;font-style:italic;font-size:36px;letter-spacing:-.01em;margin-bottom:8px}
+  .foot .brand p{font-family:'Source Serif 4',serif;font-style:italic;font-size:14px;line-height:1.55;color:#9C9489;max-width:340px;margin-top:14px}
+  .foot h5{font-family:'IBM Plex Sans',sans-serif;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:#E0B560;margin-bottom:18px;font-weight:600}
+  .foot ul{list-style:none}
+  .foot li{margin-bottom:10px;font-family:'Source Serif 4',serif;font-size:14.5px}
+  .foot li a:hover{color:#E0B560}
+  .foot-bot{display:flex;justify-content:space-between;border-top:1px solid #3A322B;padding-top:24px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#9C9489;text-transform:uppercase}
+
+  @media (max-width:1000px){
+    .hero .grid{grid-template-columns:1fr}
+    .feature .article{grid-template-columns:1fr}
+    .feature .col:first-child p:first-child::first-letter{font-size:4em}
+    .price-grid{grid-template-columns:repeat(2,1fr)}
+    .pcard{border-right:0;border-bottom:1px solid var(--ink)}
+    .pcard:nth-child(2){border-right:0}
+    .pcard:nth-child(odd){border-right:1px solid var(--ink)}
+    .features-grid{grid-template-columns:1fr}
+    .interview .grid{grid-template-columns:1fr}
+    .section-head{grid-template-columns:1fr}
+    .foot{grid-template-columns:repeat(2,1fr)}
+    .masthead nav{display:none}
+  }
+  /* DESIGN SWITCHER BAR (shared across all 5 designs) */
+  .ds-bar{position:relative;z-index:99999;background:#000;color:#fff;font-family:ui-monospace,'JetBrains Mono','SFMono-Regular',Menlo,Consolas,monospace;font-size:12px;letter-spacing:.04em;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid #1a1a1a;height:42px;box-sizing:border-box;font-weight:400;text-transform:none}
+  .ds-bar *{box-sizing:border-box}
+  .ds-bar a{color:#fff;text-decoration:none;opacity:.55;padding:5px 10px;transition:.12s;border-radius:3px;font-weight:500;border:0;background:none;font-family:inherit;font-size:12px;letter-spacing:.04em;text-transform:none;line-height:1;display:inline-flex;align-items:center}
+  .ds-bar a:hover{opacity:1;background:#1a1a1a;color:#fff;transform:none;box-shadow:none}
+  .ds-bar a.active{opacity:1;background:#fff;color:#000;font-weight:600}
+  .ds-bar .ds-l,.ds-bar .ds-c,.ds-bar .ds-r{display:flex;align-items:center;gap:2px}
+  .ds-bar .ds-pos{opacity:.5;margin:0 12px 0 4px;font-size:11px;letter-spacing:.15em;font-weight:500}
+  .ds-bar .ds-arrow{font-size:13px;padding:5px 10px;opacity:.65}
+  .ds-bar .ds-title{opacity:.65;margin-right:12px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+  .ds-bar .ds-x{font-size:14px;opacity:.45;cursor:pointer;padding:5px 10px;line-height:1;color:#fff;background:none;border:0;font-family:inherit}
+  .ds-bar .ds-x:hover{opacity:1}
+  @media (max-width:820px){.ds-bar .ds-title,.ds-bar .ds-pos{display:none}.ds-bar a .ds-lab{display:none}.ds-bar a.active .ds-lab{display:inline}}
+  @media (max-width:540px){.ds-bar .ds-c a:not(.active){display:none}}
+</style>
+</head>
+<body data-page="4">
+
+<div class="ds-bar" id="dsBar">
+  <div class="ds-l">
+    <a href="#" class="ds-arrow" id="dsPrev" title="Previous (←)">◂</a>
+    <span class="ds-pos" id="dsPos">04 / 05</span>
+    <span class="ds-title">BuyVM · Design Explorations</span>
+  </div>
+  <div class="ds-c">
+    <a href="01-brutalist-terminal.html"><span>1 · </span><span class="ds-lab">Brutalist</span></a>
+    <a href="02-cosmic-glass.html"><span>2 · </span><span class="ds-lab">Cosmic</span></a>
+    <a href="03-retro-arcade.html"><span>3 · </span><span class="ds-lab">Arcade</span></a>
+    <a href="04-editorial-magazine.html"><span>4 · </span><span class="ds-lab">Editorial</span></a>
+    <a href="05-swiss-grid.html"><span>5 · </span><span class="ds-lab">Swiss</span></a>
+  </div>
+  <div class="ds-r">
+    <a href="index.html"><span class="ds-lab">Gallery</span><span style="display:none">⊞</span></a>
+    <a href="#" class="ds-arrow" id="dsNext" title="Next (→)">▸</a>
+    <button class="ds-x" id="dsX" title="Hide bar">×</button>
+  </div>
+</div>
+<script>
+(function(){
+  var hrefs=['01-brutalist-terminal.html','02-cosmic-glass.html','03-retro-arcade.html','04-editorial-magazine.html','05-swiss-grid.html'];
+  var path=location.pathname.split('/').pop()||'01-brutalist-terminal.html';
+  var idx=hrefs.indexOf(path); if(idx<0) idx=parseInt(document.body.dataset.page||'1',10)-1;
+  document.getElementById('dsPos').textContent=String(idx+1).padStart(2,'0')+' / 05';
+  var links=document.querySelectorAll('.ds-c a');
+  links.forEach(function(a,i){ if(i===idx) a.classList.add('active'); });
+  document.getElementById('dsPrev').href=hrefs[(idx-1+5)%5];
+  document.getElementById('dsNext').href=hrefs[(idx+1)%5];
+  document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA') return;
+    if(e.metaKey||e.ctrlKey||e.altKey) return;
+    if(e.key==='ArrowLeft'){location.href=hrefs[(idx-1+5)%5];}
+    if(e.key==='ArrowRight'){location.href=hrefs[(idx+1)%5];}
+    if(/^[1-5]$/.test(e.key)){location.href=hrefs[parseInt(e.key,10)-1];}
+  });
+  document.getElementById('dsX').addEventListener('click',function(){
+    document.getElementById('dsBar').style.display='none';
+    try{localStorage.setItem('dsHide','1');}catch(e){}
+  });
+  try{if(localStorage.getItem('dsHide')==='1') document.getElementById('dsBar').style.display='none';}catch(e){}
+})();
+</script>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="row1">
+      <span><span class="dot"></span>VOL. XIV · NO. 057 · LUXEMBOURG</span>
+      <span><b>Wednesday, May 7, 2026</b> · <b>14¢</b> the slice</span>
+      <span>Independent since <b>2010</b></span>
+    </div>
+    <h1 class="title"><span class="sm">— The —</span>BuyVM Quarterly</h1>
+    <div class="row2">
+      <nav>
+        <a href="#hero">The Story</a>
+        <a href="#plans">Pricing</a>
+        <a href="#features">Features</a>
+        <a href="#interview">Field Notes</a>
+        <a href="#deploy">Deploy</a>
+      </nav>
+      <div class="right">
+        <span>STATUS · <b style="color:var(--moss)">ALL GREEN</b></span>
+        <a href="#" class="btn">Sign in</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="kicker">Cover Story · Infrastructure</div>
+        <h1>
+          The case for the<br>
+          <em>small,</em> <span class="accent">honest</span><br>
+          server.
+        </h1>
+        <p class="deck">In which a small Luxembourg shop, founded in a Tampa apartment, has been quietly running KVM slices for fourteen years &mdash; without acquisitions, without rebrandings, and, more remarkably, without raising prices.</p>
+        <div class="byline">
+          <span>By <b>The BuyVM Desk</b></span>
+          <span>14 min read</span>
+          <span>Photographs by <b>The Rack, Floor 3</b></span>
+        </div>
+      </div>
+      <div class="plate-wrap">
+        <div class="plate">
+          <div class="rack">
+            <div class="u"><i></i><div class="vent"></div><i></i></div>
+            <div class="u"><i></i><i class="r"></i><div class="vent"></div><i></i></div>
+            <div class="u"><i class="y"></i><i></i><div class="vent"></div><i></i></div>
+            <div class="u"><i></i><div class="vent"></div><i></i></div>
+            <div class="u"><i></i><i></i><div class="vent"></div><i class="r"></i></div>
+            <div class="u"><i></i><div class="vent"></div><i></i></div>
+            <div class="u"><i class="y"></i><div class="vent"></div><i></i></div>
+            <div class="u"><i></i><i></i><div class="vent"></div><i></i></div>
+          </div>
+        </div>
+        <div class="caption">Rack 7, BuyVM Luxembourg. <em>Photographed in available light, May 2026.</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature">
+  <div class="wrap">
+    <div class="article">
+      <h2>Most cloud companies are five years old. Ours has been answering the same support email address since the Obama administration.</h2>
+      <div class="col">
+        <p>It is, on the face of it, a strange time to be selling cheap servers. The hyperscalers have spent a decade convincing the market that infrastructure should be metered to the millisecond, billed in arrears, and delivered through a console with seven hundred icons. The result is a generation of engineers who have never typed <span class="mono">apt-get install nginx</span> on a machine they actually own.</p>
+        <p>BuyVM has been doing the unfashionable thing instead. Two-dollar slices. Full-root KVM. A flat monthly bill. The same control panel since Drew Carey was hosting the Price Is Right.</p>
+        <p>It works. It has worked for fourteen years. It will, the management insists, continue to work.</p>
+      </div>
+      <div class="col">
+        <p>The arithmetic is unsentimental. A small KVM slice with one virtual core, half a gigabyte of memory, and ten gigabytes of solid-state disk costs two American dollars per month. The same machine on a hyperscaler costs, at this writing, between fifteen and forty &mdash; depending on which sub-product you select and how much of the pricing page you read.</p>
+        <p>What you are paying for, in the more expensive case, is a sales organization, a marketing organization, a regulatory affairs office, and a quarterly call. What you are paying for at BuyVM is a rack and the people who maintain it.</p>
+      </div>
+      <div class="col">
+        <p>This is not, to be clear, an argument that hyperscalers are bad. They are excellent for the workloads they were built for. They are also expensive, opaque, and prone to surprising you with a bill in the third week of February.</p>
+        <p>The argument is smaller and more boring: there exists a class of work &mdash; a Mastodon instance, a personal mail server, a build runner, a cache, a side project &mdash; for which the right answer is a small Linux box with a public IP, a sensible price, and a phone number that goes to a person who knows what BGP is.</p>
+        <p>That box is what the rest of this issue is about.</p>
+      </div>
+      <div class="pull">
+        &ldquo;The price you pay in the second year is the same price you paid in the first. We have receipts going back to 2010.&rdquo;
+        <cite>— Frantech engineering, on its policy of not raising prices</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section" id="plans">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="left">
+        <div class="num">II.</div>
+        <div class="label">The Catalogue</div>
+      </div>
+      <div>
+        <h3>Five slices, four<br><em>continents,</em> one bill.</h3>
+        <p>Hourly billing if you want it. Monthly if you don&rsquo;t. Cancel from the panel without speaking to a retention specialist about your &ldquo;journey.&rdquo;</p>
+      </div>
+    </div>
+
+    <div class="price-grid">
+
+      <div class="pcard">
+        <span class="ribbon">Entry</span>
+        <span class="num">№ 01 — PIGLET</span>
+        <h4>The Piglet</h4>
+        <div class="role">For the side project that may, eventually, become a real one.</div>
+        <div class="price-num">$2<em>/mo</em></div>
+        <div class="per">Billed monthly · cancel anytime</div>
+        <ul class="specs">
+          <li><span>vCPU</span><b>1 ✕</b></li>
+          <li><span>Memory</span><b>512 MB</b></li>
+          <li><span>Disk (NVMe)</span><b>10 GB</b></li>
+          <li><span>Network</span><b>1 Gbps</b></li>
+          <li><span>DDoS filter</span><b>Included</b></li>
+        </ul>
+        <div class="footnote">For: small bots, jump hosts, DNS</div>
+        <a href="#" class="deploy">Deploy →</a>
+      </div>
+
+      <div class="pcard">
+        <span class="num">№ 02 — SLICE-1</span>
+        <h4>Slice One</h4>
+        <div class="role">A respectable home for a Mastodon instance and three opinions.</div>
+        <div class="price-num">$3.50<em>/mo</em></div>
+        <div class="per">Billed monthly · cancel anytime</div>
+        <ul class="specs">
+          <li><span>vCPU</span><b>1 ✕</b></li>
+          <li><span>Memory</span><b>1 GB</b></li>
+          <li><span>Disk (NVMe)</span><b>20 GB</b></li>
+          <li><span>Network</span><b>1 Gbps</b></li>
+          <li><span>IPv4 + /64 v6</span><b>Included</b></li>
+        </ul>
+        <div class="footnote">For: blogs, fediverse, mail</div>
+        <a href="#" class="deploy">Deploy →</a>
+      </div>
+
+      <div class="pcard featured">
+        <span class="ribbon">Editor&rsquo;s pick</span>
+        <span class="num">№ 03 — SLICE-2</span>
+        <h4>Slice Two</h4>
+        <div class="role">The sensible default. The one our own staff run.</div>
+        <div class="price-num">$7<em>/mo</em></div>
+        <div class="per">Billed monthly · cancel anytime</div>
+        <ul class="specs">
+          <li><span>vCPU</span><b>2 ✕</b></li>
+          <li><span>Memory</span><b>2 GB</b></li>
+          <li><span>Disk (NVMe)</span><b>40 GB</b></li>
+          <li><span>Network</span><b>1 Gbps</b></li>
+          <li><span>Snapshot + rebuild</span><b>Included</b></li>
+        </ul>
+        <div class="footnote">For: production sites, CI runners</div>
+        <a href="#" class="deploy">Deploy →</a>
+      </div>
+
+      <div class="pcard">
+        <span class="ribbon">Beefy</span>
+        <span class="num">№ 04 — SLICE-8</span>
+        <h4>Slice Eight</h4>
+        <div class="role">Database boxes, build farms, the part of the cluster that actually does work.</div>
+        <div class="price-num">$30<em>/mo</em></div>
+        <div class="per">Billed monthly · cancel anytime</div>
+        <ul class="specs">
+          <li><span>vCPU</span><b>8 ✕</b></li>
+          <li><span>Memory</span><b>8 GB</b></li>
+          <li><span>Disk (NVMe)</span><b>160 GB</b></li>
+          <li><span>Network</span><b>1 Gbps</b></li>
+          <li><span>Block storage attach</span><b>Available</b></li>
+        </ul>
+        <div class="footnote">For: databases, k3s nodes</div>
+        <a href="#" class="deploy">Deploy →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="features-section" id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="left">
+        <div class="num">III.</div>
+        <div class="label">Field Manual</div>
+      </div>
+      <div>
+        <h3>Things that <em>should</em><br>cost extra. They don&rsquo;t.</h3>
+      </div>
+    </div>
+    <div class="features-grid">
+      <div class="col">
+        <div class="label">— On filtering</div>
+        <h4>A <em>DDoS shield</em><br>that comes free.</h4>
+        <p>Layer-3 and Layer-4 mitigation on every IP we issue. The same equipment we use to keep our own panel up &mdash; pointed at your slice &mdash; at no additional charge, ever, for any plan, including the Piglet.</p>
+      </div>
+      <div class="col">
+        <div class="label">— On bandwidth</div>
+        <h4>One gigabit,<br><em>unmetered.</em></h4>
+        <p>No bandwidth meter ticking down. Pull a Linux ISO every hour. Mirror Debian. Host a backup. We measured the link, not your packets, and we charge for the former.</p>
+      </div>
+      <div class="col">
+        <div class="label">— On responsibility</div>
+        <h4>Real KVM.<br>Real <em>root.</em></h4>
+        <p>You get a virtual machine, not a container with marketing on top. Bring your own kernel, your own iptables, your own questionable Tuesday-night decisions. We&rsquo;ll be here in the morning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="interview" id="interview">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="label">Interview</div>
+        <h3>&ldquo;We have not raised prices since 2010.&rdquo;</h3>
+        <p class="lead">A short conversation with Frantech engineering, conducted over IRC, lightly edited for clarity and against our better judgment.</p>
+      </div>
+      <div class="qa">
+        <div class="q">
+          <div class="marker">Q.</div>
+          <p>Most providers add a sub-product every quarter. You haven&rsquo;t. Why?</p>
+        </div>
+        <div class="q a">
+          <div class="marker">A.</div>
+          <p>Because most of those sub-products are accounting, not engineering. We sell virtual machines, block storage, and DDoS filtering. That covers about ninety-five percent of what people on a small budget actually need. The rest is theatre.</p>
+        </div>
+        <div class="q">
+          <div class="marker">Q.</div>
+          <p>And the prices?</p>
+        </div>
+        <div class="q a">
+          <div class="marker">A.</div>
+          <p>The hardware gets cheaper every year. Our overhead doesn&rsquo;t. Net of the two, the math has worked out about the same since 2010, so we&rsquo;ve left it alone. The two-dollar slice still costs two dollars. We have customers on plans we no longer technically sell &mdash; we don&rsquo;t kick them off.</p>
+        </div>
+        <div class="q">
+          <div class="marker">Q.</div>
+          <p>Last question. Why &ldquo;a touch of insanity&rdquo;?</p>
+        </div>
+        <div class="q a">
+          <div class="marker">A.</div>
+          <p>Because at some point a person has to acknowledge that running a hosting company in 2026 with the same prices as 2010 is, on its face, a slightly mad thing to do. We are at peace with that.</p>
+        </div>
+        <div class="source">Conducted on #buyvm, irc.rizon.net · transcript on file</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing" id="deploy">
+  <div class="wrap">
+    <div class="seal">B</div>
+    <h3>So go on,<br><em>spin one up.</em></h3>
+    <p>It takes ninety seconds. It boots in fifty-four. You can destroy it from the panel without writing us a letter. Fourteen years and counting. We&rsquo;re not going anywhere.</p>
+    <div class="actions">
+      <a href="#" class="btn-l">Create an account →</a>
+      <a href="#" class="btn-l outline">Read the docs</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="brand">
+        <div class="title">— BuyVM —</div>
+        <p>Frantech Solutions S.A.R.L. · Established 2010 · Luxembourg, Las Vegas, New York, Miami. Independent. Same crew. Same prices.</p>
+      </div>
+      <div>
+        <h5>The Catalogue</h5>
+        <ul><li><a href="#">KVM Slices</a></li><li><a href="#">Block Storage</a></li><li><a href="#">DDoS Filter</a></li><li><a href="#">Anycast</a></li></ul>
+      </div>
+      <div>
+        <h5>The Network</h5>
+        <ul><li><a href="#">Looking glass</a></li><li><a href="#">Status page</a></li><li><a href="#">Speed test</a></li><li><a href="#">PeeringDB</a></li></ul>
+      </div>
+      <div>
+        <h5>Letters</h5>
+        <ul><li><a href="#">Submit ticket</a></li><li><a href="#">Stallion panel</a></li><li><a href="#">Documentation</a></li><li><a href="#">IRC #buyvm</a></li></ul>
+      </div>
+      <div>
+        <h5>Masthead</h5>
+        <ul><li><a href="#">About</a></li><li><a href="#">The Blog</a></li><li><a href="#">Acceptable use</a></li><li><a href="#">Privacy policy</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2010—2026 Frantech Solutions</span>
+      <span>Set in Playfair, Source Serif & IBM Plex</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
