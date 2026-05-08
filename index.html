@@ -23,15 +23,12 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
   body{
-    background:
-      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(73,196,109,.06), transparent 60%),
-      var(--bg);
+    background:radial-gradient(ellipse 80% 50% at 50% 0%, rgba(73,196,109,.06), transparent 60%),var(--bg);
     min-height:100vh;
   }
   .wrap{max-width:1320px;margin:0 auto;padding:0 32px}
   a{color:inherit;text-decoration:none}
 
-  /* SAME SWITCHER BAR */
   .ds-bar{position:relative;z-index:99999;background:#000;color:#fff;font-family:ui-monospace,'JetBrains Mono','SFMono-Regular',Menlo,Consolas,monospace;font-size:12px;letter-spacing:.04em;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid #1a1a1a;height:42px;box-sizing:border-box;font-weight:400;text-transform:none}
   .ds-bar *{box-sizing:border-box}
   .ds-bar a{color:#fff;text-decoration:none;opacity:.55;padding:5px 10px;transition:.12s;border-radius:3px;font-weight:500;border:0;background:none;font-family:inherit;font-size:12px;letter-spacing:.04em;text-transform:none;line-height:1;display:inline-flex;align-items:center}
@@ -45,11 +42,15 @@
 
   header{padding:80px 0 56px;border-bottom:1px solid var(--line)}
   .eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(73,196,109,.12);border:1px solid rgba(73,196,109,.3);color:#7AE092;padding:6px 14px;border-radius:99px;font-size:12px;font-weight:500;margin-bottom:24px}
-  .eyebrow .live{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+  .eyebrow .live{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 1.8s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 10px var(--green),0 0 0 0 rgba(73,196,109,.4)}70%{box-shadow:0 0 14px var(--green),0 0 0 10px rgba(73,196,109,0)}}
   h1{font-size:clamp(40px,5.5vw,76px);line-height:1;letter-spacing:-.04em;font-weight:700;margin-bottom:20px}
   h1 em{font-style:normal;color:var(--green)}
   .lede{color:var(--ink-2);font-size:18px;line-height:1.55;max-width:760px}
   .lede b{color:var(--ink);font-weight:500}
+  .lede code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px}
+  .lede code.g{background:rgba(73,196,109,.18);color:var(--green)}
+  .lede a{color:var(--green);text-decoration:underline}
   .meta{display:flex;gap:24px;margin-top:32px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-3);flex-wrap:wrap}
   .meta b{color:var(--ink)}
   .meta kbd{font-family:'JetBrains Mono',monospace;background:rgba(255,255,255,.08);border:1px solid var(--line-2);border-radius:4px;padding:2px 8px;font-size:11px;color:var(--ink);font-weight:500}
@@ -60,17 +61,15 @@
   .card{
     background:var(--panel);border:1px solid var(--line);border-radius:20px;
     overflow:hidden;display:flex;flex-direction:column;
-    transition:.2s;text-decoration:none;color:inherit;
+    transition:.3s cubic-bezier(.22,1,.36,1);text-decoration:none;color:inherit;
   }
-  .card:hover{border-color:var(--line-2);transform:translateY(-4px)}
+  .card:hover{border-color:rgba(73,196,109,.3);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.3)}
 
   .preview{aspect-ratio:16/10;border-bottom:1px solid var(--line);position:relative;overflow:hidden;background:#000}
 
-  /* CLASSIC preview */
+  /* CLASSIC preview (with motion hint) */
   .preview.classic{
-    background:
-      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(73,196,109,.1), transparent 60%),
-      #282B30;
+    background:radial-gradient(ellipse 60% 50% at 80% 30%, rgba(73,196,109,.1), transparent 60%),#282B30;
     color:#fff;padding:24px;display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:center;font-family:'Inter',sans-serif;
   }
   .preview.classic .pill{display:inline-flex;align-items:center;gap:6px;background:rgba(73,196,109,.18);border:1px solid rgba(73,196,109,.4);color:#7AE092;font-size:9px;font-weight:600;padding:3px 8px 3px 6px;border-radius:99px;margin-bottom:10px}
@@ -81,9 +80,17 @@
   .preview.classic .stat-row b{color:#fff;font-weight:600;font-size:13px;display:block;margin-bottom:1px}
   .preview.classic .rack{background:linear-gradient(180deg,#1A1D22,#0F1216);border:1px solid rgba(255,255,255,.16);border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:3px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
   .preview.classic .rack .u{background:linear-gradient(180deg,#0E1014,#070809);height:18px;border:1px solid #1A1D22;border-radius:3px;display:flex;align-items:center;padding:0 6px;gap:4px}
-  .preview.classic .rack .u .led{width:4px;height:4px;border-radius:50%;background:#49C46D;box-shadow:0 0 4px #49C46D}
+  .preview.classic .rack .u .led{width:4px;height:4px;border-radius:50%;background:#49C46D;box-shadow:0 0 4px #49C46D;animation:twinkle 3.4s infinite}
+  .preview.classic .rack .u:nth-child(1) .led{animation-delay:0s}
+  .preview.classic .rack .u:nth-child(2) .led{animation-delay:.6s}
+  .preview.classic .rack .u:nth-child(3) .led{animation-delay:1.2s}
+  .preview.classic .rack .u:nth-child(4) .led{animation-delay:1.8s}
+  .preview.classic .rack .u:nth-child(5) .led{animation-delay:2.4s}
+  @keyframes twinkle{0%,45%,55%,100%{opacity:1}50%{opacity:.5}}
   .preview.classic .rack .u .vent{flex:1;height:8px;background:repeating-linear-gradient(90deg,#000 0 1px,#1A1D22 1px 2px);margin:0 4px}
   .preview.classic .rack .u .lbl{font-family:'JetBrains Mono',monospace;font-size:6px;color:#7B8187;letter-spacing:.04em}
+  .preview.classic .anim-tag{position:absolute;top:14px;right:14px;background:rgba(73,196,109,.18);border:1px solid rgba(73,196,109,.35);color:#7AE092;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;padding:3px 8px;border-radius:99px;letter-spacing:.06em}
+  .preview.classic .anim-tag::before{content:"●";margin-right:5px;color:#49C46D;animation:twinkle 1.6s infinite}
 
   /* PREMIUM preview */
   .preview.premium{
@@ -102,61 +109,79 @@
   .preview.premium .head .gold{color:#D4B574;background:none;-webkit-text-fill-color:#D4B574}
   .preview.premium .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:auto}
   .preview.premium .st{font-size:8px;color:#7B8187;font-family:'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
-  .preview.premium .st b{display:block;font-family:Georgia,serif;font-style:italic;font-size:18px;color:#fff;font-weight:400;letter-spacing:-.02em;font-family:'Inter',sans-serif;text-transform:none}
-  .preview.premium .st b em{color:#D4B574;font-style:normal;font-size:.55em;font-weight:600;margin-left:2px;font-family:'Inter',sans-serif}
+  .preview.premium .st b{display:block;font-size:18px;color:#fff;font-weight:600;letter-spacing:-.02em;margin-top:2px}
+  .preview.premium .st b em{color:#D4B574;font-style:normal;font-size:.55em;font-weight:600;margin-left:2px}
 
-  /* BOLD preview */
-  .preview.bold{
-    background:#16191E;color:#fff;padding:0;font-family:'Inter',sans-serif;display:flex;flex-direction:column;
+  /* CONSOLE preview */
+  .preview.console{
+    background:radial-gradient(ellipse 80% 40% at 50% -10%, rgba(73,196,109,.06), transparent 60%),#0E1014;
+    padding:14px;font-family:'JetBrains Mono',monospace;display:flex;flex-direction:column;gap:10px;
   }
-  .preview.bold .promo{background:#4AE078;color:#0E1812;font-weight:800;font-size:8px;padding:5px 0;text-align:center;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid #fff}
-  .preview.bold .nav{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:2px solid #fff;font-size:9px}
-  .preview.bold .nav .l{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:900}
-  .preview.bold .nav .l .m{width:18px;height:18px;background:#4AE078;border:1.5px solid #fff;display:flex;align-items:center;justify-content:center;color:#0E1812;font-weight:900;font-size:10px;box-shadow:2px 2px 0 #fff}
-  .preview.bold .nav .btn{background:#4AE078;color:#0E1812;font-weight:800;font-size:8px;padding:4px 10px;border:1.5px solid #fff;box-shadow:2px 2px 0 #fff;text-transform:uppercase}
-  .preview.bold .body{padding:14px 14px 0;flex:1;display:flex;flex-direction:column;justify-content:center}
-  .preview.bold .badge{background:#4AE078;color:#0E1812;font-weight:800;font-size:7px;padding:3px 8px;border:1.5px solid #fff;box-shadow:2px 2px 0 #fff;text-transform:uppercase;letter-spacing:.06em;align-self:flex-start;margin-bottom:8px}
-  .preview.bold .head{font-size:38px;line-height:.85;letter-spacing:-.05em;font-weight:900;margin-bottom:8px;text-transform:none}
-  .preview.bold .head .green{color:#4AE078}
-  .preview.bold .head .box{background:#fff;color:#16191E;padding:0 4px;display:inline-block;transform:rotate(-1deg)}
-  .preview.bold .stats-r{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;color:#16191E;border-top:2px solid #fff;margin-top:auto}
-  .preview.bold .stats-r .st{padding:8px;border-right:1.5px solid #16191E;font-family:'JetBrains Mono',monospace;font-size:7px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.7}
-  .preview.bold .stats-r .st:last-child{border-right:0}
-  .preview.bold .stats-r .st b{display:block;font-family:'Inter',sans-serif;font-size:18px;color:#16191E;font-weight:900;letter-spacing:-.04em;line-height:.9;opacity:1;margin-top:2px;text-transform:none}
-  .preview.bold .stats-r .st:nth-child(2){background:#4AE078}
+  .preview.console .nav{display:flex;justify-content:space-between;align-items:center;font-size:9px;color:#7B8187}
+  .preview.console .nav .l{font-weight:700;color:#E8EBEE;font-size:13px}
+  .preview.console .nav .l .g{color:#49C46D}
+  .preview.console .nav .btn{background:#49C46D;color:#0E1812;font-weight:700;font-size:8px;padding:4px 10px;border-radius:4px}
+  .preview.console .term{
+    background:#070809;border:1px solid rgba(255,255,255,.13);border-radius:6px;padding:10px;flex:1;
+    font-size:9px;line-height:1.55;color:#E8EBEE;
+  }
+  .preview.console .term .dots{display:flex;gap:4px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.06)}
+  .preview.console .term .dots i{width:7px;height:7px;border-radius:50%;background:#42464D}
+  .preview.console .term .dots i.r{background:#FF6363}
+  .preview.console .term .dots i.y{background:#F4C430}
+  .preview.console .term .dots i.g{background:#49C46D}
+  .preview.console .term .l{color:#5DD080;font-weight:600}
+  .preview.console .term .l::before{content:"➜ ";color:#49C46D}
+  .preview.console .term .a{color:#F4C430}
+  .preview.console .term .ok{color:#49C46D;font-weight:700}
+  .preview.console .term .ip{color:#F4C430}
+  .preview.console .term .car{display:inline-block;width:5px;height:9px;background:#49C46D;vertical-align:-1px;animation:car 1.1s steps(2) infinite}
+  @keyframes car{0%,49%{opacity:1}50%,100%{opacity:0}}
 
-  /* LIGHT preview */
-  .preview.light{
-    background:#F5F2EA;color:#282B30;padding:24px;font-family:'Inter',sans-serif;display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:center;
-    background-image:radial-gradient(ellipse 60% 50% at 80% 30%, rgba(45,113,69,.06), transparent 60%);
+  /* SPATIAL preview */
+  .preview.spatial{
+    background:
+      radial-gradient(ellipse 70% 40% at 80% 20%, rgba(73,196,109,.18), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(73,196,109,.08), transparent 60%),
+      #0E1014;
+    color:#fff;padding:24px;font-family:'Inter',sans-serif;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;position:relative;overflow:hidden;
   }
-  .preview.light .pill{display:inline-flex;align-items:center;gap:6px;background:#EDE9DD;border:1px solid rgba(40,43,48,.2);color:#4C5156;font-size:9px;font-weight:500;padding:3px 8px 3px 6px;border-radius:99px;margin-bottom:10px}
-  .preview.light .pill .p{background:#2D7145;color:#fff;font-size:7px;padding:1px 5px;border-radius:99px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
-  .preview.light .head{font-size:30px;line-height:1;letter-spacing:-.03em;font-weight:700;margin-bottom:10px;color:#282B30}
-  .preview.light .head em{font-style:normal;color:#2D7145;position:relative;display:inline-block}
-  .preview.light .head em::after{content:"";position:absolute;bottom:1px;left:-1px;right:-1px;height:4px;background:rgba(73,196,109,.3);z-index:-1}
-  .preview.light .stat-row{display:flex;gap:18px;margin-top:16px;font-size:9px;color:#7B8187;padding-top:12px;border-top:1px solid rgba(40,43,48,.1)}
-  .preview.light .stat-row b{color:#282B30;font-weight:700;font-size:13px;display:block;margin-bottom:1px}
-  .preview.light .stat-row b small{color:#2D7145;font-weight:600;font-size:.6em;margin-left:2px}
-  .preview.light .rack{background:#FAF7EF;border:1px solid #282B30;border-radius:6px;padding:8px;display:flex;flex-direction:column;gap:3px;box-shadow:4px 4px 0 #282B30}
-  .preview.light .rack .head-bar{background:#282B30;color:#F5F2EA;height:14px;border-radius:3px;display:flex;align-items:center;padding:0 6px;gap:4px;font-family:'JetBrains Mono',monospace;font-size:6px;font-weight:600}
-  .preview.light .rack .head-bar .led{width:4px;height:4px;border-radius:50%;background:#49C46D;box-shadow:0 0 4px #49C46D}
-  .preview.light .rack .u{background:#fff;border:1px solid #282B30;height:14px;border-radius:3px;display:flex;align-items:center;padding:0 6px;gap:4px}
-  .preview.light .rack .u .led{width:4px;height:4px;border-radius:50%;background:#49C46D;border:1px solid #2D7145}
-  .preview.light .rack .u .lbl{font-family:'JetBrains Mono',monospace;font-size:6px;color:#282B30;letter-spacing:.04em;font-weight:700;flex:1}
-  .preview.light .rack .u .price{font-family:'JetBrains Mono',monospace;font-size:6px;color:#2D7145;font-weight:700}
-  .preview.light .rack .u.feat{background:#2D7145;border-color:#282B30}
-  .preview.light .rack .u.feat .lbl,.preview.light .rack .u.feat .price{color:#fff}
-  .preview.light .rack .u.feat .led{background:#fff;border-color:#fff}
+  .preview.spatial::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px;mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 30%,transparent 80%)}
+  .preview.spatial .head{font-size:30px;line-height:1.02;letter-spacing:-.025em;font-weight:700;margin-bottom:14px;position:relative}
+  .preview.spatial .head em{font-style:normal;background:linear-gradient(135deg,#49C46D,#9DEFB7);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .preview.spatial .qs{display:flex;gap:8px;flex-wrap:wrap;position:relative}
+  .preview.spatial .qs .q{background:rgba(255,255,255,.04);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.13);border-radius:8px;padding:6px 10px;font-size:8px;color:#7B8187;letter-spacing:.04em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;font-weight:600}
+  .preview.spatial .qs .q b{display:block;font-size:13px;color:#fff;font-weight:700;letter-spacing:-.02em;text-transform:none;font-family:'Inter',sans-serif;margin-top:2px}
+  .preview.spatial .qs .q b em{color:#49C46D;font-style:normal;font-size:.55em;font-weight:600;margin-left:1px}
+  .preview.spatial .iso{position:relative;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+  .preview.spatial .iso .rack{
+    width:62%;height:74%;
+    background:linear-gradient(180deg,#1A1D22,#0F1216);
+    border:1px solid rgba(255,255,255,.16);border-radius:6px;padding:8px;
+    transform:rotateX(56deg) rotateZ(-30deg);
+    transform-style:preserve-3d;
+    box-shadow:0 16px 32px rgba(0,0,0,.5),0 0 30px rgba(73,196,109,.1);
+    display:flex;flex-direction:column;gap:3px;
+    animation:floatx 6s ease-in-out infinite;
+  }
+  @keyframes floatx{0%,100%{transform:rotateX(56deg) rotateZ(-30deg) translateY(0)}50%{transform:rotateX(56deg) rotateZ(-30deg) translateY(-6px)}}
+  .preview.spatial .iso .u{background:linear-gradient(180deg,#0E1014,#070809);height:11px;border:1px solid #1A1D22;border-radius:2px;display:flex;align-items:center;padding:0 4px;gap:3px}
+  .preview.spatial .iso .u i{width:3px;height:3px;border-radius:50%;background:#49C46D;box-shadow:0 0 3px #49C46D}
+  .preview.spatial .iso .u .v{flex:1;height:5px;background:repeating-linear-gradient(90deg,#000 0 1px,#1A1D22 1px 2px);opacity:.7}
+  .preview.spatial .iso .u.feat{background:linear-gradient(180deg,rgba(73,196,109,.18),#0F1216);border-color:rgba(73,196,109,.3)}
+  .preview.spatial .iso .glow{position:absolute;width:80%;height:30%;bottom:5%;left:10%;background:radial-gradient(ellipse,rgba(73,196,109,.4),transparent 60%);filter:blur(20px);pointer-events:none}
 
   .body{padding:28px}
   .tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+  .tag.motion{color:var(--green)}
+  .tag.motion::before{content:"✦ ";font-size:9px}
   .body h3{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
   .body h3 em{font-style:normal;color:var(--green)}
   .body p{color:var(--ink-2);font-size:15px;line-height:1.55;margin-bottom:20px;min-height:72px}
   .props{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
   .props span{background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--ink-2);font-size:11px;padding:4px 9px;border-radius:99px;font-family:'JetBrains Mono',monospace}
-  .open{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#0F1A14;padding:12px 18px;border-radius:10px;font-weight:600;font-size:14px;width:100%;justify-content:center}
+  .props span.motion{background:rgba(73,196,109,.12);border-color:rgba(73,196,109,.3);color:var(--green)}
+  .open{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#0F1A14;padding:12px 18px;border-radius:10px;font-weight:600;font-size:14px;width:100%;justify-content:center;transition:.2s}
   .open:hover{background:#5DD080}
 
   .compare{margin-top:64px;border-top:1px solid var(--line);padding-top:48px}
@@ -186,8 +211,8 @@
   <div class="ds-c">
     <a href="01-classic.html"><span>1 · </span><span class="ds-lab">Classic</span></a>
     <a href="02-premium.html"><span>2 · </span><span class="ds-lab">Premium</span></a>
-    <a href="03-bold.html"><span>3 · </span><span class="ds-lab">Bold</span></a>
-    <a href="04-light.html"><span>4 · </span><span class="ds-lab">Light</span></a>
+    <a href="03-console.html"><span>3 · </span><span class="ds-lab">Console</span></a>
+    <a href="04-spatial.html"><span>4 · </span><span class="ds-lab">Spatial</span></a>
   </div>
   <div class="ds-r">
     <a href="index.html" class="active"><span class="ds-lab">Gallery</span></a>
@@ -196,12 +221,12 @@
 
 <header>
   <div class="wrap">
-    <span class="eyebrow"><span class="live"></span> 4 directions · grounded in the current buyvm.net</span>
+    <span class="eyebrow"><span class="live"></span> 4 directions · all motion-aware · grounded in buyvm.net</span>
     <h1>Four ways<br>BuyVM could <em>look in 2026</em>.</h1>
-    <p class="lede">Same DNA as <a href="https://buyvm.net" style="color:var(--green);text-decoration:underline">buyvm.net</a> today &mdash; charcoal <code style="background:rgba(255,255,255,.06);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px">#282b30</code> + brand green <code style="background:rgba(73,196,109,.18);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--green)">#49c46d</code> + server illustration + plan grid &mdash; pulled in four different executions. Click any card to open a full landing page, or use the bar at top of every page (or the <kbd>←</kbd>/<kbd>→</kbd> keys) to flip between them.</p>
+    <p class="lede">Same brand DNA as <a href="https://buyvm.net">buyvm.net</a> today &mdash; charcoal <code class="g">#282B30</code> + brand green <code class="g">#49C46D</code> + server illustration + plan grid &mdash; pulled in four executions. Every page has scroll-triggered reveals, animated rack LEDs, counting stats, and tilt-on-hover where it makes sense. All respect <code>prefers-reduced-motion</code>.</p>
     <div class="meta">
       <span>brief / <b>buyvm.net refresh</b></span>
-      <span>output / <b>4 × landing pages</b></span>
+      <span>output / <b>4 × landing pages + motion</b></span>
       <span>palette / <b>charcoal + green</b></span>
       <span>nav / <kbd>←</kbd> <kbd>→</kbd> <kbd>1</kbd>—<kbd>4</kbd></span>
     </div>
@@ -214,6 +239,7 @@
 
       <a href="01-classic.html" class="card">
         <div class="preview classic">
+          <span class="anim-tag">animated</span>
           <div>
             <div class="pill"><span class="p">2010</span> Affordable hosting · touch of insanity</div>
             <div class="head">Fast, secure VPS<br>from <em>$2/mo</em>.</div>
@@ -232,14 +258,15 @@
           </div>
         </div>
         <div class="body">
-          <div class="tag">Direction 01 · Faithful refresh</div>
+          <div class="tag motion">Direction 01 · Refresh + motion</div>
           <h3>Classic <em>refined</em></h3>
-          <p>A careful 2026 update of the current site. Same charcoal &amp; green DNA, modernized typography (Inter), refined cards, contemporary spacing. Reads &ldquo;BuyVM, but cleaned up.&rdquo; Lowest-risk path.</p>
+          <p>A careful 2026 update of the current site, now with scroll reveals, twinkling rack LEDs, counting stats, and 3D tilt-on-hover for the hero rack. Same DNA, but alive.</p>
           <div class="props">
             <span>Inter</span>
             <span>#282B30 / #49C46D</span>
-            <span>green gradient CTAs</span>
-            <span>same structure</span>
+            <span class="motion">scroll reveals</span>
+            <span class="motion">counting stats</span>
+            <span class="motion">3D rack tilt</span>
           </div>
           <span class="open">Open full page →</span>
         </div>
@@ -262,79 +289,79 @@
           </div>
         </div>
         <div class="body">
-          <div class="tag">Direction 02 · Up-market</div>
+          <div class="tag motion">Direction 02 · Polished + quiet motion</div>
           <h3>Premium <em>elevated</em></h3>
-          <p>Same colors but elevated. More whitespace, larger headlines, an italic Instrument Serif accent for editorial moments, subtle gold accents for premium feel. Reads &ldquo;quietly competent infrastructure brand.&rdquo;</p>
+          <p>Now with stacked card-style mobile pricing (no more hidden columns), refined hover states, slower &amp; quieter scroll reveals, counting hero signals, and subtle restrained tilt on the rack.</p>
           <div class="props">
             <span>Inter + Instrument Serif</span>
-            <span>charcoal + gold accents</span>
-            <span>refined green #5BD17C</span>
-            <span>editorial pacing</span>
+            <span>charcoal + gold</span>
+            <span class="motion">slow reveals</span>
+            <span class="motion">subtle tilt</span>
           </div>
           <span class="open">Open full page →</span>
         </div>
       </a>
 
-      <a href="03-bold.html" class="card">
-        <div class="preview bold">
-          <div class="promo">★ 25% off your first 3 months — code BF2026 ★</div>
+      <a href="03-console.html" class="card">
+        <div class="preview console">
           <div class="nav">
-            <div class="l"><span class="m">B</span> BuyVM</div>
-            <div class="btn">DEPLOY →</div>
+            <div class="l">~$ buyvm<span class="g">_</span></div>
+            <div class="btn">deploy</div>
           </div>
-          <div class="body">
-            <div class="badge">★ Since 2010 · 14 yrs</div>
-            <div class="head"><span class="green">Cheap.</span> <span class="box">Fast.</span><br>Honest VPS.</div>
-          </div>
-          <div class="stats-r">
-            <div class="st">From<b>$2</b></div>
-            <div class="st">Boot<b>54s</b></div>
-            <div class="st">Net<b>1Gb</b></div>
-            <div class="st">SLA<b>99.9</b></div>
+          <div class="term">
+            <div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div>
+            <div class="l">stallion deploy slice-2 <span class="a">--region lux</span></div>
+            <div><span class="ok">✓</span> Allocated <span class="ip">149.28.111.42</span></div>
+            <div><span class="ok">✓</span> Booted in <span style="color:#49C46D">54s</span></div>
+            <div class="l">ssh root@149.28.111.42</div>
+            <div style="color:#49C46D">root@mastodon:~# <span class="car"></span></div>
           </div>
         </div>
         <div class="body">
-          <div class="tag">Direction 03 · Confident loud</div>
-          <h3>Bold <em>confident</em></h3>
-          <p>Same DNA cranked up. Massive type, chunky 5px hard shadows, oversized green CTAs, ticker bars, no apologies. Reads &ldquo;we know what we are.&rdquo; Highest conversion in markets that respond to confidence.</p>
+          <div class="tag motion">Direction 03 · Developer-tool aesthetic</div>
+          <h3>Console <em>terminal</em></h3>
+          <p>For the technical buyer. Hero is a live terminal with <code style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green);background:rgba(73,196,109,.1);padding:1px 5px;border-radius:3px">$ stallion deploy</code>, plans rendered as YAML configs, network as a traceroute table, testimonials as IRC log. Animated sparklines, blinking caret, live counters.</p>
           <div class="props">
-            <span>Inter 900</span>
-            <span>5px hard shadows</span>
-            <span>punchy green #4AE078</span>
-            <span>chunky borders</span>
+            <span>JetBrains Mono</span>
+            <span>YAML config style</span>
+            <span class="motion">blinking caret</span>
+            <span class="motion">animated sparklines</span>
           </div>
           <span class="open">Open full page →</span>
         </div>
       </a>
 
-      <a href="04-light.html" class="card">
-        <div class="preview light">
+      <a href="04-spatial.html" class="card">
+        <div class="preview spatial">
           <div>
-            <div class="pill"><span class="p">2010</span> Affordable hosting · touch of insanity</div>
-            <div class="head">Honest <em>VPS</em>,<br>14 yrs running.</div>
-            <div class="stat-row">
-              <div><b>$2<small>/mo</small></b>entry slice</div>
-              <div><b>14<small>yrs</small></b>same crew</div>
-              <div><b>54<small>sec</small></b>boot</div>
+            <div class="head">A server you can <em>almost touch.</em></div>
+            <div class="qs">
+              <div class="q">From<b>$2<em>/mo</em></b></div>
+              <div class="q">Boot<b>54<em>s</em></b></div>
+              <div class="q">Yrs<b>14</b></div>
             </div>
           </div>
-          <div class="rack">
-            <div class="head-bar"><span class="led"></span><span style="flex:1">EPYC 7763</span></div>
-            <div class="u"><span class="led"></span><span class="lbl">PIGLET</span><span class="price">$2</span></div>
-            <div class="u"><span class="led"></span><span class="lbl">SLICE-1</span><span class="price">$3.5</span></div>
-            <div class="u feat"><span class="led"></span><span class="lbl">★ SLICE-2</span><span class="price">$7</span></div>
-            <div class="u"><span class="led"></span><span class="lbl">SLICE-4</span><span class="price">$15</span></div>
+          <div class="iso">
+            <div class="rack">
+              <div class="u"><i></i><div class="v"></div></div>
+              <div class="u"><i></i><div class="v"></div></div>
+              <div class="u feat"><i></i><div class="v"></div></div>
+              <div class="u"><i></i><div class="v"></div></div>
+              <div class="u"><i></i><div class="v"></div></div>
+            </div>
+            <div class="glow"></div>
           </div>
         </div>
         <div class="body">
-          <div class="tag">Direction 04 · Light theme</div>
-          <h3>Light <em>variant</em></h3>
-          <p>Same brand, flipped to light. Warm off-white background, charcoal as text color, brand green still as accent. Approachable, friendly, unusual in VPS-land — most competitors are dark-only. Could ship as &ldquo;light mode&rdquo; toggle.</p>
+          <div class="tag motion">Direction 04 · Depth + dimension</div>
+          <h3>Spatial <em>3D</em></h3>
+          <p>Isometric server rack as the centrepiece — floating, gently bobbing, follows your mouse with a subtle tilt. Glassy floating UI cards, parallax orbs in the background, perspective grid. Visual impact while staying brand-aligned.</p>
           <div class="props">
-            <span>Warm cream #F5F2EA</span>
-            <span>Ink as text #282B30</span>
-            <span>Green #2D7145</span>
-            <span>hard shadows on cards</span>
+            <span>Inter + Inter</span>
+            <span>glass + depth</span>
+            <span class="motion">isometric rack</span>
+            <span class="motion">parallax orbs</span>
+            <span class="motion">mouse-follow tilt</span>
           </div>
           <span class="open">Open full page →</span>
         </div>
@@ -346,43 +373,43 @@
       <h2>Quick comparison</h2>
       <table>
         <thead>
-          <tr><th></th><th>01 · Classic</th><th>02 · Premium</th><th>03 · Bold</th><th>04 · Light</th></tr>
+          <tr><th></th><th>01 · Classic</th><th>02 · Premium</th><th>03 · Console</th><th>04 · Spatial</th></tr>
         </thead>
         <tbody>
           <tr>
             <td>Vibe</td>
-            <td><b>Refined &amp; familiar</b></td>
-            <td><b>Quiet, considered, premium</b></td>
-            <td><b>Loud, confident, chunky</b></td>
-            <td><b>Friendly, fresh, approachable</b></td>
+            <td><b>Refined &amp; alive</b></td>
+            <td><b>Quiet, considered</b></td>
+            <td><b>Technical, developer-tool</b></td>
+            <td><b>Modern, depth-rich</b></td>
           </tr>
           <tr>
-            <td>Risk level</td>
-            <td>Lowest — feels like the same brand</td>
-            <td>Low — modernizes without breaking</td>
-            <td>Medium — polarising on purpose</td>
-            <td>Medium — brand recognition shifts</td>
+            <td>Sells to</td>
+            <td>Existing audience &mdash; sysadmins &amp; self-hosters</td>
+            <td>Founders, agencies, decision-makers</td>
+            <td>Developers, DevOps, infra engineers</td>
+            <td>Modern startups, design-conscious buyers</td>
+          </tr>
+          <tr>
+            <td>Lever</td>
+            <td>Trust + price clarity, now polished</td>
+            <td>Polish + perceived stability</td>
+            <td>Authenticity + technical depth</td>
+            <td>Visual impact + memorability</td>
+          </tr>
+          <tr>
+            <td>Motion</td>
+            <td>Reveals, counting stats, twinkling LEDs, 3D rack tilt</td>
+            <td>Quiet reveals, subtle restrained tilt</td>
+            <td>Sparklines animate in, blinking caret, ticker bar</td>
+            <td>Floating rack with mouse-follow, parallax orbs, scroll parallax</td>
           </tr>
           <tr>
             <td>Best for</td>
             <td>Direct refresh of the live site</td>
-            <td>Going up-market / enterprise tier</td>
-            <td>Campaigns, Black Friday, conversion-focused launches</td>
-            <td>Light-mode toggle, accessibility, fresh customer segment</td>
-          </tr>
-          <tr>
-            <td>Conversion lever</td>
-            <td>Trust + price clarity</td>
-            <td>Polish + perceived stability</td>
-            <td>Confidence + memorability</td>
-            <td>Approachability + differentiation</td>
-          </tr>
-          <tr>
-            <td>Ship as</td>
-            <td>Main marketing site</td>
-            <td>Enterprise / business landing page</td>
-            <td>Black Friday / campaign page</td>
-            <td>Light-theme version of the main site</td>
+            <td>Enterprise tier landing</td>
+            <td>Developer-marketing, docs landing, API page</td>
+            <td>Brand refresh, hero campaigns</td>
           </tr>
         </tbody>
       </table>
@@ -393,7 +420,7 @@
 
 <footer>
   <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:16px">
-    <span>4 directions · grounded in the current buyvm.net · self-contained HTML</span>
+    <span>4 directions · grounded in the current buyvm.net · all motion-aware</span>
     <span style="font-family:'JetBrains Mono',monospace">github.com/Hannan-Nozari/buyvm-designs</span>
   </div>
 </footer>
