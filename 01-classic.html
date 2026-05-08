@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BuyVM — Affordable Hosting with a touch of Insanity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  /* DESIGN SWITCHER BAR (shared across all 4 designs) */
+  .ds-bar{position:relative;z-index:99999;background:#000;color:#fff;font-family:ui-monospace,'JetBrains Mono','SFMono-Regular',Menlo,Consolas,monospace;font-size:12px;letter-spacing:.04em;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid #1a1a1a;height:42px;box-sizing:border-box;font-weight:400;text-transform:none}
+  .ds-bar *{box-sizing:border-box}
+  .ds-bar a{color:#fff;text-decoration:none;opacity:.55;padding:5px 10px;transition:.12s;border-radius:3px;font-weight:500;border:0;background:none;font-family:inherit;font-size:12px;letter-spacing:.04em;text-transform:none;line-height:1;display:inline-flex;align-items:center}
+  .ds-bar a:hover{opacity:1;background:#1a1a1a;color:#fff;transform:none;box-shadow:none}
+  .ds-bar a.active{opacity:1;background:#fff;color:#000;font-weight:600}
+  .ds-bar .ds-l,.ds-bar .ds-c,.ds-bar .ds-r{display:flex;align-items:center;gap:2px}
+  .ds-bar .ds-pos{opacity:.5;margin:0 12px 0 4px;font-size:11px;letter-spacing:.15em;font-weight:500}
+  .ds-bar .ds-arrow{font-size:13px;padding:5px 10px;opacity:.65}
+  .ds-bar .ds-title{opacity:.65;margin-right:12px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+  .ds-bar .ds-x{font-size:14px;opacity:.45;cursor:pointer;padding:5px 10px;line-height:1;color:#fff;background:none;border:0;font-family:inherit}
+  .ds-bar .ds-x:hover{opacity:1}
+  @media (max-width:820px){.ds-bar .ds-title,.ds-bar .ds-pos{display:none}.ds-bar a .ds-lab{display:none}.ds-bar a.active .ds-lab{display:inline}}
+  @media (max-width:540px){.ds-bar .ds-c a:not(.active){display:none}}
+
+  :root{
+    --bg:#1F2228;
+    --bg-2:#282B30;          /* buyvm charcoal */
+    --bg-3:#343438;
+    --line:rgba(255,255,255,.08);
+    --line-2:rgba(255,255,255,.16);
+    --ink:#FFFFFF;
+    --ink-2:#B8BBC0;
+    --ink-3:#7B8187;          /* buyvm muted */
+    --green:#49C46D;          /* buyvm brand */
+    --green-d:#317C4C;        /* buyvm dark green */
+    --green-2:#3FAE60;
+    --warning:#F59E0B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{font-family:'Inter',-apple-system,sans-serif;color:var(--ink);background:var(--bg-2);-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","cv11"}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+  .mono{font-family:'JetBrains Mono',monospace}
+
+  /* PROMO STRIP */
+  .promo{background:linear-gradient(90deg,var(--green-d),var(--green));color:#fff;font-size:13px;font-weight:500;text-align:center;padding:9px 16px}
+  .promo a{text-decoration:underline;font-weight:600}
+
+  /* HEADER */
+  header.top{background:var(--bg-2);border-bottom:1px solid var(--line)}
+  .top .row{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:32px}
+  .logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:700;letter-spacing:-.015em}
+  .logo .glyph{
+    width:32px;height:32px;border-radius:7px;background:linear-gradient(135deg,var(--green),var(--green-d));
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px;
+    box-shadow:0 4px 12px rgba(73,196,109,.3),inset 0 1px 0 rgba(255,255,255,.2);
+  }
+  nav.main{display:flex;gap:6px;font-size:14px;font-weight:500}
+  nav.main a{padding:8px 12px;border-radius:8px;color:var(--ink-2);transition:.15s;display:flex;align-items:center;gap:6px}
+  nav.main a:hover{color:var(--ink);background:rgba(255,255,255,.04)}
+  nav.main a .badge{font-size:9px;background:var(--green);color:#fff;padding:2px 6px;border-radius:99px;letter-spacing:.05em;font-weight:700}
+  .nav-cta{display:flex;gap:10px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:10px 18px;border-radius:8px;transition:.15s;letter-spacing:-.005em}
+  .btn.ghost{color:var(--ink-2)}
+  .btn.ghost:hover{color:var(--ink);background:rgba(255,255,255,.04)}
+  .btn.green{background:linear-gradient(180deg,var(--green) 0%,var(--green-2) 100%);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.2) inset, 0 -2px 0 rgba(0,0,0,.18) inset, 0 4px 14px rgba(73,196,109,.25)}
+  .btn.green:hover{background:linear-gradient(180deg,#54D078 0%,var(--green) 100%);transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.25) inset, 0 -2px 0 rgba(0,0,0,.18) inset, 0 8px 18px rgba(73,196,109,.3)}
+  .btn.outline{border:1px solid var(--line-2);color:var(--ink)}
+  .btn.outline:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.28)}
+  .btn.lg{padding:13px 22px;font-size:15px}
+
+  /* HERO */
+  .hero{padding:64px 0 88px;position:relative;overflow:hidden;background:radial-gradient(ellipse 60% 50% at 80% 30%, rgba(73,196,109,.08), transparent 60%),var(--bg-2)}
+  .hero .grid{display:grid;grid-template-columns:1.1fr .95fr;gap:48px;align-items:center}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(73,196,109,.12);border:1px solid rgba(73,196,109,.3);color:#7AE092;font-size:12px;font-weight:600;padding:6px 12px 6px 8px;border-radius:99px;margin-bottom:24px;letter-spacing:.01em}
+  .hero .eyebrow .pill{background:var(--green);color:#0F1A14;font-weight:700;font-size:10px;padding:3px 8px;border-radius:99px;letter-spacing:.06em;text-transform:uppercase}
+  .hero h1{font-size:clamp(48px,6vw,76px);line-height:1.02;letter-spacing:-.025em;font-weight:700;margin-bottom:22px}
+  .hero h1 em{font-style:normal;color:var(--green);background:linear-gradient(135deg,var(--green) 0%,#7AE092 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .sub{font-size:19px;line-height:1.55;color:var(--ink-2);max-width:540px;margin-bottom:32px}
+  .hero .sub b{color:var(--ink);font-weight:600}
+  .hero .actions{display:flex;gap:12px;margin-bottom:36px;flex-wrap:wrap}
+  .hero .stats{display:flex;gap:32px;color:var(--ink-2);font-size:13px;flex-wrap:wrap;align-items:center}
+  .hero .stats b{color:var(--ink);font-weight:600;font-size:18px;letter-spacing:-.01em;display:block;margin-bottom:2px}
+  .hero .stats .stat{padding-left:20px;border-left:2px solid var(--green)}
+
+  /* SERVER ILLUSTRATION */
+  .rack-art{position:relative;aspect-ratio:1/1.05;display:flex;align-items:center;justify-content:center}
+  .rack-art .bg-glow{position:absolute;inset:5%;background:radial-gradient(circle,rgba(73,196,109,.18),transparent 60%);filter:blur(40px);pointer-events:none}
+  .rack{
+    position:relative;width:88%;background:linear-gradient(180deg,#1A1D22,#101216);
+    border:1px solid var(--line-2);border-radius:14px;padding:18px;
+    box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);
+  }
+  .rack::before{content:"BUYVM • RACK 7 • LUX01";position:absolute;top:-26px;left:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--ink-3)}
+  .rack .u{
+    background:linear-gradient(180deg,#0E1014,#070809);height:46px;border:1px solid #1A1D22;border-radius:5px;
+    margin-bottom:8px;display:flex;align-items:center;padding:0 12px;gap:8px;position:relative;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+  }
+  .rack .u:last-child{margin-bottom:0}
+  .rack .u .led{width:6px;height:6px;border-radius:50%;background:#3D5A3D;box-shadow:0 0 8px rgba(73,196,109,.6),inset 0 0 1px rgba(0,0,0,.5)}
+  .rack .u .led.g{background:var(--green);box-shadow:0 0 10px var(--green)}
+  .rack .u .led.r{background:#E54848;box-shadow:0 0 8px #E54848}
+  .rack .u .led.y{background:#F4C430;box-shadow:0 0 8px #F4C430}
+  .rack .u .vent{flex:1;height:18px;background:repeating-linear-gradient(90deg,#000 0 2px,#1A1D22 2px 4px);border-radius:2px;margin:0 8px}
+  .rack .u .label{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--ink-3);letter-spacing:.1em}
+  .rack .u .nvme{display:flex;gap:3px}
+  .rack .u .nvme i{width:8px;height:18px;background:#1A1D22;border-radius:2px;border:1px solid #2A2D32}
+  .rack .u .nvme i.lit{background:linear-gradient(180deg,var(--green),var(--green-d));box-shadow:0 0 6px var(--green)}
+  .rack .u.head{background:linear-gradient(180deg,#171A1F,#0E1014);height:40px}
+  .rack .pill{position:absolute;top:14px;right:14px;background:var(--green);color:#0F1A14;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:99px;box-shadow:0 0 20px rgba(73,196,109,.5)}
+  .pulse-ring{position:absolute;width:60px;height:60px;border:2px solid var(--green);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0;animation:pulse 2.4s ease-out infinite}
+  @keyframes pulse{0%{transform:translate(-50%,-50%) scale(.6);opacity:.8}100%{transform:translate(-50%,-50%) scale(2.4);opacity:0}}
+
+  /* TRUST STRIP */
+  .trust{background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0}
+  .trust .row{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;color:var(--ink-3);font-size:13px}
+  .trust .row b{color:var(--ink);font-weight:600}
+  .trust .row .stars{color:var(--green);font-size:14px;letter-spacing:1px;margin-right:6px}
+  .trust .row .item{display:flex;gap:8px;align-items:center}
+
+  /* SECTION HEADERS */
+  section.s{padding:96px 0}
+  .sec-head{text-align:center;margin-bottom:56px;max-width:720px;margin-left:auto;margin-right:auto}
+  .sec-head .label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--green);text-transform:uppercase;margin-bottom:14px;font-weight:600}
+  .sec-head h2{font-size:clamp(36px,4.5vw,56px);font-weight:700;letter-spacing:-.025em;line-height:1.05;margin-bottom:18px}
+  .sec-head h2 em{font-style:normal;color:var(--green)}
+  .sec-head p{font-size:17px;line-height:1.55;color:var(--ink-2)}
+
+  /* PRICING */
+  .plans{background:var(--bg)}
+  .plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .pcard{
+    background:linear-gradient(180deg,var(--bg-2),var(--bg));
+    border:1px solid var(--line);border-radius:16px;padding:28px 24px;
+    display:flex;flex-direction:column;transition:.2s;position:relative;
+  }
+  .pcard:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+  .pcard.featured{
+    background:linear-gradient(180deg,rgba(73,196,109,.08),var(--bg));
+    border:1px solid rgba(73,196,109,.4);
+  }
+  .pcard.featured::before{
+    content:"Most popular";position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+    background:var(--green);color:#0F1A14;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:4px 14px;border-radius:99px;
+  }
+  .pcard h3{font-size:18px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+  .pcard .role{font-size:13px;color:var(--ink-3);margin-bottom:20px;min-height:36px}
+  .pcard .priceline{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+  .pcard .priceline .num{font-size:48px;font-weight:800;letter-spacing:-.035em;line-height:1;color:var(--ink)}
+  .pcard .priceline .per{font-size:14px;color:var(--ink-3);font-weight:500}
+  .pcard .save{font-size:12px;color:var(--green);font-weight:500;margin-bottom:24px;min-height:18px}
+  .pcard ul{list-style:none;flex:1;margin-bottom:24px;display:flex;flex-direction:column;gap:11px}
+  .pcard ul li{font-size:14px;color:var(--ink-2);display:flex;align-items:center;gap:10px}
+  .pcard ul li::before{
+    content:"";width:16px;height:16px;border-radius:50%;background:rgba(73,196,109,.15);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2349C46D' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-repeat:no-repeat;background-position:center;background-size:11px;
+  }
+  .pcard ul li b{color:var(--ink);font-weight:600}
+  .pcard .deploy{width:100%;justify-content:center;padding:12px}
+
+  /* FEATURES */
+  .features{background:var(--bg-2)}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .fcard{
+    background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);
+    border:1px solid var(--line);border-radius:16px;padding:32px;
+    transition:.2s;
+  }
+  .fcard:hover{border-color:rgba(73,196,109,.3);transform:translateY(-2px)}
+  .fcard .ic{
+    width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,rgba(73,196,109,.18),rgba(73,196,109,.06));
+    display:flex;align-items:center;justify-content:center;color:var(--green);margin-bottom:20px;
+    border:1px solid rgba(73,196,109,.2);
+  }
+  .fcard h3{font-size:20px;font-weight:700;letter-spacing:-.015em;margin-bottom:10px}
+  .fcard p{font-size:14.5px;line-height:1.6;color:var(--ink-2)}
+
+  /* LOCATIONS */
+  .locs{background:var(--bg)}
+  .loc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .lcard{
+    background:linear-gradient(180deg,var(--bg-2),var(--bg));
+    border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;
+  }
+  .lcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--green)}
+  .lcard .code{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--green);font-weight:700}
+  .lcard h4{font-size:20px;font-weight:700;letter-spacing:-.015em}
+  .lcard .city{font-size:13px;color:var(--ink-3)}
+  .lcard .ping{display:flex;justify-content:space-between;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);font-family:'JetBrains Mono',monospace}
+  .lcard .ping b{color:var(--green);font-weight:600}
+
+  /* TESTIMONIALS */
+  .testi{background:linear-gradient(180deg,var(--bg-2),#1A1D22);position:relative;overflow:hidden}
+  .testi::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(73,196,109,.1),transparent 60%);filter:blur(60px);pointer-events:none}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative}
+  .tcard{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .tcard .stars{color:var(--green);font-size:14px;letter-spacing:2px;margin-bottom:14px}
+  .tcard q{font-style:normal;quotes:none;font-size:15.5px;line-height:1.55;color:var(--ink);display:block;margin-bottom:20px}
+  .tcard .who{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--line)}
+  .tcard .who .av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-d));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px}
+  .tcard .who .name{font-size:13.5px;font-weight:600}
+  .tcard .who .name span{display:block;color:var(--ink-3);font-weight:400;font-size:12px;margin-top:2px}
+
+  /* FINAL CTA */
+  .final{background:var(--bg-2);text-align:center;padding:120px 0;position:relative;overflow:hidden}
+  .final::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(73,196,109,.12),transparent 60%);pointer-events:none}
+  .final h2{font-size:clamp(40px,5vw,68px);font-weight:700;letter-spacing:-.025em;line-height:1.05;margin-bottom:20px;position:relative}
+  .final h2 em{font-style:normal;color:var(--green)}
+  .final p{font-size:17px;color:var(--ink-2);max-width:520px;margin:0 auto 32px;line-height:1.55;position:relative}
+  .final .actions{position:relative;display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+  /* FOOTER */
+  footer{background:var(--bg);border-top:1px solid var(--line);padding:64px 0 32px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:48px}
+  .foot-grid .brand .logo{margin-bottom:14px}
+  .foot-grid .brand p{font-size:14px;line-height:1.55;color:var(--ink-3);max-width:320px}
+  .foot-grid h5{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:18px;letter-spacing:-.005em}
+  .foot-grid ul{list-style:none}
+  .foot-grid li{margin-bottom:10px;font-size:13.5px}
+  .foot-grid li a{color:var(--ink-3);transition:.15s}
+  .foot-grid li a:hover{color:var(--green)}
+  .foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3);flex-wrap:wrap;gap:16px}
+  .foot-bot .status{display:flex;align-items:center;gap:8px}
+  .foot-bot .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+
+  @media (max-width:1000px){
+    .hero .grid{grid-template-columns:1fr}
+    .rack-art{aspect-ratio:1/.7;max-width:420px;margin:0 auto}
+    .plan-grid{grid-template-columns:repeat(2,1fr)}
+    .feat-grid{grid-template-columns:1fr}
+    .loc-grid{grid-template-columns:repeat(2,1fr)}
+    .testi-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:repeat(2,1fr)}
+    nav.main{display:none}
+  }
+</style>
+</head>
+<body data-page="1">
+
+<div class="ds-bar" id="dsBar">
+  <div class="ds-l">
+    <a href="#" class="ds-arrow" id="dsPrev" title="Previous (←)">◂</a>
+    <span class="ds-pos" id="dsPos">01 / 04</span>
+    <span class="ds-title">BuyVM · Design Explorations</span>
+  </div>
+  <div class="ds-c">
+    <a href="01-classic.html"><span>1 · </span><span class="ds-lab">Classic</span></a>
+    <a href="02-premium.html"><span>2 · </span><span class="ds-lab">Premium</span></a>
+    <a href="03-bold.html"><span>3 · </span><span class="ds-lab">Bold</span></a>
+    <a href="04-light.html"><span>4 · </span><span class="ds-lab">Light</span></a>
+  </div>
+  <div class="ds-r">
+    <a href="index.html"><span class="ds-lab">Gallery</span></a>
+    <a href="#" class="ds-arrow" id="dsNext" title="Next (→)">▸</a>
+    <button class="ds-x" id="dsX" title="Hide bar">×</button>
+  </div>
+</div>
+<script>
+(function(){
+  var hrefs=['01-classic.html','02-premium.html','03-bold.html','04-light.html'];
+  var path=location.pathname.split('/').pop()||'01-classic.html';
+  var idx=hrefs.indexOf(path); if(idx<0) idx=parseInt(document.body.dataset.page||'1',10)-1;
+  document.getElementById('dsPos').textContent=String(idx+1).padStart(2,'0')+' / 04';
+  var links=document.querySelectorAll('.ds-c a');
+  links.forEach(function(a,i){ if(i===idx) a.classList.add('active'); });
+  document.getElementById('dsPrev').href=hrefs[(idx-1+4)%4];
+  document.getElementById('dsNext').href=hrefs[(idx+1)%4];
+  document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA') return;
+    if(e.metaKey||e.ctrlKey||e.altKey) return;
+    if(e.key==='ArrowLeft'){location.href=hrefs[(idx-1+4)%4];}
+    if(e.key==='ArrowRight'){location.href=hrefs[(idx+1)%4];}
+    if(/^[1-4]$/.test(e.key)){location.href=hrefs[parseInt(e.key,10)-1];}
+  });
+  document.getElementById('dsX').addEventListener('click',function(){
+    document.getElementById('dsBar').style.display='none';
+    try{localStorage.setItem('dsHide','1');}catch(e){}
+  });
+  try{if(localStorage.getItem('dsHide')==='1') document.getElementById('dsBar').style.display='none';}catch(e){}
+})();
+</script>
+
+<div class="promo">
+  ❄️ Black Friday: 25% off your first 3 months on all KVM slices &mdash; <a href="#">use code BF2026</a>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <div class="row">
+      <a href="#" class="logo"><span class="glyph">B</span> BuyVM</a>
+      <nav class="main">
+        <a href="#">Products <span style="opacity:.6;font-size:11px">▾</span></a>
+        <a href="#">DDoS Protection <span class="badge">FREE</span></a>
+        <a href="#">Free Software</a>
+        <a href="#">Features</a>
+        <a href="#">About us</a>
+        <a href="#">Blog</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#" class="btn ghost">Sign in</a>
+        <a href="#" class="btn green">Deploy →</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <span class="eyebrow"><span class="pill">Since 2010</span> Affordable hosting with a touch of insanity</span>
+        <h1>Fast, secure, and<br>reliable virtual<br>servers from <em>$2/mo</em>.</h1>
+        <p class="sub">
+          Full-root <b>KVM slices</b> on AMD EPYC, with <b>1 Gbps unmetered</b> bandwidth and <b>free DDoS filter</b> on every IP. Same flat prices since 2010 — receipts available.
+        </p>
+        <div class="actions">
+          <a href="#plans" class="btn green lg">Plans and pricing →</a>
+          <a href="#" class="btn outline lg">Compare packages</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>14&nbsp;yrs</b>same crew, same prices</div>
+          <div class="stat"><b>4&nbsp;regions</b>LUX · NYC · LAS · MIA</div>
+          <div class="stat"><b>54&nbsp;sec</b>median boot time</div>
+        </div>
+      </div>
+      <div class="rack-art">
+        <div class="bg-glow"></div>
+        <div class="rack">
+          <span class="pill">● ONLINE</span>
+          <div class="u head">
+            <span class="led g"></span>
+            <div class="vent"></div>
+            <span class="label">EPYC 7763</span>
+          </div>
+          <div class="u">
+            <span class="led g"></span><span class="led"></span>
+            <div class="vent"></div>
+            <span class="label">SLICE-2</span>
+            <div class="nvme"><i class="lit"></i><i class="lit"></i><i class="lit"></i><i></i></div>
+          </div>
+          <div class="u">
+            <span class="led g"></span><span class="led y"></span>
+            <div class="vent"></div>
+            <span class="label">SLICE-4</span>
+            <div class="nvme"><i class="lit"></i><i class="lit"></i><i></i><i></i></div>
+          </div>
+          <div class="u">
+            <span class="led g"></span><span class="led"></span>
+            <div class="vent"></div>
+            <span class="label">SLICE-8</span>
+            <div class="nvme"><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i></div>
+          </div>
+          <div class="u">
+            <span class="led g"></span><span class="led"></span>
+            <div class="vent"></div>
+            <span class="label">PIGLET</span>
+            <div class="nvme"><i class="lit"></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="u">
+            <span class="led g"></span>
+            <div class="vent"></div>
+            <span class="label">DDoS · 24/7</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="row">
+      <div class="item"><span class="stars">★★★★★</span> <b>4.7 / 5</b> on Trustpilot</div>
+      <div class="item">⚡ <b>Boots in 54 sec</b> median</div>
+      <div class="item">🛡 Free <b>DDoS filter</b> on every IP</div>
+      <div class="item">📡 <b>1 Gbps unmetered</b> per slice</div>
+      <div class="item"><span class="stars" style="color:#46e07a">●</span> Status: <b>all green</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="s plans" id="plans">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— Plans &amp; pricing</div>
+      <h2>Pick a slice. Or <em>pick three.</em></h2>
+      <p>Hourly billing if you want it. Monthly billing if you don&rsquo;t. Cancel from the panel without writing us a letter.</p>
+    </div>
+
+    <div class="plan-grid">
+      <div class="pcard">
+        <h3>Piglet</h3>
+        <div class="role">For side projects, jump hosts, DNS</div>
+        <div class="priceline"><span class="num">$2</span><span class="per">/mo</span></div>
+        <div class="save">Same price since 2010</div>
+        <ul>
+          <li><b>1</b>&nbsp;vCPU</li>
+          <li><b>512 MB</b>&nbsp;RAM</li>
+          <li><b>10 GB</b>&nbsp;NVMe SSD</li>
+          <li><b>1 Gbps</b>&nbsp;unmetered</li>
+          <li>Free DDoS filter</li>
+        </ul>
+        <a href="#" class="btn outline deploy">Deploy →</a>
+      </div>
+
+      <div class="pcard">
+        <h3>Slice 1</h3>
+        <div class="role">Mastodon-class, blogs, mail</div>
+        <div class="priceline"><span class="num">$3.50</span><span class="per">/mo</span></div>
+        <div class="save">~70% under Big Cloud</div>
+        <ul>
+          <li><b>1</b>&nbsp;vCPU</li>
+          <li><b>1 GB</b>&nbsp;RAM</li>
+          <li><b>20 GB</b>&nbsp;NVMe SSD</li>
+          <li><b>1 Gbps</b>&nbsp;unmetered</li>
+          <li>Free DDoS filter</li>
+        </ul>
+        <a href="#" class="btn outline deploy">Deploy →</a>
+      </div>
+
+      <div class="pcard featured">
+        <h3>Slice 2</h3>
+        <div class="role">The default. Production sites, CI</div>
+        <div class="priceline"><span class="num">$7</span><span class="per">/mo</span></div>
+        <div class="save">Most chosen by our team too</div>
+        <ul>
+          <li><b>2</b>&nbsp;vCPU</li>
+          <li><b>2 GB</b>&nbsp;RAM</li>
+          <li><b>40 GB</b>&nbsp;NVMe SSD</li>
+          <li><b>1 Gbps</b>&nbsp;unmetered</li>
+          <li>Snapshot + rebuild</li>
+        </ul>
+        <a href="#" class="btn green deploy">Deploy →</a>
+      </div>
+
+      <div class="pcard">
+        <h3>Slice 8</h3>
+        <div class="role">DBs, build farms, k3s nodes</div>
+        <div class="priceline"><span class="num">$30</span><span class="per">/mo</span></div>
+        <div class="save">Block storage attach available</div>
+        <ul>
+          <li><b>8</b>&nbsp;vCPU</li>
+          <li><b>8 GB</b>&nbsp;RAM</li>
+          <li><b>160 GB</b>&nbsp;NVMe SSD</li>
+          <li><b>1 Gbps</b>&nbsp;unmetered</li>
+          <li>Anycast option</li>
+        </ul>
+        <a href="#" class="btn outline deploy">Deploy →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s features">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— Why BuyVM</div>
+      <h2>Things that should cost extra. <em>They don&rsquo;t.</em></h2>
+    </div>
+    <div class="feat-grid">
+      <div class="fcard">
+        <div class="ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
+        </div>
+        <h3>DDoS filter, free</h3>
+        <p>Layer-3 / Layer-4 mitigation on every IP we issue. Same gear we use to keep our own panel up &mdash; pointed at your slice, no extra charge, ever.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h4l2-7 4 14 2-7h6"/></svg>
+        </div>
+        <h3>1 Gbps unmetered</h3>
+        <p>1&nbsp;Gbps in, 1&nbsp;Gbps out, per IP, with no bandwidth meter. We measured the link &mdash; not your packets.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg>
+        </div>
+        <h3>Real KVM, real root</h3>
+        <p>Your kernel, your iptables, your bad ideas. Real virtualization &mdash; not a container with a marketing layer on top.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3>Boots in 54 seconds</h3>
+        <p>Median across all regions, last 30 days. We benchmark our own platform every hour and post the results.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+        </div>
+        <h3>Anycast from $3/mo</h3>
+        <p>Drop a /24 onto our edge across 4 cities. The kind of thing that used to require a peering meeting and a suit.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>14 years, same team</h3>
+        <p>Founded 2010. Never sold. Never rebranded. Same people answering tickets that wrote the panel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s locs">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— Network</div>
+      <h2>Four cities. <em>One backbone.</em></h2>
+      <p>Carrier-neutral facilities, direct peering with the eyeball networks your users actually live behind.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="lcard">
+        <span class="code">LUX01</span>
+        <h4>Luxembourg</h4>
+        <span class="city">root.lu data centre · Europe</span>
+        <div class="ping"><span>Avg latency</span><b>8.4 ms → DE/FR</b></div>
+      </div>
+      <div class="lcard">
+        <span class="code">NYC01</span>
+        <h4>New York</h4>
+        <span class="city">Piscataway, NJ · US East</span>
+        <div class="ping"><span>Avg latency</span><b>9 ms → east coast</b></div>
+      </div>
+      <div class="lcard">
+        <span class="code">LAS01</span>
+        <h4>Las Vegas</h4>
+        <span class="city">Switch LV1 · US West</span>
+        <div class="ping"><span>Avg latency</span><b>14 ms → west coast</b></div>
+      </div>
+      <div class="lcard">
+        <span class="code">MIA01</span>
+        <h4>Miami</h4>
+        <span class="city">NAP of the Americas · FL</span>
+        <div class="ping"><span>Avg latency</span><b>42 ms → SA</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s testi">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— What our customers say</div>
+      <h2>Loud customers, <em>quiet servers.</em></h2>
+      <p>4.7 / 5 across 1,400+ Trustpilot reviews. A representative selection.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <q>"Six years on the same $7 slice. Price hasn&rsquo;t moved. Uptime hasn&rsquo;t moved. I forget it&rsquo;s there. Highest compliment I can pay infrastructure."</q>
+        <div class="who"><div class="av">JC</div><div class="name">JC<span>Sysadmin · LUX · since 2018</span></div></div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <q>"Migrated from Big Cloud after the third surprise bill. Saved 70%, lost the 3am pager calls. Wins all around."</q>
+        <div class="who"><div class="av">M</div><div class="name">M.<span>Startup CTO · NYC · since 2022</span></div></div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <q>"Their abuse desk replied in 11 minutes at 2am on a Sunday. From a human. Who knew what BGP was."</q>
+        <div class="who"><div class="av">E</div><div class="name">E.<span>Network eng · LAS · since 2019</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Ready in <em>54 seconds.</em></h2>
+    <p>Sign up takes 90. First slice boots in 54. Destroy it from the panel without writing us a letter. We&rsquo;ve been doing this since 2010 — we&rsquo;re not going anywhere.</p>
+    <div class="actions">
+      <a href="#" class="btn green lg">Create account →</a>
+      <a href="#" class="btn outline lg">Talk to a human</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="brand">
+        <a href="#" class="logo"><span class="glyph">B</span> BuyVM</a>
+        <p>Frantech Solutions S.A.R.L.<br>Same crew on the rack since 2010 — Luxembourg, New York, Las Vegas, Miami.</p>
+      </div>
+      <div>
+        <h5>Products</h5>
+        <ul><li><a href="#">KVM Slices</a></li><li><a href="#">Block Storage</a></li><li><a href="#">DDoS Filter</a></li><li><a href="#">Anycast</a></li></ul>
+      </div>
+      <div>
+        <h5>Network</h5>
+        <ul><li><a href="#">Looking glass</a></li><li><a href="#">Status</a></li><li><a href="#">Speed test</a></li><li><a href="#">PeeringDB</a></li></ul>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <ul><li><a href="#">Stallion panel</a></li><li><a href="#">Docs</a></li><li><a href="#">Submit ticket</a></li><li><a href="#">IRC</a></li></ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">AUP</a></li><li><a href="#">Privacy</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2010—2026 Frantech Solutions</span>
+      <span class="status"><span class="dot"></span> All systems operational</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
