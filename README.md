@@ -1,55 +1,40 @@
-# BuyVM — Four Design Directions
+# BuyVM — Website (Classic design build)
 
-Four self-contained landing-page directions for [buyvm.net](https://buyvm.net), each grounded in the current site's actual brand DNA — charcoal `#282B30` + brand green `#49C46D` + white, with a server illustration, plan grid, and dark testimonials. All four ship with motion (scroll reveals, counting stats, animated rack LEDs, mouse-follow parallax) and respect `prefers-reduced-motion`.
+A complete multi-page marketing site for [BuyVM](https://buyvm.net) (a KVM VPS host, division of Cloudzy), built on the **Classic** design direction the team selected. Grounded in the real brand DNA — charcoal `#282B30` + brand green `#49C46D` — with accurate products, specs and pricing pulled from the live site.
 
 Live: **http://144.172.96.137**
 
-## The four designs
+## Pages
 
-| # | Name | Vibe | Motion | Best for |
-|---|------|------|--------|----------|
-| 01 | [Classic](01-classic.html) | Refined &amp; alive — careful 2026 update | Scroll reveals · counting stats · twinkling LEDs · 3D rack tilt | Direct refresh of the marketing site |
-| 02 | [Premium](02-premium.html) | Quiet, considered — Inter + Instrument Serif italic | Slow reveals · restrained tilt · counting hero signals | Enterprise tier landing |
-| 03 | [Console](03-console.html) | Technical, developer-tool aesthetic — terminal hero, YAML plans, IRC reviews | Animated sparklines · blinking caret · ticker bar | Developer marketing, API / docs landing |
-| 04 | [Spatial](04-spatial.html) | Modern, depth-rich — isometric rack, floating UI, parallax orbs | Mouse-follow rack tilt · floating bob · scroll parallax | Brand refresh, hero campaigns |
+| Page | File | What it covers |
+|------|------|----------------|
+| Home | `index.html` | Hero, pricing snapshot, product overview, why-BuyVM, network, reviews |
+| KVM Slices | `kvm-slices.html` | Standard + high-volume plan tables, included features, FAQ |
+| Block Storage | `block-storage.html` | Slabs pricing, RDMA fabric, hot migration, comparison |
+| DDoS Protection | `ddos-protection.html` | 3.5 Tbps+ filtering, L3/L4/L7 coverage, $3/mo, case study |
+| Anycast | `anycast.html` | Global CDN story, 3 PoPs, use cases, requirements |
+| Features | `features.html` | Stallion panel, snapshots, OS templates, software licenses |
+| Network | `network.html` | Datacenters, peering, latency matrix, network tools |
+| About | `about.html` | Story since 2010, values, milestones |
+| Contact | `contact.html` | Support channels + demo contact form |
+| Terms | `terms.html` | Terms of Service |
+| Privacy | `privacy.html` | Privacy Policy |
+| Acceptable Use | `acceptable-use.html` | AUP |
 
-[**Gallery / comparison page →**](index.html)
+The four original design explorations (Classic / Premium / Console / Spatial) are preserved under [`explorations/`](explorations/index.html).
 
-## Switching between designs
+## Architecture
 
-Every page has a thin black bar at the very top:
+- **Shared stylesheet:** `assets/css/site.css` — one design system, every page. Components: nav with dropdown + mobile menu, hero, page-hero, pricing cards, comparison tables, feature grids, split rows, terminal blocks, stat bands, locations, testimonials, FAQ accordions, prose (legal), contact form, footer.
+- **Shared JS:** `assets/js/site.js` — mobile-nav toggle + motion (scroll reveals, count-up numbers, rack tilt). Respects `prefers-reduced-motion`.
+- **No build step, no frameworks.** Plain HTML + CSS + ~120 lines of vanilla JS. Google Fonts (Inter + JetBrains Mono).
+- **Consistent chrome:** every page shares a byte-identical `<header>` and `<footer>`.
 
-- Position indicator (`01 / 04`)
-- Direct links to all four
-- Previous / next arrows
-- Keyboard shortcuts: <kbd>←</kbd> / <kbd>→</kbd> to navigate, <kbd>1</kbd>—<kbd>4</kbd> to jump
-- `×` to dismiss (remembered via localStorage)
+## Real facts baked in
 
-## Brand DNA (shared across all four)
+Products/specs match the live buyvm.net at build time: Slice 512 ($2/mo) → 4096 ($15/mo) + high-volume to 28 GB/$105; Block Storage from $1.25/256 GB up to 10 TB; DDoS 3.5 Tbps+ / 700 M pps at $3/mo per IP; Anycast across Las Vegas, New York (Piscataway NJ) & Luxembourg (Roost); storage also in Miami. Stallion control panel, 100+ OS templates, free DirectAdmin on 1 GB+.
 
-Pulled directly from [buyvm.net's actual stylesheet](https://buyvm.net/assets/css/style.css):
-
-| Token | Value | Used for |
-|-------|-------|----------|
-| `--ink` (charcoal) | `#282B30` | Primary background |
-| `--green` (brand) | `#49C46D` | CTAs, accents, success |
-| `--green-d` (dark) | `#317C4C` | Button gradients, hover |
-| `--ink-3` (muted) | `#7B8187` | Secondary text |
-
-Each design uses subtly tuned variants (e.g. Premium uses a slightly punchier `#5BD17C`, Console a sharper `#5DD080`) but the family is recognisable across all four.
-
-## Motion principles
-
-- **Scroll reveals** — IntersectionObserver fades in sections as they enter view
-- **Counting numbers** — hero stats animate from 0 → target with cubic ease-out
-- **Animated rack LEDs** — staggered twinkles, NVMe blinks, pulsing online indicator
-- **Tilt-on-hover** — server illustrations subtly track the mouse on fine pointers (skipped on touch)
-- **Reduced motion** — `@media (prefers-reduced-motion: reduce)` disables all transitions, animations, smooth scroll
-- **No external libs** — pure CSS keyframes + ~50 lines of vanilla JS per page
-
-## Stack
-
-Pure HTML + CSS + a small inline `<script>` per page. Google Fonts only, no build, no frameworks. Open any file in a browser and it works.
+Outbound links point at the real systems: `my.frantech.ca` (billing/cart), `manage.buyvm.net` (Stallion), `wiki.buyvm.net` (docs).
 
 ## Local preview
 
@@ -61,7 +46,7 @@ python3 -m http.server 8000
 
 ## Deployment
 
-Files are served by nginx on the BuyVM-1GB box at `144.172.96.137`. Updating:
+Served by nginx on the BuyVM-1GB box at `144.172.96.137`:
 
 ```bash
 rsync -avz --delete --exclude=.git \
@@ -69,8 +54,14 @@ rsync -avz --delete --exclude=.git \
   buyvm-designs:/var/www/html/
 ```
 
-(Where `buyvm-designs` is an SSH alias defined in `~/.ssh/config`.)
+(`buyvm-designs` is an SSH alias in `~/.ssh/config`.)
+
+## Notes / not yet wired
+
+- The contact form is a styled demo (`action="#"`, does not submit) — point it at your ticket system or a form backend before production.
+- Legal pages (`terms`, `privacy`, `acceptable-use`) are original generic templates — have counsel review before going live.
+- Plans/prices are a point-in-time snapshot; reconcile against billing before launch.
 
 ## License
 
-MIT &mdash; do whatever you want, attribution appreciated.
+MIT — attribution appreciated.

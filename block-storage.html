@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Block Storage Slabs — Up to 10 TB from $1.25/256GB | BuyVM</title>
+<meta name="description" content="Attach up to 10 TB of block storage to any KVM Slice for $1.25 per 256 GB — that's $5/TB. 40 Gbit+ InfiniBand RDMA fabric, NVMe cache, hot migration, no downtime. Up to 95% cheaper than the big vendors." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="row">
+      <a href="index.html" class="logo"><span class="glyph">B</span> BuyVM</a>
+      <nav class="main">
+        <div class="dd">
+          <button>Products <span class="chev">▾</span></button>
+          <div class="dd-menu">
+            <a href="kvm-slices.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span><span><span class="t">KVM Slices</span><span class="d">Full-root virtual servers from $2/mo</span></span></a>
+            <a href="block-storage.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span><span class="t">Block Storage Slabs</span><span class="d">Up to 10 TB from $1.25/256GB</span></span></a>
+            <a href="ddos-protection.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></span><span><span class="t">DDoS Protection</span><span class="d">3.5 Tbps+ filtering, $3/mo per IP</span></span></a>
+            <a href="anycast.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span><span class="t">Anycast Network</span><span class="d">Build a global CDN — free for VPS</span></span></a>
+          </div>
+        </div>
+        <a href="features.html">Features</a>
+        <a href="network.html">Network</a>
+        <a href="about.html">About</a>
+        <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="https://my.frantech.ca/clientarea.php" class="btn ghost" target="_blank" rel="noopener">Sign in</a>
+        <a href="#plans" class="btn green">Deploy →</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav">
+    <div class="mwrap">
+      <a href="kvm-slices.html">KVM Slices</a>
+      <a href="block-storage.html">Block Storage</a>
+      <a href="ddos-protection.html">DDoS Protection</a>
+      <a href="anycast.html">Anycast</a>
+      <a href="features.html">Features</a>
+      <a href="network.html">Network</a>
+      <a href="about.html">About</a>
+      <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
+      <div class="mcta">
+        <a href="https://my.frantech.ca/clientarea.php" class="btn outline" target="_blank" rel="noopener">Sign in</a>
+        <a href="#plans" class="btn green">Deploy →</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span>Products<span class="sep">/</span>Block Storage</div>
+    <h1>Block storage that costs <em>95% less.</em></h1>
+    <p>Bolt up to 10 TB onto any KVM Slice for $1.25 per 256 GB — $5 a terabyte, billed monthly. It rides a 40 Gbit+ InfiniBand RDMA fabric with NVMe cache, so it feels local. The big clouds charge that much for a rounding error.</p>
+    <div class="actions">
+      <a href="#pricing" class="btn green lg">See pricing →</a>
+      <a href="#how" class="btn outline lg">How it works</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATBAND -->
+<section class="s">
+  <div class="wrap">
+    <div class="statband">
+      <div class="cell">
+        <div class="v">$<span data-count="1.25" data-dec="2">1.25</span><small>/256 GB</small></div>
+        <div class="l">Pay-as-you-grow increments</div>
+      </div>
+      <div class="cell">
+        <div class="v"><span data-count="10">10</span><small>TB max / slab</small></div>
+        <div class="l">Up to 8 slabs per server</div>
+      </div>
+      <div class="cell">
+        <div class="v"><span data-count="40">40</span><small>Gbit RDMA</small></div>
+        <div class="l">InfiniBand storage fabric</div>
+      </div>
+      <div class="cell">
+        <div class="v"><span data-count="95">95</span><small>% cheaper</small></div>
+        <div class="l">Versus the major vendors</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="s" id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— Pricing</div>
+      <h2>Terabytes for <em>the price of a coffee.</em></h2>
+      <p>Storage is sold in 256 GB blocks at $1.25 each. Start with a single block, or fill a whole 10 TB slab — same flat rate, no tiering games, no per-IOP surcharge. Here's how the round numbers shake out.</p>
+    </div>
+
+    <div class="plan-grid cols-3">
+      <div class="pcard">
+        <h3>1 TB</h3>
+        <div class="role">Backups, media, mail spools</div>
+        <div class="priceline"><span class="num">$5</span><span class="per">/mo</span></div>
+        <div class="save">Just $1.25 per 256 GB</div>
+        <ul>
+          <li><b>1 TB</b>&nbsp;usable capacity</li>
+          <li><b>$1.25</b>&nbsp;per 256 GB block</li>
+          <li>Attaches to <b>any slice</b> in-facility</li>
+          <li><b>Hot-migrate</b> between servers</li>
+          <li>NVMe read/write cache</li>
+        </ul>
+        <a href="https://my.frantech.ca/cart.php" class="btn outline full" target="_blank" rel="noopener">Deploy →</a>
+      </div>
+      <div class="pcard featured">
+        <h3>5 TB</h3>
+        <div class="role">Object stores, Nextcloud, archives</div>
+        <div class="priceline"><span class="num">$25</span><span class="per">/mo</span></div>
+        <div class="save">Our most popular slab</div>
+        <ul>
+          <li><b>5 TB</b>&nbsp;usable capacity</li>
+          <li><b>$1.25</b>&nbsp;per 256 GB block</li>
+          <li>Attaches to <b>any slice</b> in-facility</li>
+          <li><b>Hot-migrate</b> between servers</li>
+          <li>NVMe read/write cache</li>
+        </ul>
+        <a href="https://my.frantech.ca/cart.php" class="btn green full" target="_blank" rel="noopener">Deploy →</a>
+      </div>
+      <div class="pcard">
+        <h3>10 TB</h3>
+        <div class="role">Big data, video, seedboxes</div>
+        <div class="priceline"><span class="num">$50</span><span class="per">/mo</span></div>
+        <div class="save">Maximum per slab</div>
+        <ul>
+          <li><b>10 TB</b>&nbsp;usable capacity</li>
+          <li><b>$1.25</b>&nbsp;per 256 GB block</li>
+          <li>Attaches to <b>any slice</b> in-facility</li>
+          <li><b>Hot-migrate</b> between servers</li>
+          <li>NVMe read/write cache</li>
+        </ul>
+        <a href="https://my.frantech.ca/cart.php" class="btn outline full" target="_blank" rel="noopener">Deploy →</a>
+      </div>
+    </div>
+    <p class="center" style="margin-top:24px;color:var(--ink-3);font-size:14px">Billed per 256 GB block at $1.25 each — mix any size up to 10 TB. Storage needs a <a href="kvm-slices.html" style="color:var(--green);font-weight:600">KVM Slice</a> in the same facility to attach to. Stack up to 8 slabs on one server for 80 TB total.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="s alt" id="how">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-text">
+        <div class="label">How it works</div>
+        <h2>Attach in a click. <em>Migrate without downtime.</em></h2>
+        <p>Create a slab in the Stallion panel, point it at a slice in the same datacenter, and it shows up as a block device in seconds. Need to move it to a beefier server? Hot migration shuffles it across the floor with no reboot and no power-off.</p>
+        <ul>
+          <li><span class="ck">✓</span><span><b>Same-facility attach</b> — bind a slab to any KVM Slice in the same location instantly.</span></li>
+          <li><span class="ck">✓</span><span><b>Hot migration</b> between servers in the same datacenter — no reboot, no power-off.</span></li>
+          <li><span class="ck">✓</span><span><b>Live upgrades</b> — grow capacity on the fly; downgrades just need a manual data transfer.</span></li>
+          <li><span class="ck">✓</span><span><b>Stallion-managed</b> — provision, resize and detach from the panel or the API.</span></li>
+        </ul>
+      </div>
+      <div class="split-media">
+        <div class="term">
+          <div class="bar"><div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div><div class="title">stallion — block storage</div></div>
+          <div class="body"><span class="prompt">stallion volume create</span> <span class="flag">--size</span> <span class="arg">1TB</span> <span class="flag">--region</span> <span class="arg">lux</span>
+<span class="ok">✓</span> Provisioned 1 TB slab on 40 Gbit RDMA fabric
+<span class="ok">✓</span> NVMe read/write cache warmed
+<span class="prompt">stallion volume attach</span> <span class="flag">--slice</span> <span class="arg">mastodon-lux</span> <span class="flag">--dev</span> <span class="arg">/dev/vdb</span>
+<span class="ok">✓</span> Attached to slice <span class="ip">mastodon-lux</span> · zero downtime
+<span class="ok">✓</span> Block device <span class="ip">/dev/vdb</span> ready — $5/mo
+<span class="prompt">df -h /dev/vdb</span><span class="caret"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="s">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— Why it's fast (and cheap)</div>
+      <h2>Datacenter-grade storage, <em>without the datacenter invoice.</em></h2>
+    </div>
+    <div class="feat-grid">
+      <div class="fcard">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></div>
+        <h3>RDMA storage <em>fabric</em></h3>
+        <p>Every slab rides 40 Gbit+ InfiniBand with RDMA, so your slice talks to storage at near-local latency — not over a congested public network.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg></div>
+        <h3>NVMe <em>cache layers</em></h3>
+        <p>Multiple cache tiers, including large NVMe read/write buffers, absorb hot data and bursty writes so spinning capacity behaves like flash.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5"/><path d="M21 3 13 11"/><path d="M8 21H3v-5"/><path d="m3 21 8-8"/></svg></div>
+        <h3>Hot <em>migration</em></h3>
+        <p>Move a slab to another server in the same datacenter while it's live. No reboot, no power-off, no scheduled maintenance window.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+        <h3>Attach to <em>any slice</em></h3>
+        <p>Pair a slab with any KVM Slice in the same facility, from the $2 starter up to a 28 GB high-volume box. Stack up to 8 per server.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg></div>
+        <h3>Full <em>encryption</em></h3>
+        <p>Bring your own LUKS keys and encrypt the whole device. Your data stays your data — we run a privacy-first shop and intend to keep it that way.</p>
+      </div>
+      <div class="fcard">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>95% cheaper than <em>the big vendors</em></h3>
+        <p>Major clouds charge roughly $90–$131.50 per TB each month. We charge $5 — and benchmark faster. The math isn't subtle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="s alt" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— FAQ</div>
+      <h2>Questions, <em>answered.</em></h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>What's the minimum size, and how is it billed? <span class="plus"></span></summary>
+        <div class="ans">Storage is sold in 256 GB increments at $1.25 each, so the smallest slab is 256 GB for $1.25/mo. Add as many blocks as you like — 1 TB lands at $5/mo, and a single slab tops out at 10 TB ($50/mo). You can run up to 8 slabs on one server for 80 TB total.</div>
+      </details>
+      <details>
+        <summary>Do I need a VPS to use Block Storage? <span class="plus"></span></summary>
+        <div class="ans">Yes — a slab attaches to a KVM Slice, so you'll need at least one slice in the same facility. The slice can be anything from our $2 starter upward; pick the location first, then add storage to match.</div>
+      </details>
+      <details>
+        <summary>Can I resize a slab later? <span class="plus"></span></summary>
+        <div class="ans">Upgrades happen live — add capacity from the Stallion panel and your block device grows without downtime. Downgrades aren't automatic: you'll need to move your data onto a smaller slab manually, which is the safe way to shrink a filesystem anyway.</div>
+      </details>
+      <details>
+        <summary>Which locations offer Block Storage? <span class="plus"></span></summary>
+        <div class="ans">Las Vegas, New York, Miami and Luxembourg. A slab and the slice it attaches to must live in the same facility, so deploy both in the region closest to your users.</div>
+      </details>
+      <details>
+        <summary>How does the price compare to the big clouds? <span class="plus"></span></summary>
+        <div class="ans">The major block-storage vendors charge roughly $90 to $131.50 per TB per month. Ours is $5 per TB — up to 95% less — and it runs on a 40 Gbit+ RDMA fabric with NVMe cache that benchmarks faster than the name-brand offerings. Affordable hosting with a touch of insanity, as usual.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Add terabytes for <em>the price of a coffee.</em></h2>
+    <p>Spin up a slab, attach it to a slice, and stop paying cloud-vendor ransom for storage. $1.25 per 256 GB, hot-migratable, NVMe-cached, yours to encrypt.</p>
+    <div class="actions">
+      <a href="#pricing" class="btn green lg">See pricing →</a>
+      <a href="kvm-slices.html" class="btn outline lg">Get a slice first</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="brand">
+        <a href="index.html" class="logo"><span class="glyph">B</span> BuyVM</a>
+        <p>Affordable hosting with a touch of insanity. A division of Cloudzy, running KVM VPS since 2010 — Las Vegas, New York, Luxembourg &amp; Miami.</p>
+        <div class="social">
+          <a href="https://twitter.com/frantechca" target="_blank" rel="noopener" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.2h3.6l-7.9 9 9.2 12.2h-7.2l-5.6-7.4-6.5 7.4H1.3l8.4-9.6L.9 1.2h7.4l5.1 6.7zM17.6 20.1h2L6.5 3.2h-2z"/></svg></a>
+          <a href="https://facebook.com/frantech/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.6 4.5-4.6 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.5 0-1.9.9-1.9 1.8V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/></svg></a>
+          <a href="https://www.trustpilot.com/review/buyvm.net" target="_blank" rel="noopener" aria-label="Trustpilot"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 1.5 3.1 6.9 7.4.7-5.6 5 1.6 7.4L12 18l-6.5 3.5 1.6-7.4-5.6-5 7.4-.7z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Products</h5>
+        <ul><li><a href="kvm-slices.html">KVM Slices</a></li><li><a href="block-storage.html">Block Storage</a></li><li><a href="ddos-protection.html">DDoS Protection</a></li><li><a href="anycast.html">Anycast</a></li></ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul><li><a href="about.html">About us</a></li><li><a href="network.html">Network &amp; datacenters</a></li><li><a href="features.html">Features</a></li><li><a href="https://www.trustpilot.com/review/buyvm.net" target="_blank" rel="noopener">Reviews</a></li></ul>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <ul><li><a href="https://my.frantech.ca/clientarea.php" target="_blank" rel="noopener">Client area</a></li><li><a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Wiki &amp; docs</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://manage.buyvm.net/login" target="_blank" rel="noopener">Stallion login</a></li></ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="terms.html">Terms of service</a></li><li><a href="acceptable-use.html">Acceptable use</a></li><li><a href="privacy.html">Privacy policy</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span class="status"><span class="dot"></span> All systems operational · <span data-year>2010–2026</span> Frantech Solutions</span>
+      <span class="links"><a href="explorations/index.html">Design explorations</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

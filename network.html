@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Network &amp; Datacenters — Anycast across 3 continents | BuyVM</title>
+<meta name="description" content="BuyVM runs carrier-neutral datacenters in Las Vegas, New York, Luxembourg and Miami with anycast across three core PoPs, early IPv6, direct peering and 1 Gbps unmetered bandwidth." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="row">
+      <a href="index.html" class="logo"><span class="glyph">B</span> BuyVM</a>
+      <nav class="main">
+        <div class="dd">
+          <button>Products <span class="chev">▾</span></button>
+          <div class="dd-menu">
+            <a href="kvm-slices.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span><span><span class="t">KVM Slices</span><span class="d">Full-root virtual servers from $2/mo</span></span></a>
+            <a href="block-storage.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span><span class="t">Block Storage Slabs</span><span class="d">Up to 10 TB from $1.25/256GB</span></span></a>
+            <a href="ddos-protection.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></span><span><span class="t">DDoS Protection</span><span class="d">3.5 Tbps+ filtering, $3/mo per IP</span></span></a>
+            <a href="anycast.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span><span class="t">Anycast Network</span><span class="d">Build a global CDN — free for VPS</span></span></a>
+          </div>
+        </div>
+        <a href="features.html">Features</a>
+        <a href="network.html">Network</a>
+        <a href="about.html">About</a>
+        <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="https://my.frantech.ca/clientarea.php" class="btn ghost" target="_blank" rel="noopener">Sign in</a>
+        <a href="#plans" class="btn green">Deploy →</a>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav">
+    <div class="mwrap">
+      <a href="kvm-slices.html">KVM Slices</a>
+      <a href="block-storage.html">Block Storage</a>
+      <a href="ddos-protection.html">DDoS Protection</a>
+      <a href="anycast.html">Anycast</a>
+      <a href="features.html">Features</a>
+      <a href="network.html">Network</a>
+      <a href="about.html">About</a>
+      <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
+      <div class="mcta">
+        <a href="https://my.frantech.ca/clientarea.php" class="btn outline" target="_blank" rel="noopener">Sign in</a>
+        <a href="#plans" class="btn green">Deploy →</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span>Network</div>
+    <h1>Three continents. <em>One fast backbone.</em></h1>
+    <p>Carrier-neutral datacenters in Las Vegas, New York, Luxembourg and Miami — stitched together with anycast, direct peering and 1 Gbps unmetered transfer on every slice. We were running IPv6 before it was cool, and we still are.</p>
+    <div class="actions">
+      <a href="kvm-slices.html" class="btn green lg">Deploy a slice →</a>
+      <a href="https://wiki.buyvm.net/" class="btn outline lg" target="_blank" rel="noopener">Open looking glass</a>
+    </div>
+  </div>
+</section>
+
+<!-- DATACENTERS -->
+<section class="s">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— Datacenters</div>
+      <h2>Four facilities. <em>Pick where you go live.</em></h2>
+      <p>Every location is a carrier-neutral facility with direct peering into the eyeball networks your users actually use. Same panel, same pricing, same unmetered bandwidth — just closer to whoever you're serving.</p>
+    </div>
+
+    <div class="loc-grid">
+      <div class="lcard">
+        <div class="code">LAS01</div>
+        <h4>Las Vegas</h4>
+        <div class="city">Nevada · US West</div>
+        <div class="ping"><span>US west coast</span><b>~14 ms</b></div>
+      </div>
+      <div class="lcard">
+        <div class="code">NYC01</div>
+        <h4>New York</h4>
+        <div class="city">Piscataway, New Jersey · US East</div>
+        <div class="ping"><span>US east coast</span><b>~9 ms</b></div>
+      </div>
+      <div class="lcard">
+        <div class="code">LUX01</div>
+        <h4>Luxembourg</h4>
+        <div class="city">Roost · Europe</div>
+        <div class="ping"><span>DE / FR</span><b>~8.4 ms</b></div>
+      </div>
+      <div class="lcard">
+        <div class="code">MIA01</div>
+        <h4>Miami</h4>
+        <div class="city">Florida · Storage &amp; edge</div>
+        <div class="ping"><span>Latin America</span><b>~42 ms</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PEERING -->
+<section class="s alt">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-text">
+        <div class="label">Peering</div>
+        <h2>Direct routes to the networks <em>your users live on.</em></h2>
+        <p>All four sites sit inside carrier-neutral facilities, which means we're not stuck on a single upstream's pricing or politics. We peer directly with the major eyeball networks and blend in redundant transit on top, so your packets take the short road instead of the scenic one.</p>
+        <ul>
+          <li><span class="ck">✓</span><span><b>Direct peering</b> with major eyeball networks at each PoP — fewer hops, lower jitter.</span></li>
+          <li><span class="ck">✓</span><span><b>Redundant transit</b> from multiple Tier-1 carriers in every facility.</span></li>
+          <li><span class="ck">✓</span><span><b>Low latency</b> to the regions that matter — single-digit milliseconds on both US coasts and in Europe.</span></li>
+          <li><span class="ck">✓</span><span><b>IPv6 everywhere</b> — full dual-stack on every slice, since long before most hosts bothered.</span></li>
+        </ul>
+      </div>
+      <div class="split-media">
+        <div class="cmp-wrap">
+          <table class="cmp">
+            <thead>
+              <tr>
+                <th>Region</th>
+                <th>To</th>
+                <th>Latency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="spec"><b>LAS01</b></td>
+                <td>US west coast</td>
+                <td class="spec"><b>~14 ms</b></td>
+              </tr>
+              <tr>
+                <td class="spec"><b>NYC01</b></td>
+                <td>US east coast</td>
+                <td class="spec"><b>~9 ms</b></td>
+              </tr>
+              <tr>
+                <td class="spec"><b>LUX01</b></td>
+                <td>DE / FR</td>
+                <td class="spec"><b>~8.4 ms</b></td>
+              </tr>
+              <tr>
+                <td class="spec"><b>MIA01</b></td>
+                <td>Latin America</td>
+                <td class="spec"><b>~42 ms</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK TOOLS -->
+<section class="s">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— Network tools</div>
+      <h2>Don't take our word for it. <em>Check the wire.</em></h2>
+      <p>Trace a route, watch the status board, pull a test file or read our peering profile. The network is happy to be inspected.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="fcard">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+        <h3>Looking Glass</h3>
+        <p>Run ping, traceroute and BGP lookups from each PoP straight in your browser, so you can see exactly how your network reaches ours.</p>
+        <a class="more" href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Open looking glass →</a>
+      </div>
+      <div class="fcard">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Status page</h3>
+        <p>Live, per-location health for compute, storage and network. We post incidents and maintenance windows here before you have to ask.</p>
+        <a class="more" href="https://wiki.buyvm.net/" target="_blank" rel="noopener">View status →</a>
+      </div>
+      <div class="fcard">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 12 16 8"/><path d="M12 12h.01"/></svg></div>
+        <h3>Speed test</h3>
+        <p>Per-location test files and a speed test endpoint, so you can benchmark throughput from your corner of the world before you commit.</p>
+        <a class="more" href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Run a speed test →</a>
+      </div>
+      <div class="fcard">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+        <h3>PeeringDB</h3>
+        <p>Our public peering profile — ASN, facilities, exchange points and contact details. Find us at an IX and let's shake hands on a route.</p>
+        <a class="more" href="https://www.peeringdb.com/" target="_blank" rel="noopener">View on PeeringDB →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATBAND -->
+<section class="s alt">
+  <div class="wrap">
+    <div class="statband">
+      <div class="cell">
+        <div class="v">4</div>
+        <div class="l">Regions worldwide</div>
+      </div>
+      <div class="cell">
+        <div class="v">3</div>
+        <div class="l">Anycast PoPs</div>
+      </div>
+      <div class="cell">
+        <div class="v">1<small>Gbps</small></div>
+        <div class="l">Unmetered per slice</div>
+      </div>
+      <div class="cell">
+        <div class="v">3.5<small>Tbps+</small></div>
+        <div class="l">DDoS filtering capacity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANYCAST -->
+<section class="s alt">
+  <div class="wrap">
+    <div class="split flip">
+      <div class="split-text">
+        <div class="label">Anycast</div>
+        <h2>Announce once. <em>Serve everywhere.</em></h2>
+        <p>Anycast spans our three core PoPs — Las Vegas, New York and Luxembourg — so a single address answers from whichever site is closest to each visitor. Run your own miniature CDN or a globally resilient DNS without juggling a record per region. The full story lives on the <a href="anycast.html">Anycast page</a>.</p>
+        <ul>
+          <li><span class="ck">✓</span><span>One IP announced from <b>three continents</b> — visitors hit the nearest PoP automatically.</span></li>
+          <li><span class="ck">✓</span><span><b>Built-in failover</b> — if a PoP drops, traffic reroutes to the next closest with no DNS changes.</span></li>
+          <li><span class="ck">✓</span><span><b>Free for VPS customers</b> — turn any slice into a global edge node.</span></li>
+        </ul>
+        <div class="actions">
+          <a href="anycast.html" class="btn green lg">Explore Anycast →</a>
+        </div>
+      </div>
+      <div class="split-media">
+        <div class="cmp-wrap">
+          <table class="cmp">
+            <thead>
+              <tr>
+                <th>PoP</th>
+                <th>Continent</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="spec"><b>LAS</b></td>
+                <td>North America (West)</td>
+                <td>Anycast core</td>
+              </tr>
+              <tr>
+                <td class="spec"><b>NYC</b></td>
+                <td>North America (East)</td>
+                <td>Anycast core</td>
+              </tr>
+              <tr>
+                <td class="spec"><b>LUX</b></td>
+                <td>Europe</td>
+                <td>Anycast core</td>
+              </tr>
+              <tr>
+                <td class="spec"><b>MIA</b></td>
+                <td>North America (SE)</td>
+                <td>Storage &amp; edge</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="s">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— FAQ</div>
+      <h2>Network questions, <em>answered.</em></h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Where are your datacenters? <span class="plus"></span></summary>
+        <div class="ans">Four carrier-neutral facilities: Las Vegas, Nevada for the US West; New York (Piscataway, New Jersey) for the US East; Luxembourg (Roost) for Europe; and Miami, Florida for storage and edge. The three core sites — Las Vegas, New York and Luxembourg — also act as our anycast PoPs.</div>
+      </details>
+      <details>
+        <summary>Do you offer IPv6? <span class="plus"></span></summary>
+        <div class="ans">Yes, on every slice, dual-stack by default. We were early adopters of IPv6 long before most of the industry took it seriously, so you get a proper allocation alongside your IPv4 from day one — no waitlist, no surcharge.</div>
+      </details>
+      <details>
+        <summary>Is there a looking glass or status page? <span class="plus"></span></summary>
+        <div class="ans">Both. Use the Looking Glass to run ping, traceroute and BGP lookups from each PoP, and the live status page to track per-location health and any maintenance. There's also a speed test with per-location test files, plus our public PeeringDB profile if you want to peer with us.</div>
+      </details>
+      <details>
+        <summary>What bandwidth do I get? <span class="plus"></span></summary>
+        <div class="ans">1 Gbps unmetered on every standard slice — no transfer caps and no overage bills. High-volume slices run at 1000 Mbps with unlimited transfer. Whatever you're pushing, the meter isn't running.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Pick a region. <em>Go live.</em></h2>
+    <p>Same panel, same price, same unmetered pipe — just choose the corner of the planet closest to your users and deploy. Or kick the tyres with the network tools first.</p>
+    <div class="actions">
+      <a href="kvm-slices.html" class="btn green lg">Deploy a slice →</a>
+      <a href="https://wiki.buyvm.net/" class="btn outline lg" target="_blank" rel="noopener">Open network tools</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="brand">
+        <a href="index.html" class="logo"><span class="glyph">B</span> BuyVM</a>
+        <p>Affordable hosting with a touch of insanity. A division of Cloudzy, running KVM VPS since 2010 — Las Vegas, New York, Luxembourg &amp; Miami.</p>
+        <div class="social">
+          <a href="https://twitter.com/frantechca" target="_blank" rel="noopener" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.2h3.6l-7.9 9 9.2 12.2h-7.2l-5.6-7.4-6.5 7.4H1.3l8.4-9.6L.9 1.2h7.4l5.1 6.7zM17.6 20.1h2L6.5 3.2h-2z"/></svg></a>
+          <a href="https://facebook.com/frantech/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.6 4.5-4.6 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.5 0-1.9.9-1.9 1.8V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/></svg></a>
+          <a href="https://www.trustpilot.com/review/buyvm.net" target="_blank" rel="noopener" aria-label="Trustpilot"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12 1.5 3.1 6.9 7.4.7-5.6 5 1.6 7.4L12 18l-6.5 3.5 1.6-7.4-5.6-5 7.4-.7z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Products</h5>
+        <ul><li><a href="kvm-slices.html">KVM Slices</a></li><li><a href="block-storage.html">Block Storage</a></li><li><a href="ddos-protection.html">DDoS Protection</a></li><li><a href="anycast.html">Anycast</a></li></ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul><li><a href="about.html">About us</a></li><li><a href="network.html">Network &amp; datacenters</a></li><li><a href="features.html">Features</a></li><li><a href="https://www.trustpilot.com/review/buyvm.net" target="_blank" rel="noopener">Reviews</a></li></ul>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <ul><li><a href="https://my.frantech.ca/clientarea.php" target="_blank" rel="noopener">Client area</a></li><li><a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Wiki &amp; docs</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://manage.buyvm.net/login" target="_blank" rel="noopener">Stallion login</a></li></ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="terms.html">Terms of service</a></li><li><a href="acceptable-use.html">Acceptable use</a></li><li><a href="privacy.html">Privacy policy</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span class="status"><span class="dot"></span> All systems operational · <span data-year>2010–2026</span> Frantech Solutions</span>
+      <span class="links"><a href="explorations/index.html">Design explorations</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>
