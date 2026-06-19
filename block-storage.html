@@ -9,10 +9,55 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
+<link rel="canonical" href="https://buyvm.net/block-storage.html" />
+<meta name="theme-color" content="#282B30" />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="BuyVM" />
+<meta property="og:title" content="Block Storage Slabs — Up to 10 TB from $1.25/256GB | BuyVM" />
+<meta property="og:description" content="Attach up to 10 TB of block storage to any KVM Slice for $1.25 per 256 GB — that's $5/TB. 40 Gbit+ InfiniBand RDMA fabric, NVMe cache, hot migration, no downtime. Up to 95% cheaper than the big vendors." />
+<meta property="og:url" content="https://buyvm.net/block-storage.html" />
+<meta property="og:image" content="https://buyvm.net/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@frantechca" />
+<meta name="twitter:title" content="Block Storage Slabs — Up to 10 TB from $1.25/256GB | BuyVM" />
+<meta name="twitter:description" content="Attach up to 10 TB of block storage to any KVM Slice for $1.25 per 256 GB — that's $5/TB. 40 Gbit+ InfiniBand RDMA fabric, NVMe cache, hot migration, no downtime. Up to 95% cheaper than the big vendors." />
+<meta name="twitter:image" content="https://buyvm.net/assets/og.png" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://buyvm.net/#org",
+      "name": "BuyVM",
+      "alternateName": "Frantech Solutions",
+      "url": "https://buyvm.net/",
+      "logo": "https://buyvm.net/assets/og.png",
+      "foundingDate": "2010",
+      "parentOrganization": { "@type": "Organization", "name": "Cloudzy", "url": "https://cloudzy.com/" },
+      "sameAs": ["https://twitter.com/frantechca","https://facebook.com/frantech/","https://www.trustpilot.com/review/buyvm.net"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://buyvm.net/#website",
+      "url": "https://buyvm.net/",
+      "name": "BuyVM",
+      "publisher": { "@id": "https://buyvm.net/#org" }
+    },
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://buyvm.net/"},{"@type":"ListItem","position":2,"name":"Products","item":"https://buyvm.net/#products"},{"@type":"ListItem","position":3,"name":"Block Storage","item":"https://buyvm.net/block-storage.html"}]},
+    {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What's the minimum size, and how is it billed?","acceptedAnswer":{"@type":"Answer","text":"Storage is sold in 256 GB increments at $1.25 each, so the smallest slab is 256 GB for $1.25/mo. Add as many blocks as you like — 1 TB lands at $5/mo, and a single slab tops out at 10 TB ($50/mo). You can run up to 8 slabs on one server for 80 TB total."}},{"@type":"Question","name":"Do I need a VPS to use Block Storage?","acceptedAnswer":{"@type":"Answer","text":"Yes — a slab attaches to a KVM Slice, so you'll need at least one slice in the same facility. The slice can be anything from our $2 starter upward; pick the location first, then add storage to match."}},{"@type":"Question","name":"Can I resize a slab later?","acceptedAnswer":{"@type":"Answer","text":"Upgrades happen live — add capacity from the Stallion panel and your block device grows without downtime. Downgrades aren't automatic: you'll need to move your data onto a smaller slab manually, which is the safe way to shrink a filesystem anyway."}},{"@type":"Question","name":"Which locations offer Block Storage?","acceptedAnswer":{"@type":"Answer","text":"Las Vegas, New York, Miami and Luxembourg. A slab and the slice it attaches to must live in the same facility, so deploy both in the region closest to your users."}},{"@type":"Question","name":"How does the price compare to the big clouds?","acceptedAnswer":{"@type":"Answer","text":"The major block-storage vendors charge roughly $90 to $131.50 per TB per month. Ours is $5 per TB — up to 95% less — and it runs on a 40 Gbit+ RDMA fabric with NVMe cache that benchmarks faster than the name-brand offerings. Affordable hosting with a touch of insanity, as usual."}}]}
+  ]
+}
+</script>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="wrap">
     <div class="row">
       <a href="index.html" class="logo"><span class="glyph">B</span> BuyVM</a>
@@ -266,12 +311,37 @@
   </div>
 </section>
 
+
+<!-- CLOUDZY BAND (injected) -->
+<section class="cz-band" id="cloudzy">
+  <div class="wrap">
+    <div class="cz-inner">
+      <div>
+        <div class="cz-eyebrow"><span class="dot"></span> BuyVM is part of Cloudzy</div>
+        <h2>Sold out here? <em>Spin it up on Cloudzy</em> in 60 seconds.</h2>
+        <p>BuyVM's slices are famously cheap &mdash; and famously <b>sold out</b>. When stock runs dry, our parent company <b>Cloudzy</b> has you covered: instant deployment across <b>13 global regions</b>, AMD EPYC + NVMe, and a 14-day money-back guarantee.</p>
+        <div class="cz-actions">
+          <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=band&utm_campaign=parent" class="btn cz lg" target="_blank" rel="noopener"><span class="cz-logo"><span class="mk">C</span></span> Explore Cloudzy &rarr;</a>
+          <a href="https://cloudzy.com/vps-hosting?utm_source=buyvm&utm_medium=band&utm_campaign=vps" class="btn cz-ghost lg" target="_blank" rel="noopener">See Cloudzy VPS plans</a>
+        </div>
+      </div>
+      <div class="cz-stats">
+        <div class="cz-stat"><div class="v"><span data-count="13">13</span></div><div class="l">global regions</div></div>
+        <div class="cz-stat"><div class="v"><span data-count="60">60</span><small>s</small></div><div class="l">to deploy</div></div>
+        <div class="cz-stat"><div class="v">99.95<small>%</small></div><div class="l">uptime SLA</div></div>
+        <div class="cz-stat"><div class="v">$2.48<small>/mo</small></div><div class="l">VPS from</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
       <div class="brand">
         <a href="index.html" class="logo"><span class="glyph">B</span> BuyVM</a>
-        <p>Affordable hosting with a touch of insanity. A division of Cloudzy, running KVM VPS since 2010 — Las Vegas, New York, Luxembourg &amp; Miami.</p>
+        <p>Affordable hosting with a touch of insanity. A division of <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer_text&utm_campaign=parent" target="_blank" rel="noopener" style="color:var(--ink);font-weight:600">Cloudzy</a>, running KVM VPS since 2010 — Las Vegas, New York, Luxembourg &amp; Miami.</p>
+        <div class="foot-cz" style="margin-bottom:18px"><span class="mk">C</span> A <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer&utm_campaign=parent" target="_blank" rel="noopener">Cloudzy</a> company</div>
         <div class="social">
           <a href="https://twitter.com/frantechca" target="_blank" rel="noopener" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.2h3.6l-7.9 9 9.2 12.2h-7.2l-5.6-7.4-6.5 7.4H1.3l8.4-9.6L.9 1.2h7.4l5.1 6.7zM17.6 20.1h2L6.5 3.2h-2z"/></svg></a>
           <a href="https://facebook.com/frantech/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.6 4.5-4.6 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.5 0-1.9.9-1.9 1.8V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/></svg></a>
@@ -296,7 +366,7 @@
       </div>
     </div>
     <div class="foot-bot">
-      <span class="status"><span class="dot"></span> All systems operational · <span data-year>2010–2026</span> Frantech Solutions</span>
+      <span class="status"><span class="dot"></span> All systems operational · <span data-year>2010–2026</span> Frantech Solutions, a Cloudzy company</span>
       <span class="links"><a href="explorations/index.html">Design explorations</a></span>
     </div>
   </div>

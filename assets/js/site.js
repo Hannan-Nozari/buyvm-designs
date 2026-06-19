@@ -22,6 +22,24 @@
     el.textContent = '2010–2026';
   });
 
+  /* ---- Sticky-nav scroll state + scroll progress bar ---- */
+  var header = document.getElementById('siteHeader') || document.querySelector('.site-header');
+  var progress = document.getElementById('scrollProgress');
+  var ticking = false;
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    if(header) header.classList.toggle('scrolled', y > 12);
+    if(progress){
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(onScroll); ticking = true; }
+  }, {passive:true});
+  onScroll();
+
   var prefersReduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if(prefersReduced || !('IntersectionObserver' in window)){

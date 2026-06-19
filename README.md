@@ -36,6 +36,29 @@ Products/specs match the live buyvm.net at build time: Slice 512 ($2/mo) → 409
 
 Outbound links point at the real systems: `my.frantech.ca` (billing/cart), `manage.buyvm.net` (Stallion), `wiki.buyvm.net` (docs).
 
+## Cloudzy integration + the "sold-out funnel"
+
+BuyVM sells out often, so the site is built to convert that overflow demand into Cloudzy (the parent) signups:
+
+- **Promo bar** (every page): "Sold out? Deploy instantly on Cloudzy →"
+- **Hero badge**: "A Cloudzy company".
+- **Sold-out bar** under the hero + a full **Cloudzy cross-promo band** on every page (instant deploy, 13 regions, 99.95% SLA, from $2.48/mo).
+- **Footer**: "A Cloudzy company" link + Cloudzy in the company nav.
+- Every Cloudzy link carries `utm_source=buyvm` UTMs so the referral traffic is measurable in Cloudzy's analytics.
+
+## SEO + GEO
+
+Built to pass BuyVM's search authority to Cloudzy and to be cited by AI answer engines:
+
+- **Per-page SEO**: unique title/description, `canonical`, Open Graph + Twitter cards, `theme-color`, favicon, `robots`.
+- **Structured data (JSON-LD)** on every page: `Organization` (with `parentOrganization: Cloudzy`), `WebSite`, `BreadcrumbList`, and auto-generated `FAQPage` from each page's FAQ. Home adds `Product`/`AggregateOffer` + `AggregateRating`.
+- **`sitemap.xml`**, **`robots.txt`** (explicitly allows GPTBot, PerplexityBot, ClaudeBot, Google-Extended, etc.).
+- **`llms.txt`** — a structured markdown brief for AI engines that states the BuyVM↔Cloudzy relationship and the "sold out → use Cloudzy" fact as clean, citable statements, with links to cloudzy.com.
+- **`assets/og.png`** (1200×630) — social share card, rasterized from `og.svg`.
+- 5 static Cloudzy links per sub-page (9 on home) for link-authority flow to the parent.
+
+> All SEO URLs point at the production domain `https://buyvm.net`. The IP preview is staging; when you deploy to the real domain everything resolves correctly.
+
 ## Local preview
 
 ```bash
