@@ -3,59 +3,60 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Block Storage Slabs — Up to 10 TB from $1.25/256GB | BuyVM</title>
-<meta name="description" content="Attach up to 10 TB of block storage to any KVM Slice for $1.25 per 256 GB — that's $5/TB. 40 Gbit+ InfiniBand RDMA fabric, NVMe cache, hot migration, no downtime. Up to 95% cheaper than the big vendors." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
+<title>Block Storage Slabs — High-performance volumes from $1.25/256GB | BuyVM</title>
+<meta name="description" content="BuyVM Block Storage Slabs — in-house block storage over a 40 Gbit+ InfiniBand RDMA fabric with NVMe caching. $5/TB/mo, up to 10 TB per slab, hot-attach to a KVM Slice with no reboots. About 95% cheaper than OVH, Vultr and Amazon EBS." />
 <link rel="canonical" href="https://buyvm.net/block-storage.html" />
 <meta name="theme-color" content="#282B30" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="BuyVM" />
-<meta property="og:title" content="Block Storage Slabs — Up to 10 TB from $1.25/256GB | BuyVM" />
-<meta property="og:description" content="Attach up to 10 TB of block storage to any KVM Slice for $1.25 per 256 GB — that's $5/TB. 40 Gbit+ InfiniBand RDMA fabric, NVMe cache, hot migration, no downtime. Up to 95% cheaper than the big vendors." />
+<meta property="og:title" content="Block Storage Slabs — High-performance volumes from $1.25/256GB | BuyVM" />
+<meta property="og:description" content="In-house block storage over a 40 Gbit+ InfiniBand RDMA fabric with NVMe caching. $5/TB/mo, up to 10 TB, hot-attach with no reboots — about 95% cheaper than OVH, Vultr and Amazon EBS." />
 <meta property="og:url" content="https://buyvm.net/block-storage.html" />
 <meta property="og:image" content="https://buyvm.net/assets/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@frantechca" />
-<meta name="twitter:title" content="Block Storage Slabs — Up to 10 TB from $1.25/256GB | BuyVM" />
-<meta name="twitter:description" content="Attach up to 10 TB of block storage to any KVM Slice for $1.25 per 256 GB — that's $5/TB. 40 Gbit+ InfiniBand RDMA fabric, NVMe cache, hot migration, no downtime. Up to 95% cheaper than the big vendors." />
+<meta name="twitter:title" content="Block Storage Slabs — High-performance volumes from $1.25/256GB | BuyVM" />
+<meta name="twitter:description" content="In-house block storage over a 40 Gbit+ InfiniBand RDMA fabric. $5/TB/mo, up to 10 TB, hot-attach with no reboots — about 95% cheaper than the big vendors." />
 <meta name="twitter:image" content="https://buyvm.net/assets/og.png" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://buyvm.net/#org",
-      "name": "BuyVM",
-      "alternateName": "Frantech Solutions",
-      "url": "https://buyvm.net/",
-      "logo": "https://buyvm.net/assets/og.png",
-      "foundingDate": "2010",
-      "parentOrganization": { "@type": "Organization", "name": "Cloudzy", "url": "https://cloudzy.com/" },
-      "sameAs": ["https://twitter.com/frantechca","https://facebook.com/frantech/","https://www.trustpilot.com/review/buyvm.net"]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://buyvm.net/#website",
-      "url": "https://buyvm.net/",
-      "name": "BuyVM",
-      "publisher": { "@id": "https://buyvm.net/#org" }
-    },
-    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://buyvm.net/"},{"@type":"ListItem","position":2,"name":"Products","item":"https://buyvm.net/#products"},{"@type":"ListItem","position":3,"name":"Block Storage","item":"https://buyvm.net/block-storage.html"}]},
-    {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What's the minimum size, and how is it billed?","acceptedAnswer":{"@type":"Answer","text":"Storage is sold in 256 GB increments at $1.25 each, so the smallest slab is 256 GB for $1.25/mo. Add as many blocks as you like — 1 TB lands at $5/mo, and a single slab tops out at 10 TB ($50/mo). You can run up to 8 slabs on one server for 80 TB total."}},{"@type":"Question","name":"Do I need a VPS to use Block Storage?","acceptedAnswer":{"@type":"Answer","text":"Yes — a slab attaches to a KVM Slice, so you'll need at least one slice in the same facility. The slice can be anything from our $2 starter upward; pick the location first, then add storage to match."}},{"@type":"Question","name":"Can I resize a slab later?","acceptedAnswer":{"@type":"Answer","text":"Upgrades happen live — add capacity from the Stallion panel and your block device grows without downtime. Downgrades aren't automatic: you'll need to move your data onto a smaller slab manually, which is the safe way to shrink a filesystem anyway."}},{"@type":"Question","name":"Which locations offer Block Storage?","acceptedAnswer":{"@type":"Answer","text":"Las Vegas, New York, Miami and Luxembourg. A slab and the slice it attaches to must live in the same facility, so deploy both in the region closest to your users."}},{"@type":"Question","name":"How does the price compare to the big clouds?","acceptedAnswer":{"@type":"Answer","text":"The major block-storage vendors charge roughly $90 to $131.50 per TB per month. Ours is $5 per TB — up to 95% less — and it runs on a 40 Gbit+ RDMA fabric with NVMe cache that benchmarks faster than the name-brand offerings. Affordable hosting with a touch of insanity, as usual."}}]}
+    { "@type": "Organization", "@id": "https://buyvm.net/#org", "name": "BuyVM", "alternateName": "Frantech Solutions", "url": "https://buyvm.net/", "logo": "https://buyvm.net/assets/og.png", "foundingDate": "2010", "parentOrganization": { "@type": "Organization", "name": "Cloudzy", "url": "https://cloudzy.com/" }, "sameAs": ["https://twitter.com/frantechca","https://facebook.com/frantech/","https://www.trustpilot.com/review/buyvm.net"] },
+    { "@type": "WebSite", "@id": "https://buyvm.net/#website", "url": "https://buyvm.net/", "name": "BuyVM", "publisher": { "@id": "https://buyvm.net/#org" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://buyvm.net/"},
+      {"@type":"ListItem","position":2,"name":"Products","item":"https://buyvm.net/#products"},
+      {"@type":"ListItem","position":3,"name":"Block Storage Slabs","item":"https://buyvm.net/block-storage.html"}
+    ]},
+    { "@type": "Product", "name": "BuyVM Block Storage Slab", "description": "In-house high-performance block storage delivered over a 40 Gbit+ InfiniBand RDMA fabric with NVMe read/write caching. Sold in 256 GB chunks at $1.25/mo, up to 10 TB per slab and up to 8 slabs per server. Hot-attach to a Dedicated KVM Slice in the same facility with no downtime or reboots.", "brand": { "@id": "https://buyvm.net/#org" }, "offers": { "@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "1.25", "highPrice": "50.00", "offerCount": "4" } },
+    { "@type": "FAQPage", "mainEntity": [
+      {"@type":"Question","name":"Can I buy just a Block Storage Slab?","acceptedAnswer":{"@type":"Answer","text":"No — a Slab must be paired with a Dedicated KVM Slice in the same facility to be used. There's no standalone option today. We may add an Object Store product down the line, but not at this time."}},
+      {"@type":"Question","name":"How much do Block Storage Slabs cost?","acceptedAnswer":{"@type":"Answer","text":"Slabs are sold in 256 GB chunks at $1.25/month. That works out to $5/month for 1 TB and just $50/month for a full 10 TB Slab."}},
+      {"@type":"Question","name":"How large can a Slab be, and how many can I attach?","acceptedAnswer":{"@type":"Answer","text":"Each Slab can be up to 10 TB in size, and you can attach up to 8 Slabs to a single Dedicated KVM Slice — up to 80 TB on one server."}},
+      {"@type":"Question","name":"Which locations can I buy Block Storage Slabs in?","acceptedAnswer":{"@type":"Answer","text":"Slabs are available in Las Vegas, Nevada; New York, New York; Miami, Florida; and Roost, Luxembourg. Your Slab and its KVM Slice must live in the same facility."}},
+      {"@type":"Question","name":"Can I resize my Slab later?","acceptedAnswer":{"@type":"Answer","text":"You can upgrade a Slab up to the 10 TB maximum at any time. Downgrading isn't possible — you'd order a new, smaller Slab and migrate your data across yourself."}},
+      {"@type":"Question","name":"Can I move my Slab between servers?","acceptedAnswer":{"@type":"Answer","text":"Yes. From the Stallion control panel you can migrate a Slab between KVM Slices in the same facility. Migrations are entirely hot — no need to power off or reboot the server for the volume to reattach."}}
+    ]}
   ]
 }
 </script>
 </head>
 <body>
+
 <div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="promo">
+  Block Storage from $1.25 / 256 GB. ❄️ Sold out? <a href="https://cloudzy.com/pricing?utm_source=buyvm&utm_medium=banner&utm_campaign=out_of_stock_banner" target="_blank" rel="noopener">Deploy instantly on Cloudzy →</a>
+</div>
 
 <header class="site-header" id="siteHeader">
   <div class="wrap">
@@ -65,37 +66,39 @@
         <div class="dd">
           <button>Products <span class="chev">▾</span></button>
           <div class="dd-menu">
-            <a href="kvm-slices.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span><span><span class="t">KVM Slices</span><span class="d">Full-root virtual servers from $2/mo</span></span></a>
+            <a href="kvm-slices.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span><span><span class="t">Dedicated KVM Slices</span><span class="d">Full-root virtual servers from $2/mo</span></span></a>
+            <a href="storage-vps.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></span><span><span class="t">Storage VPS</span><span class="d">Big-disk KVM up to 4 TB, free Windows</span></span></a>
             <a href="block-storage.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span><span class="t">Block Storage Slabs</span><span class="d">Up to 10 TB from $1.25/256GB</span></span></a>
-            <a href="ddos-protection.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></span><span><span class="t">DDoS Protection</span><span class="d">3.5 Tbps+ filtering, $3/mo per IP</span></span></a>
             <a href="anycast.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span><span class="t">Anycast Network</span><span class="d">Build a global CDN — free for VPS</span></span></a>
           </div>
         </div>
+        <a href="ddos-protection.html">DDoS Protection</a>
         <a href="features.html">Features</a>
         <a href="network.html">Network</a>
         <a href="about.html">About</a>
         <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
       </nav>
       <div class="nav-cta">
-        <a href="https://my.frantech.ca/clientarea.php" class="btn ghost" target="_blank" rel="noopener">Sign in</a>
-        <a href="#plans" class="btn green">Deploy →</a>
+        <a href="https://my.frantech.ca/clientarea.php" class="btn ghost" target="_blank" rel="noopener">Client area</a>
+        <a href="#pricing" class="btn green">Order now →</a>
         <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
   </div>
   <div class="mobile-nav">
     <div class="mwrap">
-      <a href="kvm-slices.html">KVM Slices</a>
-      <a href="block-storage.html">Block Storage</a>
+      <a href="kvm-slices.html">Dedicated KVM Slices</a>
+      <a href="storage-vps.html">Storage VPS</a>
+      <a href="block-storage.html">Block Storage Slabs</a>
+      <a href="anycast.html">Anycast VPS</a>
       <a href="ddos-protection.html">DDoS Protection</a>
-      <a href="anycast.html">Anycast</a>
       <a href="features.html">Features</a>
       <a href="network.html">Network</a>
       <a href="about.html">About</a>
       <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
       <div class="mcta">
-        <a href="https://my.frantech.ca/clientarea.php" class="btn outline" target="_blank" rel="noopener">Sign in</a>
-        <a href="#plans" class="btn green">Deploy →</a>
+        <a href="https://my.frantech.ca/clientarea.php" class="btn outline" target="_blank" rel="noopener">Client area</a>
+        <a href="#pricing" class="btn green">Order now →</a>
       </div>
     </div>
   </div>
@@ -103,9 +106,9 @@
 
 <section class="page-hero">
   <div class="wrap">
-    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span>Products<span class="sep">/</span>Block Storage</div>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span>Products<span class="sep">/</span>Block Storage Slabs</div>
     <h1>Block storage that costs <em>95% less.</em></h1>
-    <p>Bolt up to 10 TB onto any KVM Slice for $1.25 per 256 GB — $5 a terabyte, billed monthly. It rides a 40 Gbit+ InfiniBand RDMA fabric with NVMe cache, so it feels local. The big clouds charge that much for a rounding error.</p>
+    <p>Developed entirely in-house, BuyVM's Block Storage Slabs pair best-in-class performance with market-leading pricing. Multiple cache layers and large NVMe buffers, all served over a 40 Gbit+ InfiniBand RDMA fabric, for near locally-attached speed at $5 per terabyte.</p>
     <div class="actions">
       <a href="#pricing" class="btn green lg">See pricing →</a>
       <a href="#how" class="btn outline lg">How it works</a>
@@ -113,27 +116,13 @@
   </div>
 </section>
 
-<!-- STATBAND -->
-<section class="s">
+<!-- STAT BAND -->
+<section class="statband">
   <div class="wrap">
-    <div class="statband">
-      <div class="cell">
-        <div class="v">$<span data-count="1.25" data-dec="2">1.25</span><small>/256 GB</small></div>
-        <div class="l">Pay-as-you-grow increments</div>
-      </div>
-      <div class="cell">
-        <div class="v"><span data-count="10">10</span><small>TB max / slab</small></div>
-        <div class="l">Up to 8 slabs per server</div>
-      </div>
-      <div class="cell">
-        <div class="v"><span data-count="40">40</span><small>Gbit RDMA</small></div>
-        <div class="l">InfiniBand storage fabric</div>
-      </div>
-      <div class="cell">
-        <div class="v"><span data-count="95">95</span><small>% cheaper</small></div>
-        <div class="l">Versus the major vendors</div>
-      </div>
-    </div>
+    <div class="cell"><div class="v">$1.25</div><div class="l">per 256 GB / month</div></div>
+    <div class="cell"><div class="v">10<small> TB</small></div><div class="l">max per slab</div></div>
+    <div class="cell"><div class="v">40<small> Gbit</small></div><div class="l">InfiniBand RDMA fabric</div></div>
+    <div class="cell"><div class="v">95<small>%</small></div><div class="l">cheaper than the big vendors</div></div>
   </div>
 </section>
 
@@ -141,134 +130,164 @@
 <section class="s" id="pricing">
   <div class="wrap">
     <div class="sec-head">
-      <div class="label">— Pricing</div>
-      <h2>Terabytes for <em>the price of a coffee.</em></h2>
-      <p>Storage is sold in 256 GB blocks at $1.25 each. Start with a single block, or fill a whole 10 TB slab — same flat rate, no tiering games, no per-IOP surcharge. Here's how the round numbers shake out.</p>
+      <div class="label">— Hungry for storage?</div>
+      <h2>One price. <em>Per terabyte. Every month.</em></h2>
+      <p>Slabs are sold in 256 GB increments at $1.25/mo — that's a flat $5 per usable terabyte, with no per-IOPS surcharges and no surprise egress bills. Pick a size, attach it to your slice, and grow whenever you need to.</p>
     </div>
 
     <div class="plan-grid cols-3">
       <div class="pcard">
-        <h3>1 TB</h3>
-        <div class="role">Backups, media, mail spools</div>
+        <h3>1 TB Slab</h3>
+        <div class="role">Backups, media, app data</div>
         <div class="priceline"><span class="num">$5</span><span class="per">/mo</span></div>
-        <div class="save">Just $1.25 per 256 GB</div>
+        <div class="save">4 × 256 GB chunks</div>
         <ul>
           <li><b>1 TB</b>&nbsp;usable capacity</li>
-          <li><b>$1.25</b>&nbsp;per 256 GB block</li>
-          <li>Attaches to <b>any slice</b> in-facility</li>
-          <li><b>Hot-migrate</b> between servers</li>
-          <li>NVMe read/write cache</li>
+          <li><b>NVMe-cached</b>&nbsp;read &amp; write</li>
+          <li><b>40 Gbit+</b>&nbsp;RDMA fabric</li>
+          <li>Hot-attach, no reboots</li>
+          <li>Managed in Stallion</li>
         </ul>
-        <a href="https://my.frantech.ca/cart.php" class="btn outline full" target="_blank" rel="noopener">Deploy →</a>
+        <a href="https://my.frantech.ca/cart.php" class="btn outline full" target="_blank" rel="noopener">Order now →</a>
       </div>
       <div class="pcard featured">
-        <h3>5 TB</h3>
-        <div class="role">Object stores, Nextcloud, archives</div>
+        <h3>5 TB Slab</h3>
+        <div class="role">Databases, large datasets</div>
         <div class="priceline"><span class="num">$25</span><span class="per">/mo</span></div>
-        <div class="save">Our most popular slab</div>
+        <div class="save">Most popular size</div>
         <ul>
           <li><b>5 TB</b>&nbsp;usable capacity</li>
-          <li><b>$1.25</b>&nbsp;per 256 GB block</li>
-          <li>Attaches to <b>any slice</b> in-facility</li>
-          <li><b>Hot-migrate</b> between servers</li>
-          <li>NVMe read/write cache</li>
+          <li><b>NVMe-cached</b>&nbsp;read &amp; write</li>
+          <li><b>40 Gbit+</b>&nbsp;RDMA fabric</li>
+          <li>Hot-migrate between slices</li>
+          <li>Managed in Stallion</li>
         </ul>
-        <a href="https://my.frantech.ca/cart.php" class="btn green full" target="_blank" rel="noopener">Deploy →</a>
+        <a href="https://my.frantech.ca/cart.php" class="btn green full" target="_blank" rel="noopener">Order now →</a>
       </div>
       <div class="pcard">
-        <h3>10 TB</h3>
-        <div class="role">Big data, video, seedboxes</div>
+        <h3>10 TB Slab</h3>
+        <div class="role">Archives, the whole library</div>
         <div class="priceline"><span class="num">$50</span><span class="per">/mo</span></div>
-        <div class="save">Maximum per slab</div>
+        <div class="save">Maximum slab size</div>
         <ul>
           <li><b>10 TB</b>&nbsp;usable capacity</li>
-          <li><b>$1.25</b>&nbsp;per 256 GB block</li>
-          <li>Attaches to <b>any slice</b> in-facility</li>
-          <li><b>Hot-migrate</b> between servers</li>
-          <li>NVMe read/write cache</li>
+          <li><b>NVMe-cached</b>&nbsp;read &amp; write</li>
+          <li><b>40 Gbit+</b>&nbsp;RDMA fabric</li>
+          <li>Stack up to 8 per server</li>
+          <li>Managed in Stallion</li>
         </ul>
-        <a href="https://my.frantech.ca/cart.php" class="btn outline full" target="_blank" rel="noopener">Deploy →</a>
+        <a href="https://my.frantech.ca/cart.php" class="btn outline full" target="_blank" rel="noopener">Order now →</a>
       </div>
     </div>
-    <p class="center" style="margin-top:24px;color:var(--ink-3);font-size:14px">Billed per 256 GB block at $1.25 each — mix any size up to 10 TB. Storage needs a <a href="kvm-slices.html" style="color:var(--green);font-weight:600">KVM Slice</a> in the same facility to attach to. Stack up to 8 slabs on one server for 80 TB total.</p>
+    <p class="center" style="margin-top:20px;color:var(--ink-3);font-size:13.5px">Sold in 256 GB increments at $1.25/mo. A Slab needs a Dedicated KVM Slice in the same facility to attach to.</p>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section class="s alt" id="how">
   <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— How it works</div>
+      <h2>Spin up a volume. <em>Attach it hot.</em></h2>
+      <p>Create a Slab in the Stallion control panel, attach it to a KVM Slice in the same facility, and it appears as a block device — no downtime, no reboots. Detach, reattach and migrate it between slices the same way, entirely live.</p>
+    </div>
+
     <div class="split">
       <div class="split-text">
-        <div class="label">How it works</div>
-        <h2>Attach in a click. <em>Migrate without downtime.</em></h2>
-        <p>Create a slab in the Stallion panel, point it at a slice in the same datacenter, and it shows up as a block device in seconds. Need to move it to a beefier server? Hot migration shuffles it across the floor with no reboot and no power-off.</p>
+        <div class="label">— Stallion, your way</div>
+        <h2>From zero to mounted in one command's worth of effort.</h2>
+        <p>Block Storage Slabs are first-class citizens in our Stallion control panel. Provision capacity, attach it to the slice that needs it, and move it elsewhere later — all without taking a server offline.</p>
         <ul>
-          <li><span class="ck">✓</span><span><b>Same-facility attach</b> — bind a slab to any KVM Slice in the same location instantly.</span></li>
-          <li><span class="ck">✓</span><span><b>Hot migration</b> between servers in the same datacenter — no reboot, no power-off.</span></li>
-          <li><span class="ck">✓</span><span><b>Live upgrades</b> — grow capacity on the fly; downgrades just need a manual data transfer.</span></li>
-          <li><span class="ck">✓</span><span><b>Stallion-managed</b> — provision, resize and detach from the panel or the API.</span></li>
+          <li><span class="ck">✓</span> Provision in 256 GB increments, up to 10 TB</li>
+          <li><span class="ck">✓</span> Attach and detach without a reboot</li>
+          <li><span class="ck">✓</span> Hot-migrate between slices in the same facility</li>
+          <li><span class="ck">✓</span> Stack up to 8 Slabs on a single server</li>
         </ul>
       </div>
       <div class="split-media">
         <div class="term">
-          <div class="bar"><div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div><div class="title">stallion — block storage</div></div>
-          <div class="body"><span class="prompt">stallion volume create</span> <span class="flag">--size</span> <span class="arg">1TB</span> <span class="flag">--region</span> <span class="arg">lux</span>
-<span class="ok">✓</span> Provisioned 1 TB slab on 40 Gbit RDMA fabric
-<span class="ok">✓</span> NVMe read/write cache warmed
-<span class="prompt">stallion volume attach</span> <span class="flag">--slice</span> <span class="arg">mastodon-lux</span> <span class="flag">--dev</span> <span class="arg">/dev/vdb</span>
-<span class="ok">✓</span> Attached to slice <span class="ip">mastodon-lux</span> · zero downtime
-<span class="ok">✓</span> Block device <span class="ip">/dev/vdb</span> ready — $5/mo
-<span class="prompt">df -h /dev/vdb</span><span class="caret"></span></div>
+          <span class="c1">$</span> stallion volume create --size 1TB --region lux<br>
+          <span class="c2">→ slab-7f3a created · 1024 GB · luxembourg</span><br>
+          <span class="c1">$</span> stallion volume attach slab-7f3a --slice kvm-204<br>
+          <span class="c3">✓ attached hot · no reboot required</span><br>
+          <span class="c2">  /dev/vdb is ready to mount</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="s">
+<!-- COMPETITOR COMPARISON -->
+<section class="s" id="compare">
   <div class="wrap">
     <div class="sec-head">
-      <div class="label">— Why it's fast (and cheap)</div>
-      <h2>Datacenter-grade storage, <em>without the datacenter invoice.</em></h2>
+      <div class="label">— The honest comparison</div>
+      <h2>Faster than every major vendor — for <em>95% less.</em></h2>
+      <p>There are plenty of ways to do block storage: NFS, GlusterFS, iSCSI, Ceph, even six-figure EMC appliances. Slabs outrun all of them while costing a fraction. Here's the price of a single usable terabyte against the big names.</p>
+    </div>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <thead>
+          <tr><th>Vendor</th><th>Notes</th><th class="price">Cost per TB</th></tr>
+        </thead>
+        <tbody>
+          <tr class="featured"><td><div class="pname"><span class="star">★</span> BuyVM <small>40 Gbit+ RDMA fabric, near-local performance</small></div></td><td class="spec">Fantastic performance and cost in one neat little package. You'll hate yourself for not finding us sooner.</td><td class="price"><span class="num">$5</span><span class="per">/mo</span></td></tr>
+          <tr><td><div class="pname">OVH</div></td><td class="spec">Lackluster latency, throughput and availability. Max 200 IOPS on "Classic", 3,000 IOPS on "Performance" volumes.</td><td class="price"><span class="num">$90</span><span class="per">/mo</span></td></tr>
+          <tr><td><div class="pname">Vultr</div></td><td class="spec">Requires a full reboot before a volume will attach, and no clean way to identify a volume.</td><td class="price"><span class="num">$100</span><span class="per">/mo</span></td></tr>
+          <tr><td><div class="pname">Amazon EBS <small>extra cost per IOPS performed</small></div></td><td class="spec">A history of stability issues forcing large-scale read-only volumes. Displayed price includes only 100 IOPS.</td><td class="price"><span class="num">$131.50</span><span class="per">/mo</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="center" style="margin-top:20px;color:var(--ink-3);font-size:13.5px">Competitor figures are per usable terabyte and indicative, 2026. The AWS tax is alive and well.</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="s alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label">— Built in-house</div>
+      <h2>Awesome performance, <em>even better pricing.</em></h2>
+      <p>This isn't a bolted-on NFS share or someone else's Ceph cluster. Slabs were built from the ground up to feel like local disk while staying decoupled from your server.</p>
     </div>
     <div class="feat-grid">
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></div>
-        <h3>RDMA storage <em>fabric</em></h3>
-        <p>Every slab rides 40 Gbit+ InfiniBand with RDMA, so your slice talks to storage at near-local latency — not over a congested public network.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h4l2-7 4 14 2-7h6"/></svg></div>
+        <h3>40 Gbit+ RDMA fabric</h3>
+        <p>Every Slab talks to your slice over a 40 Gbit+ InfiniBand RDMA Storage Fabric, delivering near locally-attached storage performance instead of network-disk lag.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg></div>
-        <h3>NVMe <em>cache layers</em></h3>
-        <p>Multiple cache tiers, including large NVMe read/write buffers, absorb hot data and bursty writes so spinning capacity behaves like flash.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></div>
+        <h3>NVMe cache layers</h3>
+        <p>Multiple cache layers, including large NVMe read and write buffers, absorb your hottest I/O so reads and writes stay fast under real-world load.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5"/><path d="M21 3 13 11"/><path d="M8 21H3v-5"/><path d="m3 21 8-8"/></svg></div>
-        <h3>Hot <em>migration</em></h3>
-        <p>Move a slab to another server in the same datacenter while it's live. No reboot, no power-off, no scheduled maintenance window.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></div>
+        <h3>Hot migration</h3>
+        <p>Move a Slab between KVM Slices in the same facility from Stallion. Migrations happen entirely "hot" — no powering off and no reboots to reattach.</p>
       </div>
       <div class="fcard">
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
-        <h3>Attach to <em>any slice</em></h3>
-        <p>Pair a slab with any KVM Slice in the same facility, from the $2 starter up to a 28 GB high-volume box. Stack up to 8 per server.</p>
+        <h3>Attach to any slice</h3>
+        <p>Pair a Slab with any Dedicated KVM Slice in the same facility, and stack up to 8 Slabs on one server for as much as 80 TB of attached capacity.</p>
+        <a href="kvm-slices.html" class="more">Get a KVM Slice →</a>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg></div>
-        <h3>Full <em>encryption</em></h3>
-        <p>Bring your own LUKS keys and encrypt the whole device. Your data stays your data — we run a privacy-first shop and intend to keep it that way.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>Encryption-friendly</h3>
+        <p>A Slab shows up as a plain block device, so LUKS or your filesystem's own encryption just works — your data stays readable only with your passphrase.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <h3>95% cheaper than <em>the big vendors</em></h3>
-        <p>Major clouds charge roughly $90–$131.50 per TB each month. We charge $5 — and benchmark faster. The math isn't subtle.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v6M12 17v6M4.2 4.2l4.3 4.3M15.5 15.5l4.3 4.3M1 12h6M17 12h6"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>95% cheaper</h3>
+        <p>At $5 per usable terabyte with no per-IOPS tax, Slabs cost roughly 95% less than OVH, Vultr or Amazon EBS — and still come out ahead on performance.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="s alt" id="faq">
+<section class="s" id="faq">
   <div class="wrap">
     <div class="sec-head">
       <div class="label">— FAQ</div>
@@ -276,53 +295,44 @@
     </div>
     <div class="faq">
       <details open>
-        <summary>What's the minimum size, and how is it billed? <span class="plus"></span></summary>
-        <div class="ans">Storage is sold in 256 GB increments at $1.25 each, so the smallest slab is 256 GB for $1.25/mo. Add as many blocks as you like — 1 TB lands at $5/mo, and a single slab tops out at 10 TB ($50/mo). You can run up to 8 slabs on one server for 80 TB total.</div>
+        <summary>Can I buy just a Block Storage Slab? <span class="plus"></span></summary>
+        <div class="ans">No — a Slab must be paired with a Dedicated KVM Slice in the same facility to be used. There's no standalone option today. We may add an Object Store product down the line, but not at this time.</div>
       </details>
       <details>
-        <summary>Do I need a VPS to use Block Storage? <span class="plus"></span></summary>
-        <div class="ans">Yes — a slab attaches to a KVM Slice, so you'll need at least one slice in the same facility. The slice can be anything from our $2 starter upward; pick the location first, then add storage to match.</div>
+        <summary>How much do Block Storage Slabs cost? <span class="plus"></span></summary>
+        <div class="ans">Slabs are sold in 256 GB chunks at $1.25/month. That works out to $5/month for 1 TB and just $50/month for a full 10 TB Slab — no per-IOPS surcharges.</div>
       </details>
       <details>
-        <summary>Can I resize a slab later? <span class="plus"></span></summary>
-        <div class="ans">Upgrades happen live — add capacity from the Stallion panel and your block device grows without downtime. Downgrades aren't automatic: you'll need to move your data onto a smaller slab manually, which is the safe way to shrink a filesystem anyway.</div>
+        <summary>How large can a Slab be, and how many can I attach? <span class="plus"></span></summary>
+        <div class="ans">Each Slab can be up to 10 TB in size, and you can attach up to 8 Slabs to a single Dedicated KVM Slice — up to 80 TB of block storage on one server.</div>
       </details>
       <details>
-        <summary>Which locations offer Block Storage? <span class="plus"></span></summary>
-        <div class="ans">Las Vegas, New York, Miami and Luxembourg. A slab and the slice it attaches to must live in the same facility, so deploy both in the region closest to your users.</div>
+        <summary>Which locations can I buy Block Storage Slabs in? <span class="plus"></span></summary>
+        <div class="ans">Slabs are available in Las Vegas, Nevada; New York, New York; Miami, Florida; and Roost, Luxembourg. Your Slab and its KVM Slice need to live in the same facility.</div>
       </details>
       <details>
-        <summary>How does the price compare to the big clouds? <span class="plus"></span></summary>
-        <div class="ans">The major block-storage vendors charge roughly $90 to $131.50 per TB per month. Ours is $5 per TB — up to 95% less — and it runs on a 40 Gbit+ RDMA fabric with NVMe cache that benchmarks faster than the name-brand offerings. Affordable hosting with a touch of insanity, as usual.</div>
+        <summary>Can I resize my Slab later? <span class="plus"></span></summary>
+        <div class="ans">You can upgrade a Slab up to the 10 TB maximum at any time. Downgrading isn't possible — you'd order a new, smaller Slab and transfer your data across to it yourself.</div>
+      </details>
+      <details>
+        <summary>Can I move my Slab between servers? <span class="plus"></span></summary>
+        <div class="ans">Yes. From the Stallion control panel you can migrate a Slab between KVM Slices in the same facility. Migrations are entirely "hot" — there's no need to power off or reboot the server for the volume to reattach.</div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="final">
-  <div class="wrap">
-    <h2>Add terabytes for <em>the price of a coffee.</em></h2>
-    <p>Spin up a slab, attach it to a slice, and stop paying cloud-vendor ransom for storage. $1.25 per 256 GB, hot-migratable, NVMe-cached, yours to encrypt.</p>
-    <div class="actions">
-      <a href="#pricing" class="btn green lg">See pricing →</a>
-      <a href="kvm-slices.html" class="btn outline lg">Get a slice first</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- CLOUDZY BAND (injected) -->
+<!-- CLOUDZY BAND -->
 <section class="cz-band" id="cloudzy">
   <div class="wrap">
     <div class="cz-inner">
       <div>
-        <div class="cz-eyebrow"><span class="dot"></span> BuyVM is part of Cloudzy</div>
-        <h2>Sold out here? <em>Spin it up on Cloudzy</em> in 60 seconds.</h2>
-        <p>BuyVM's slices are famously cheap &mdash; and famously <b>sold out</b>. When stock runs dry, our parent company <b>Cloudzy</b> has you covered: instant deployment across <b>13 global regions</b>, AMD EPYC + NVMe, and a 14-day money-back guarantee.</p>
+        <div class="cz-eyebrow"><span class="dot"></span> BuyVM is a division of Cloudzy</div>
+        <h2>Out of stock? <em>It's available on Cloudzy.</em></h2>
+        <p>When a slice sells out, discover plans on our sister company <b>Cloudzy</b>: instant deployment across <b>13 global regions</b>, AMD EPYC + NVMe, no egress fees, and a 14-day money-back guarantee.</p>
         <div class="cz-actions">
-          <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=band&utm_campaign=parent" class="btn cz lg" target="_blank" rel="noopener"><span class="cz-logo"><span class="mk">C</span></span> Explore Cloudzy &rarr;</a>
-          <a href="https://cloudzy.com/vps-hosting?utm_source=buyvm&utm_medium=band&utm_campaign=vps" class="btn cz-ghost lg" target="_blank" rel="noopener">See Cloudzy VPS plans</a>
+          <a href="https://cloudzy.com/pricing?utm_source=buyvm&utm_medium=band&utm_campaign=out_of_stock_banner" class="btn cz lg" target="_blank" rel="noopener"><span class="cz-logo"><span class="mk">C</span></span> Discover Cloudzy plans →</a>
+          <a href="https://cloudzy.com/vps-hosting?utm_source=buyvm&utm_medium=band&utm_campaign=vps" class="btn cz-ghost lg" target="_blank" rel="noopener">Cloudzy VPS hosting</a>
         </div>
       </div>
       <div class="cz-stats">
@@ -335,12 +345,24 @@
   </div>
 </section>
 
+<!-- CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Grab a slab. <em>Mount it in seconds.</em></h2>
+    <p>Pick a size, attach it to a KVM Slice in the same facility, and put $5-per-terabyte storage to work — over a 40 Gbit RDMA fabric, with no reboots and no IOPS tax.</p>
+    <div class="actions">
+      <a href="#pricing" class="btn green lg">See pricing →</a>
+      <a href="kvm-slices.html" class="btn outline lg">Get a KVM Slice</a>
+    </div>
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
       <div class="brand">
         <a href="index.html" class="logo"><span class="glyph">B</span> BuyVM</a>
-        <p>Affordable hosting with a touch of insanity. A division of <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer_text&utm_campaign=parent" target="_blank" rel="noopener" style="color:var(--ink);font-weight:600">Cloudzy</a>, running KVM VPS since 2010 — Las Vegas, New York, Luxembourg &amp; Miami.</p>
+        <p>Affordable hosting with a touch of insanity. Founding fathers of the affordable VPS market, running KVM VPS continuously since 2010 — Las Vegas, New Jersey &amp; Luxembourg.</p>
         <div class="foot-cz" style="margin-bottom:18px"><span class="mk">C</span> A <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer&utm_campaign=parent" target="_blank" rel="noopener">Cloudzy</a> company</div>
         <div class="social">
           <a href="https://twitter.com/frantechca" target="_blank" rel="noopener" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.2h3.6l-7.9 9 9.2 12.2h-7.2l-5.6-7.4-6.5 7.4H1.3l8.4-9.6L.9 1.2h7.4l5.1 6.7zM17.6 20.1h2L6.5 3.2h-2z"/></svg></a>
@@ -349,16 +371,16 @@
         </div>
       </div>
       <div>
-        <h5>Products</h5>
-        <ul><li><a href="kvm-slices.html">KVM Slices</a></li><li><a href="block-storage.html">Block Storage</a></li><li><a href="ddos-protection.html">DDoS Protection</a></li><li><a href="anycast.html">Anycast</a></li></ul>
+        <h5>Services</h5>
+        <ul><li><a href="kvm-slices.html">Dedicated KVM Slices</a></li><li><a href="storage-vps.html">Storage VPS</a></li><li><a href="block-storage.html">Block Storage Slabs</a></li><li><a href="anycast.html">Anycast VPS</a></li><li><a href="ddos-protection.html">DDoS Protection</a></li></ul>
       </div>
       <div>
         <h5>Company</h5>
-        <ul><li><a href="about.html">About us</a></li><li><a href="network.html">Network &amp; datacenters</a></li><li><a href="features.html">Features</a></li><li><a href="https://www.trustpilot.com/review/buyvm.net" target="_blank" rel="noopener">Reviews</a></li></ul>
+        <ul><li><a href="about.html">About us</a></li><li><a href="network.html">Data centers</a></li><li><a href="features.html">Awesome features</a></li><li><a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer_nav&utm_campaign=parent" target="_blank" rel="noopener">Cloudzy (parent)</a></li></ul>
       </div>
       <div>
         <h5>Support</h5>
-        <ul><li><a href="https://my.frantech.ca/clientarea.php" target="_blank" rel="noopener">Client area</a></li><li><a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Wiki &amp; docs</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://manage.buyvm.net/login" target="_blank" rel="noopener">Stallion login</a></li></ul>
+        <ul><li><a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Wiki</a></li><li><a href="https://my.frantech.ca/register.php" target="_blank" rel="noopener">Sign up</a></li><li><a href="https://my.frantech.ca/clientarea.php" target="_blank" rel="noopener">Client area</a></li><li><a href="contact.html">Contact us</a></li></ul>
       </div>
       <div>
         <h5>Legal</h5>
@@ -366,7 +388,7 @@
       </div>
     </div>
     <div class="foot-bot">
-      <span class="status"><span class="dot"></span> All systems operational · <span data-year>2010–2026</span> Frantech Solutions, a Cloudzy company</span>
+      <span class="status"><span class="dot"></span> © 2010–2026 BuyVM. All rights reserved. A division of Cloudzy.</span>
       <span class="links"><a href="explorations/index.html">Design explorations</a></span>
     </div>
   </div>

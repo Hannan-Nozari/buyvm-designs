@@ -3,59 +3,60 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Anycast Network — Build your own global CDN, free for VPS | BuyVM</title>
-<meta name="description" content="Announce one IP from three continents and route every visitor to the nearest server. Anycast is free for BuyVM VPS customers — run one slice per PoP, add DDoS-protected GRE tunnels, configure it all in Stallion." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
+<title>Anycast Network — Build your own global CDN, free with any VPS | BuyVM</title>
+<meta name="description" content="Anycast is free for every BuyVM VPS customer. Announce one IP across Las Vegas, New Jersey and Luxembourg, route visitors to the nearest PoP for lower latency, and build a global CDN — or DNS, game and VoIP anycast — for the price of three VPS." />
 <link rel="canonical" href="https://buyvm.net/anycast.html" />
 <meta name="theme-color" content="#282B30" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="BuyVM" />
-<meta property="og:title" content="Anycast Network — Build your own global CDN, free for VPS | BuyVM" />
-<meta property="og:description" content="Announce one IP from three continents and route every visitor to the nearest server. Anycast is free for BuyVM VPS customers — run one slice per PoP, add DDoS-protected GRE tunnels, configure it all in Stallion." />
+<meta property="og:title" content="Anycast Network — Build your own global CDN, free with any VPS | BuyVM" />
+<meta property="og:description" content="Announce one IP across Las Vegas, New Jersey and Luxembourg and route every visitor to the nearest PoP. Anycast is free with any BuyVM VPS — works with the 128 MB annual plans." />
 <meta property="og:url" content="https://buyvm.net/anycast.html" />
 <meta property="og:image" content="https://buyvm.net/assets/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@frantechca" />
-<meta name="twitter:title" content="Anycast Network — Build your own global CDN, free for VPS | BuyVM" />
-<meta name="twitter:description" content="Announce one IP from three continents and route every visitor to the nearest server. Anycast is free for BuyVM VPS customers — run one slice per PoP, add DDoS-protected GRE tunnels, configure it all in Stallion." />
+<meta name="twitter:title" content="Anycast Network — Build your own global CDN, free with any VPS | BuyVM" />
+<meta name="twitter:description" content="One IP, three PoPs, nearest-visitor routing. Anycast is free with any BuyVM VPS — even the 128 MB annual plans." />
 <meta name="twitter:image" content="https://buyvm.net/assets/og.png" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://buyvm.net/#org",
-      "name": "BuyVM",
-      "alternateName": "Frantech Solutions",
-      "url": "https://buyvm.net/",
-      "logo": "https://buyvm.net/assets/og.png",
-      "foundingDate": "2010",
-      "parentOrganization": { "@type": "Organization", "name": "Cloudzy", "url": "https://cloudzy.com/" },
-      "sameAs": ["https://twitter.com/frantechca","https://facebook.com/frantech/","https://www.trustpilot.com/review/buyvm.net"]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://buyvm.net/#website",
-      "url": "https://buyvm.net/",
-      "name": "BuyVM",
-      "publisher": { "@id": "https://buyvm.net/#org" }
-    },
-    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://buyvm.net/"},{"@type":"ListItem","position":2,"name":"Products","item":"https://buyvm.net/#products"},{"@type":"ListItem","position":3,"name":"Anycast","item":"https://buyvm.net/anycast.html"}]},
-    {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Anycast really free?","acceptedAnswer":{"@type":"Answer","text":"Yes — there's no charge for the anycast network itself, the route announcements, or the DDoS-protected GRE tunnels. The only thing you pay for is the VPS instances you run, one per Point of Presence. That's the whole bill."}},{"@type":"Question","name":"How many locations can I announce from?","acceptedAnswer":{"@type":"Answer","text":"Three: Las Vegas, Nevada (US West); Piscataway, New Jersey (US East); and Roost, Luxembourg (Europe). Together they cover both US coasts and continental Europe — enough to put most of the western internet a short hop from your service."}},{"@type":"Question","name":"Do I really need three servers?","acceptedAnswer":{"@type":"Answer","text":"To get the benefit of anycast, yes — one slice in each PoP so the same IP can answer from all three. You can start smaller and grow into it, but a prefix announced from a single location is just a normal server with extra steps. The point is having a presence everywhere at once."}},{"@type":"Question","name":"What's a GRE tunnel?","acceptedAnswer":{"@type":"Answer","text":"A GRE tunnel is an encapsulated link that carries your anycast traffic between the network edge and your slice — and on BuyVM it can run through our DDoS filtering, so clean traffic keeps flowing even under attack. Setup is documented in the wiki at wiki.buyvm.net and configured through Stallion."}},{"@type":"Question","name":"Can I use my own IP space?","acceptedAnswer":{"@type":"Answer","text":"You can either announce a prefix we provide or bring your own, provided you have the authorization to advertise it from our network. Either way you announce it from all three PoPs through Stallion — check the wiki for the current bring-your-own-prefix requirements."}}]}
+    { "@type": "Organization", "@id": "https://buyvm.net/#org", "name": "BuyVM", "alternateName": "Frantech Solutions", "url": "https://buyvm.net/", "logo": "https://buyvm.net/assets/og.png", "foundingDate": "2010", "parentOrganization": { "@type": "Organization", "name": "Cloudzy", "url": "https://cloudzy.com/" }, "sameAs": ["https://twitter.com/frantechca","https://facebook.com/frantech/","https://www.trustpilot.com/review/buyvm.net"] },
+    { "@type": "WebSite", "@id": "https://buyvm.net/#website", "url": "https://buyvm.net/", "name": "BuyVM", "publisher": { "@id": "https://buyvm.net/#org" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://buyvm.net/"},
+      {"@type":"ListItem","position":2,"name":"Products","item":"https://buyvm.net/#products"},
+      {"@type":"ListItem","position":3,"name":"Anycast","item":"https://buyvm.net/anycast.html"}
+    ]},
+    { "@type": "Service", "name": "BuyVM Anycast Network", "serviceType": "Anycast IP routing", "description": "A free anycast routing feature for BuyVM VPS customers. Announce a single IP address across Las Vegas, New Jersey and Luxembourg and route each visitor to the nearest point of presence for lower latency and higher throughput.", "provider": { "@id": "https://buyvm.net/#org" }, "areaServed": ["North America","Europe","Asia"], "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free with any BuyVM VPS. Total cost is three VPS purchases, one per location." } },
+    { "@type": "FAQPage", "mainEntity": [
+      {"@type":"Question","name":"What is Anycast?","acceptedAnswer":{"@type":"Answer","text":"Anycast is a network routing standard. Historically it has been implemented only in very large companies and at great expense. Anycast puts your visitors on the server closest to them, which results in better site performance and throughput."}},
+      {"@type":"Question","name":"Why use Anycast?","acceptedAnswer":{"@type":"Answer","text":"Anycast speeds up your sites and services by putting visitors on the server closest to them. The closest-server choice means lower latency and higher throughput. It is ideal for Content Distribution Networks (CDNs), and also works for DNS, game servers and voice-over-IP."}},
+      {"@type":"Question","name":"Where are BuyVM's Anycast Points-of-Presence (PoPs)?","acceptedAnswer":{"@type":"Answer","text":"Anycast requires a VPS in all BuyVM locations: Las Vegas, Nevada, USA (West Coast); Piscataway, New Jersey, USA (East Coast); and Roost, Luxembourg, Europe."}},
+      {"@type":"Question","name":"How much do Anycast IP addresses cost?","acceptedAnswer":{"@type":"Answer","text":"Anycast is free for all BuyVM VPS customers. Your total cost is three VPS purchases, one per location. It works even with our popular 128 MB annual plans. For added redundancy you can order additional services in each location and enable IP failover so your anycast IP fails over automatically during maintenance."}},
+      {"@type":"Question","name":"How do I configure my Anycast IP address?","acceptedAnswer":{"@type":"Answer","text":"Anycast is easily configured via our Stallion control panel. Follow the how-to on our wiki at https://wiki.buyvm.net/."}},
+      {"@type":"Question","name":"Is DDoS protection available?","acceptedAnswer":{"@type":"Answer","text":"Yes. DDoS protection is available for $5.00/month per IP address. Contact support to request DDoS protection be enabled on the IP addresses of your choice."}}
+    ]}
   ]
 }
 </script>
 </head>
 <body>
+
 <div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="promo">
+  Anycast is free with every BuyVM VPS. ❄️ Sold out? <a href="https://cloudzy.com/pricing?utm_source=buyvm&utm_medium=banner&utm_campaign=out_of_stock_banner" target="_blank" rel="noopener">Deploy instantly on Cloudzy →</a>
+</div>
 
 <header class="site-header" id="siteHeader">
   <div class="wrap">
@@ -65,76 +66,63 @@
         <div class="dd">
           <button>Products <span class="chev">▾</span></button>
           <div class="dd-menu">
-            <a href="kvm-slices.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span><span><span class="t">KVM Slices</span><span class="d">Full-root virtual servers from $2/mo</span></span></a>
+            <a href="kvm-slices.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span><span><span class="t">Dedicated KVM Slices</span><span class="d">Full-root virtual servers from $2/mo</span></span></a>
+            <a href="storage-vps.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></span><span><span class="t">Storage VPS</span><span class="d">Big-disk KVM up to 4 TB, free Windows</span></span></a>
             <a href="block-storage.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span><span class="t">Block Storage Slabs</span><span class="d">Up to 10 TB from $1.25/256GB</span></span></a>
-            <a href="ddos-protection.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></span><span><span class="t">DDoS Protection</span><span class="d">3.5 Tbps+ filtering, $3/mo per IP</span></span></a>
             <a href="anycast.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span><span class="t">Anycast Network</span><span class="d">Build a global CDN — free for VPS</span></span></a>
           </div>
         </div>
+        <a href="ddos-protection.html">DDoS Protection</a>
         <a href="features.html">Features</a>
         <a href="network.html">Network</a>
         <a href="about.html">About</a>
         <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
       </nav>
       <div class="nav-cta">
-        <a href="https://my.frantech.ca/clientarea.php" class="btn ghost" target="_blank" rel="noopener">Sign in</a>
-        <a href="#plans" class="btn green">Deploy →</a>
+        <a href="https://my.frantech.ca/clientarea.php" class="btn ghost" target="_blank" rel="noopener">Client area</a>
+        <a href="kvm-slices.html" class="btn green">Get started →</a>
         <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
   </div>
   <div class="mobile-nav">
     <div class="mwrap">
-      <a href="kvm-slices.html">KVM Slices</a>
-      <a href="block-storage.html">Block Storage</a>
+      <a href="kvm-slices.html">Dedicated KVM Slices</a>
+      <a href="storage-vps.html">Storage VPS</a>
+      <a href="block-storage.html">Block Storage Slabs</a>
+      <a href="anycast.html">Anycast VPS</a>
       <a href="ddos-protection.html">DDoS Protection</a>
-      <a href="anycast.html">Anycast</a>
       <a href="features.html">Features</a>
       <a href="network.html">Network</a>
       <a href="about.html">About</a>
       <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
       <div class="mcta">
-        <a href="https://my.frantech.ca/clientarea.php" class="btn outline" target="_blank" rel="noopener">Sign in</a>
-        <a href="#plans" class="btn green">Deploy →</a>
+        <a href="https://my.frantech.ca/clientarea.php" class="btn outline" target="_blank" rel="noopener">Client area</a>
+        <a href="kvm-slices.html" class="btn green">Get started →</a>
       </div>
     </div>
   </div>
 </header>
 
-<!-- HERO -->
 <section class="page-hero">
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span>Products<span class="sep">/</span>Anycast</div>
     <h1>Build your own <em>global CDN.</em></h1>
-    <p>Announce a single IP from three continents and let the internet do the routing — every visitor lands on the nearest server, automatically. It's the kind of thing the big clouds bill by the gigabyte. With BuyVM it's free with your slices.</p>
+    <p>Anycast is a routing feature BuyVM offers free to every customer. Announce a single IP across Las Vegas, New Jersey and Luxembourg, and your inbound traffic is automatically routed to the VPS nearest each visitor — lower latency, higher throughput, no enterprise price tag. Your only cost is three VPS.</p>
     <div class="actions">
       <a href="kvm-slices.html" class="btn green lg">Get started →</a>
-      <a href="#how" class="btn outline lg">How Anycast works</a>
+      <a href="#how" class="btn outline lg">How it works</a>
     </div>
   </div>
 </section>
 
-<!-- STAT BAND -->
-<section class="s">
+<!-- STATBAND -->
+<section class="statband">
   <div class="wrap">
-    <div class="statband">
-      <div class="cell">
-        <div class="v">3 <small>PoPs</small></div>
-        <div class="l">Las Vegas · New Jersey · Luxembourg</div>
-      </div>
-      <div class="cell">
-        <div class="v">3 <small>continents</small></div>
-        <div class="l">North America &amp; Europe, one prefix</div>
-      </div>
-      <div class="cell">
-        <div class="v">$0</div>
-        <div class="l">Anycast fee — you pay only for the slices</div>
-      </div>
-      <div class="cell">
-        <div class="v">GRE</div>
-        <div class="l">DDoS-protected tunnels, no extra charge</div>
-      </div>
-    </div>
+    <div class="cell"><b>3</b><span>PoPs worldwide</span></div>
+    <div class="cell"><b>3</b><span>continents reached</span></div>
+    <div class="cell"><b>$0</b><span>Anycast fee</span></div>
+    <div class="cell"><b>Free</b><span>with any VPS</span></div>
   </div>
 </section>
 
@@ -144,96 +132,102 @@
     <div class="split">
       <div class="split-text">
         <div class="label">— How it works</div>
-        <h2>One IP. <em>Many locations.</em></h2>
-        <p>Anycast announces the same IP address — or an entire prefix — from every one of your Points of Presence at once. When a request comes in, the network's own routing tables hand it to whichever PoP is closest in network terms. Shorter path, fewer hops, lower latency, more throughput. No DNS tricks, no client-side guesswork.</p>
-        <p>Set it up once, deploy a slice in each region, and your front door is everywhere at the same time.</p>
+        <h2>One IP. <em>The nearest server, every time.</em></h2>
+        <p>With a working anycast configuration, the same IP address is announced from all three locations at once. Each visitor's traffic takes the shortest path to whichever PoP is closest to them — European visitors land in Luxembourg, United States visitors go to Las Vegas or New Jersey depending on their location, and Asia routes to Las Vegas.</p>
+        <p>By serving content closer to the visitor, latency drops and throughput rises. Both add up to a happy visitor with content that loads fast and properly.</p>
         <ul>
-          <li><span class="ck">✓</span><span><b>Nearest-PoP routing</b> — visitors reach the geographically closest server with no extra config on their end.</span></li>
-          <li><span class="ck">✓</span><span><b>One prefix, announced everywhere</b> — the identical IP space lights up in all three locations simultaneously.</span></li>
-          <li><span class="ck">✓</span><span><b>DDoS-protected GRE tunnels</b> — documented in the wiki, so clean traffic keeps flowing under attack.</span></li>
-          <li><span class="ck">✓</span><span><b>Configured in Stallion</b> — turn it on from the same control panel that runs your slices.</span></li>
+          <li><span class="ck">✓</span> One IP announced from every PoP at once</li>
+          <li><span class="ck">✓</span> Traffic routed to the nearest point of presence</li>
+          <li><span class="ck">✓</span> Optional IP failover for automatic redundancy</li>
+          <li><span class="ck">✓</span> Configured in minutes from the Stallion control panel</li>
         </ul>
       </div>
       <div class="split-media">
-        <div class="term">
-          <div class="bar">
-            <div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div>
-            <div class="title">stallion — anycast</div>
+        <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:26px;padding:8px 0">
+          <div style="display:inline-flex;align-items:center;gap:9px;background:#49C46D;color:#0e1b12;font-weight:800;font-size:15px;letter-spacing:.2px;padding:13px 22px;border-radius:999px;box-shadow:0 8px 26px rgba(73,196,109,.34)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            Anycast IP
           </div>
-          <div class="body"><span class="prompt">stallion</span> anycast add <span class="flag">--prefix</span> <span class="arg">2602:fa59::/48</span>
-<span class="ip">2602:fa59::/48</span> attached to your account.
-
-<span class="prompt">stallion</span> anycast announce <span class="flag">--all-pops</span>
-<span class="ok">✓</span> announcing from <span class="arg">LAS01</span>  Las Vegas, NV
-<span class="ok">✓</span> announcing from <span class="arg">NYC01</span>  Piscataway, NJ
-<span class="ok">✓</span> announcing from <span class="arg">LUX01</span>  Roost, LU
-
-<span class="ok">✓</span> live on 3 PoPs · GRE tunnels up<span class="caret"></span></div>
+          <svg width="220" height="34" viewBox="0 0 220 34" fill="none" aria-hidden="true"><path d="M110 0V12M110 12C110 12 40 12 40 34M110 12C110 12 110 22 110 34M110 12C110 12 180 12 180 34" stroke="#49C46D" stroke-width="2" stroke-opacity=".5" stroke-linecap="round"/></svg>
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;width:100%">
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:2px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:13px 18px;min-width:88px">
+              <span style="font-weight:800;font-size:16px;color:#fff">LAS</span>
+              <span style="font-size:11.5px;color:var(--ink-3)">Las Vegas</span>
+            </div>
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:2px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:13px 18px;min-width:88px">
+              <span style="font-weight:800;font-size:16px;color:#fff">NJ</span>
+              <span style="font-size:11.5px;color:var(--ink-3)">New Jersey</span>
+            </div>
+            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:2px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:13px 18px;min-width:88px">
+              <span style="font-weight:800;font-size:16px;color:#fff">LUX</span>
+              <span style="font-size:11.5px;color:var(--ink-3)">Luxembourg</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- POINTS OF PRESENCE -->
+<!-- LOCATIONS -->
 <section class="s alt">
   <div class="wrap">
     <div class="sec-head">
       <div class="label">— Points of presence</div>
-      <h2>Three points of <em>presence.</em></h2>
-      <p>Two coasts and the heart of Europe — enough to put most of the western internet within a short hop of your service. Announce your prefix from all three and let the routes sort themselves out.</p>
+      <h2>Three PoPs, <em>three continents.</em></h2>
+      <p>Anycast requires a VPS — KVM or OpenVZ — in every BuyVM location. Put one in each and a single IP spans the globe.</p>
     </div>
     <div class="loc-grid">
       <div class="lcard">
-        <span class="code">LAS01</span>
+        <div class="code">LAS</div>
         <h4>Las Vegas</h4>
-        <span class="city">Nevada · US West</span>
-        <div class="ping"><span>Covers</span><b>West-coast eyeballs</b></div>
+        <div class="city">Nevada, USA</div>
+        <div class="ping"><span>Coverage</span> <b>US West Coast</b></div>
       </div>
       <div class="lcard">
-        <span class="code">NYC01</span>
-        <h4>New York</h4>
-        <span class="city">Piscataway, NJ · US East</span>
-        <div class="ping"><span>Covers</span><b>East coast &amp; transatlantic</b></div>
+        <div class="code">NJ</div>
+        <h4>Piscataway</h4>
+        <div class="city">New Jersey, USA</div>
+        <div class="ping"><span>Coverage</span> <b>US East Coast</b></div>
       </div>
       <div class="lcard">
-        <span class="code">LUX01</span>
-        <h4>Luxembourg</h4>
-        <span class="city">Roost · Europe</span>
-        <div class="ping"><span>Covers</span><b>EU / DE / FR traffic</b></div>
+        <div class="code">LUX</div>
+        <h4>Roost</h4>
+        <div class="city">Luxembourg</div>
+        <div class="ping"><span>Coverage</span> <b>Europe</b></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT IT'S FOR -->
+<!-- USE CASES -->
 <section class="s">
   <div class="wrap">
     <div class="sec-head">
-      <div class="label">— Use cases</div>
-      <h2>What it's <em>for.</em></h2>
-      <p>Anything where milliseconds matter and your audience is spread across the map. If a user in Lisbon and a user in Los Angeles should both feel like the server is next door, this is the tool.</p>
+      <div class="label">— More than a CDN</div>
+      <h2>Anycast is about <em>more than HTTP.</em></h2>
+      <p>Content Distribution Networks are the obvious win, but many applications get faster and more resilient on anycast.</p>
     </div>
     <div class="feat-grid">
       <div class="fcard">
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
-        <h3>Global <em>CDN</em></h3>
-        <p>Serve static assets, images and pages from the edge nearest each visitor. Roll your own content network on three slices instead of renting one by the terabyte.</p>
+        <h3>Global CDN</h3>
+        <p>Serve sites and static assets from the PoP nearest each visitor. Pages load fast and properly wherever your audience is.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/><path d="M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></div>
-        <h3>Authoritative <em>DNS</em></h3>
-        <p>The classic anycast workload. Answer queries from the closest PoP so lookups stay fast worldwide — and stay resolving even if one location goes dark.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></div>
+        <h3>DNS</h3>
+        <p>Run authoritative DNS on one anycast IP and answer every query from the closest server — the classic, battle-tested anycast use case.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 12h2M8 11v2"/><circle cx="16" cy="11" r="1" fill="currentColor"/><circle cx="18" cy="13" r="1" fill="currentColor"/></svg></div>
-        <h3>Game <em>servers</em></h3>
-        <p>Low, predictable ping decides who wins. Drop a node on each coast and in Europe so players connect to the nearest one without you running a matchmaker.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="16" cy="11" r="1" fill="currentColor"/><circle cx="18.5" cy="13.5" r="1" fill="currentColor"/></svg></div>
+        <h3>Game servers</h3>
+        <p>Point players at one address and land them on the nearest region automatically — lower ping, smoother play, fewer rage quits.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5a2 2 0 0 1 2-2h2l2 5-3 2a14 14 0 0 0 6 6l2-3 5 2v2a2 2 0 0 1-2 2A16 16 0 0 1 4 5z"/></svg></div>
-        <h3>VoIP &amp; <em>real-time</em></h3>
-        <p>Jitter and latency make or break a call. Anchor SIP and media on the nearest PoP so conversations sound like the other person is in the room.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M12 19v3M8 22h8"/></svg></div>
+        <h3>VoIP</h3>
+        <p>Keep voice-over-IP latency low by terminating calls at the closest PoP — clearer audio with fewer drops and less jitter.</p>
       </div>
     </div>
   </div>
@@ -245,32 +239,31 @@
     <div class="split flip">
       <div class="split-text">
         <div class="label">— What you need</div>
-        <h2>The whole bill is <em>three slices.</em></h2>
-        <p>There's no Anycast line item, no per-gigabyte charge, no enterprise sales call. You run one slice in each Point of Presence — three slices total — attach your prefix, and announce it. BuyVM is the only affordable VPS host that hands you anycast at all, let alone for free.</p>
+        <h2>Three VPS. <em>Zero Anycast charges.</em></h2>
+        <p>Anycast is free for all BuyVM VPS customers — there's no fee for the feature itself. Place one VPS in each location and you're ready to announce a global IP. Your whole bill is just those three servers.</p>
         <ul>
-          <li><span class="ck">✓</span><span><b>One slice per PoP</b> — three slices, one each in Las Vegas, New Jersey and Luxembourg.</span></li>
-          <li><span class="ck">✓</span><span><b>A prefix to announce</b> — use space we assign, or bring your own with the right authorization.</span></li>
-          <li><span class="ck">✓</span><span><b>Zero Anycast charges</b> — the routing, the announcements and the GRE tunnels cost nothing.</span></li>
-          <li><span class="ck">✓</span><span><b>Stallion access</b> — everything's wired up from the panel you already use.</span></li>
+          <li><span class="ck">✓</span> One VPS per PoP — three VPS in total</li>
+          <li><span class="ck">✓</span> Works even with our popular 128 MB annual plans</li>
+          <li><span class="ck">✓</span> Free of any Anycast charges — the routing is on us</li>
+          <li><span class="ck">✓</span> Optional Anycast DDoS protection at $5/mo per IP</li>
         </ul>
         <div class="actions">
-          <a href="kvm-slices.html" class="btn green lg">Spin up your slices →</a>
+          <a href="kvm-slices.html" class="btn green lg">Pick your VPS →</a>
         </div>
       </div>
       <div class="split-media">
         <div class="term">
-          <div class="bar">
-            <div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div>
-            <div class="title">stallion — slices</div>
-          </div>
-          <div class="body"><span class="prompt">stallion</span> slices list <span class="flag">--anycast</span>
-<span class="arg">LAS01</span>  slice-2048  running   us-west
-<span class="arg">NYC01</span>  slice-2048  running   us-east
-<span class="arg">LUX01</span>  slice-2048  running   europe
+          <div class="bar"><span></span><span></span><span></span></div>
+          <pre><code><span style="color:var(--ink-3)"># announce one IP across every PoP</span>
+$ stallion anycast add 203.0.113.10
 
-monthly total ............ <span class="ip">3 × slice</span>
-anycast network .......... <span class="ok">$0.00</span>
-GRE tunnels (DDoS) ....... <span class="ok">$0.00</span><span class="caret"></span></div>
+  <span style="color:#49C46D">✓</span> Las Vegas, NV     <span style="color:var(--ink-3)">announced</span>
+  <span style="color:#49C46D">✓</span> Piscataway, NJ    <span style="color:var(--ink-3)">announced</span>
+  <span style="color:#49C46D">✓</span> Roost, LU         <span style="color:var(--ink-3)">announced</span>
+
+<span style="color:var(--ink-3)"># enable automatic failover</span>
+$ stallion anycast failover on
+  <span style="color:#49C46D">✓</span> IP failover enabled</code></pre>
         </div>
       </div>
     </div>
@@ -286,53 +279,44 @@ GRE tunnels (DDoS) ....... <span class="ok">$0.00</span><span class="caret"></sp
     </div>
     <div class="faq">
       <details open>
-        <summary>Is Anycast really free? <span class="plus"></span></summary>
-        <div class="ans">Yes — there's no charge for the anycast network itself, the route announcements, or the DDoS-protected GRE tunnels. The only thing you pay for is the VPS instances you run, one per Point of Presence. That's the whole bill.</div>
+        <summary>What is Anycast? <span class="plus"></span></summary>
+        <div class="ans">Anycast is a network routing standard. Historically it has been implemented only in very large companies and at great expense. Anycast puts your visitors on the server closest to them, which results in better site performance and throughput.</div>
       </details>
       <details>
-        <summary>How many locations can I announce from? <span class="plus"></span></summary>
-        <div class="ans">Three: Las Vegas, Nevada (US West); Piscataway, New Jersey (US East); and Roost, Luxembourg (Europe). Together they cover both US coasts and continental Europe — enough to put most of the western internet a short hop from your service.</div>
+        <summary>Why use Anycast? <span class="plus"></span></summary>
+        <div class="ans">Anycast speeds up your sites and other services by putting visitors on the server closest to them. The closest-server choice means lower latency and higher throughput. It's ideal for Content Distribution Networks (CDNs) — and works just as well for DNS, game servers and voice-over-IP.</div>
       </details>
       <details>
-        <summary>Do I really need three servers? <span class="plus"></span></summary>
-        <div class="ans">To get the benefit of anycast, yes — one slice in each PoP so the same IP can answer from all three. You can start smaller and grow into it, but a prefix announced from a single location is just a normal server with extra steps. The point is having a presence everywhere at once.</div>
+        <summary>Where does BuyVM have Anycast Points-of-Presence (PoPs)? <span class="plus"></span></summary>
+        <div class="ans">Anycast requires VPS instances — either KVM or OpenVZ — in all BuyVM locations: Las Vegas, Nevada, USA (West Coast); Piscataway, New Jersey, USA (East Coast); and Roost, Luxembourg, Europe.</div>
       </details>
       <details>
-        <summary>What's a GRE tunnel? <span class="plus"></span></summary>
-        <div class="ans">A GRE tunnel is an encapsulated link that carries your anycast traffic between the network edge and your slice — and on BuyVM it can run through our DDoS filtering, so clean traffic keeps flowing even under attack. Setup is documented in the wiki at <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">wiki.buyvm.net</a> and configured through Stallion.</div>
+        <summary>How much do Anycast IP addresses cost? <span class="plus"></span></summary>
+        <div class="ans">Anycast is free for all BuyVM VPS customers. Your total cost is three VPS purchases, one per location — and it works even with our popular 128 MB annual plans. For added redundancy, order additional services in each location and enable IP failover so your anycast IP fails over automatically in case of maintenance.</div>
       </details>
       <details>
-        <summary>Can I use my own IP space? <span class="plus"></span></summary>
-        <div class="ans">You can either announce a prefix we provide or bring your own, provided you have the authorization to advertise it from our network. Either way you announce it from all three PoPs through Stallion — check the wiki for the current bring-your-own-prefix requirements.</div>
+        <summary>How do I configure my Anycast IP address? <span class="plus"></span></summary>
+        <div class="ans">Anycast is easily configured via our Stallion control panel. Just follow the how-to on our <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener" style="color:var(--green)">wiki</a>.</div>
+      </details>
+      <details>
+        <summary>Is DDoS protection available? <span class="plus"></span></summary>
+        <div class="ans">Yes. DDoS protection is available for $5.00/month per IP address. Please contact support to request DDoS protection be enabled on the IP addresses of your choice.</div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="final">
-  <div class="wrap">
-    <h2>Put every visitor <em>milliseconds away.</em></h2>
-    <p>Three slices, one prefix, zero anycast fees. Deploy in each region, announce your IP, and watch the routes find their own way home.</p>
-    <div class="actions">
-      <a href="kvm-slices.html" class="btn green lg">Deploy your slices →</a>
-      <a href="contact.html" class="btn outline lg">Talk to us</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- CLOUDZY BAND (injected) -->
+<!-- CLOUDZY BAND -->
 <section class="cz-band" id="cloudzy">
   <div class="wrap">
     <div class="cz-inner">
       <div>
-        <div class="cz-eyebrow"><span class="dot"></span> BuyVM is part of Cloudzy</div>
-        <h2>Sold out here? <em>Spin it up on Cloudzy</em> in 60 seconds.</h2>
-        <p>BuyVM's slices are famously cheap &mdash; and famously <b>sold out</b>. When stock runs dry, our parent company <b>Cloudzy</b> has you covered: instant deployment across <b>13 global regions</b>, AMD EPYC + NVMe, and a 14-day money-back guarantee.</p>
+        <div class="cz-eyebrow"><span class="dot"></span> BuyVM is a division of Cloudzy</div>
+        <h2>Out of stock? <em>It's available on Cloudzy.</em></h2>
+        <p>When a slice sells out, discover plans on our sister company <b>Cloudzy</b>: instant deployment across <b>13 global regions</b>, AMD EPYC + NVMe, no egress fees, and a 14-day money-back guarantee.</p>
         <div class="cz-actions">
-          <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=band&utm_campaign=parent" class="btn cz lg" target="_blank" rel="noopener"><span class="cz-logo"><span class="mk">C</span></span> Explore Cloudzy &rarr;</a>
-          <a href="https://cloudzy.com/vps-hosting?utm_source=buyvm&utm_medium=band&utm_campaign=vps" class="btn cz-ghost lg" target="_blank" rel="noopener">See Cloudzy VPS plans</a>
+          <a href="https://cloudzy.com/pricing?utm_source=buyvm&utm_medium=band&utm_campaign=out_of_stock_banner" class="btn cz lg" target="_blank" rel="noopener"><span class="cz-logo"><span class="mk">C</span></span> Discover Cloudzy plans →</a>
+          <a href="https://cloudzy.com/vps-hosting?utm_source=buyvm&utm_medium=band&utm_campaign=vps" class="btn cz-ghost lg" target="_blank" rel="noopener">Cloudzy VPS hosting</a>
         </div>
       </div>
       <div class="cz-stats">
@@ -345,12 +329,24 @@ GRE tunnels (DDoS) ....... <span class="ok">$0.00</span><span class="caret"></sp
   </div>
 </section>
 
+<!-- CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Build your global network. <em>For the price of three VPS.</em></h2>
+    <p>Deploy a VPS in Las Vegas, New Jersey and Luxembourg, announce one IP from the Stallion control panel, and route every visitor to their nearest PoP. Anycast itself is free — humans who actually run the network included.</p>
+    <div class="actions">
+      <a href="kvm-slices.html" class="btn green lg">Get started →</a>
+      <a href="https://wiki.buyvm.net/" class="btn outline lg" target="_blank" rel="noopener">Read the wiki</a>
+    </div>
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
       <div class="brand">
         <a href="index.html" class="logo"><span class="glyph">B</span> BuyVM</a>
-        <p>Affordable hosting with a touch of insanity. A division of <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer_text&utm_campaign=parent" target="_blank" rel="noopener" style="color:var(--ink);font-weight:600">Cloudzy</a>, running KVM VPS since 2010 — Las Vegas, New York, Luxembourg &amp; Miami.</p>
+        <p>Affordable hosting with a touch of insanity. Founding fathers of the affordable VPS market, running KVM VPS continuously since 2010 — Las Vegas, New Jersey &amp; Luxembourg.</p>
         <div class="foot-cz" style="margin-bottom:18px"><span class="mk">C</span> A <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer&utm_campaign=parent" target="_blank" rel="noopener">Cloudzy</a> company</div>
         <div class="social">
           <a href="https://twitter.com/frantechca" target="_blank" rel="noopener" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.2h3.6l-7.9 9 9.2 12.2h-7.2l-5.6-7.4-6.5 7.4H1.3l8.4-9.6L.9 1.2h7.4l5.1 6.7zM17.6 20.1h2L6.5 3.2h-2z"/></svg></a>
@@ -359,16 +355,16 @@ GRE tunnels (DDoS) ....... <span class="ok">$0.00</span><span class="caret"></sp
         </div>
       </div>
       <div>
-        <h5>Products</h5>
-        <ul><li><a href="kvm-slices.html">KVM Slices</a></li><li><a href="block-storage.html">Block Storage</a></li><li><a href="ddos-protection.html">DDoS Protection</a></li><li><a href="anycast.html">Anycast</a></li></ul>
+        <h5>Services</h5>
+        <ul><li><a href="kvm-slices.html">Dedicated KVM Slices</a></li><li><a href="storage-vps.html">Storage VPS</a></li><li><a href="block-storage.html">Block Storage Slabs</a></li><li><a href="anycast.html">Anycast VPS</a></li><li><a href="ddos-protection.html">DDoS Protection</a></li></ul>
       </div>
       <div>
         <h5>Company</h5>
-        <ul><li><a href="about.html">About us</a></li><li><a href="network.html">Network &amp; datacenters</a></li><li><a href="features.html">Features</a></li><li><a href="https://www.trustpilot.com/review/buyvm.net" target="_blank" rel="noopener">Reviews</a></li></ul>
+        <ul><li><a href="about.html">About us</a></li><li><a href="network.html">Data centers</a></li><li><a href="features.html">Awesome features</a></li><li><a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer_nav&utm_campaign=parent" target="_blank" rel="noopener">Cloudzy (parent)</a></li></ul>
       </div>
       <div>
         <h5>Support</h5>
-        <ul><li><a href="https://my.frantech.ca/clientarea.php" target="_blank" rel="noopener">Client area</a></li><li><a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Wiki &amp; docs</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://manage.buyvm.net/login" target="_blank" rel="noopener">Stallion login</a></li></ul>
+        <ul><li><a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Wiki</a></li><li><a href="https://my.frantech.ca/register.php" target="_blank" rel="noopener">Sign up</a></li><li><a href="https://my.frantech.ca/clientarea.php" target="_blank" rel="noopener">Client area</a></li><li><a href="contact.html">Contact us</a></li></ul>
       </div>
       <div>
         <h5>Legal</h5>
@@ -376,7 +372,7 @@ GRE tunnels (DDoS) ....... <span class="ok">$0.00</span><span class="caret"></sp
       </div>
     </div>
     <div class="foot-bot">
-      <span class="status"><span class="dot"></span> All systems operational · <span data-year>2010–2026</span> Frantech Solutions, a Cloudzy company</span>
+      <span class="status"><span class="dot"></span> © 2010–2026 BuyVM. All rights reserved. A division of Cloudzy.</span>
       <span class="links"><a href="explorations/index.html">Design explorations</a></span>
     </div>
   </div>

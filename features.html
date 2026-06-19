@@ -3,59 +3,57 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Features — Stallion panel, free snapshots, 100+ OS templates | BuyVM</title>
-<meta name="description" content="The Stallion control panel, free snapshots, free DNS, free internal networking, full disk encryption, IPv6 everywhere and 100+ OS templates — everything that ships with a BuyVM KVM slice." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
+<title>Features — Stallion, free DirectAdmin, 100+ OS templates &amp; more | BuyVM</title>
+<meta name="description" content="Everything's already built in: the in-house Stallion control panel, free DirectAdmin, 100+ one-click OS templates, 5 free snapshots, $1/mo managed SQL, free internal networking, DDoS protection and full disk encryption — all from BuyVM." />
 <link rel="canonical" href="https://buyvm.net/features.html" />
 <meta name="theme-color" content="#282B30" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="BuyVM" />
-<meta property="og:title" content="Features — Stallion panel, free snapshots, 100+ OS templates | BuyVM" />
-<meta property="og:description" content="The Stallion control panel, free snapshots, free DNS, free internal networking, full disk encryption, IPv6 everywhere and 100+ OS templates — everything that ships with a BuyVM KVM slice." />
+<meta property="og:title" content="Features — Stallion, free DirectAdmin, 100+ OS templates &amp; more | BuyVM" />
+<meta property="og:description" content="In-house Stallion panel, free DirectAdmin, 100+ one-click OS templates, 5 free snapshots, $1/mo managed SQL, free internal networking, DDoS protection and full disk encryption." />
 <meta property="og:url" content="https://buyvm.net/features.html" />
 <meta property="og:image" content="https://buyvm.net/assets/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@frantechca" />
-<meta name="twitter:title" content="Features — Stallion panel, free snapshots, 100+ OS templates | BuyVM" />
-<meta name="twitter:description" content="The Stallion control panel, free snapshots, free DNS, free internal networking, full disk encryption, IPv6 everywhere and 100+ OS templates — everything that ships with a BuyVM KVM slice." />
+<meta name="twitter:title" content="Features — Stallion, free DirectAdmin, 100+ OS templates &amp; more | BuyVM" />
+<meta name="twitter:description" content="In-house Stallion panel, free DirectAdmin, 100+ OS templates, 5 free snapshots, $1/mo managed SQL, free internal networking, DDoS &amp; FDE." />
 <meta name="twitter:image" content="https://buyvm.net/assets/og.png" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://buyvm.net/#org",
-      "name": "BuyVM",
-      "alternateName": "Frantech Solutions",
-      "url": "https://buyvm.net/",
-      "logo": "https://buyvm.net/assets/og.png",
-      "foundingDate": "2010",
-      "parentOrganization": { "@type": "Organization", "name": "Cloudzy", "url": "https://cloudzy.com/" },
-      "sameAs": ["https://twitter.com/frantechca","https://facebook.com/frantech/","https://www.trustpilot.com/review/buyvm.net"]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://buyvm.net/#website",
-      "url": "https://buyvm.net/",
-      "name": "BuyVM",
-      "publisher": { "@id": "https://buyvm.net/#org" }
-    },
-    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://buyvm.net/"},{"@type":"ListItem","position":2,"name":"Features","item":"https://buyvm.net/features.html"}]},
-    {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What exactly is Stallion?","acceptedAnswer":{"@type":"Answer","text":"Stallion is BuyVM's in-house control panel — the one we built for ourselves and kept improving for over a decade. It handles deploy, reinstall, rebuild, snapshots, rescue mode and a VNC console, with real cloud-init and a full API behind it. Customers keep voting it the best panel on the market, and we're inclined to agree."}},{"@type":"Question","name":"Do you really include DirectAdmin for free?","acceptedAnswer":{"@type":"Answer","text":"Yes — every slice with 1 GB of RAM or more comes with a free DirectAdmin license, no promo code and no expiry. Smaller slices can add one, and Softaculous and Blesta licenses are available across the board if you want them."}},{"@type":"Question","name":"Is there an API?","acceptedAnswer":{"@type":"Answer","text":"There is, and it's the real thing — every action you can take in the panel, you can script. Deploy slices, trigger snapshots, manage networking and more, straight from your own tooling or CI pipeline."}},{"@type":"Question","name":"Do you support cloud-init?","acceptedAnswer":{"@type":"Answer","text":"We do, properly. Pass user-data at deploy time to configure users, SSH keys, packages and bootstrap scripts so a slice is fully provisioned the moment it boots — no manual first-login ritual."}}]}
+    { "@type": "Organization", "@id": "https://buyvm.net/#org", "name": "BuyVM", "alternateName": "Frantech Solutions", "url": "https://buyvm.net/", "logo": "https://buyvm.net/assets/og.png", "foundingDate": "2010", "parentOrganization": { "@type": "Organization", "name": "Cloudzy", "url": "https://cloudzy.com/" }, "sameAs": ["https://twitter.com/frantechca","https://facebook.com/frantech/","https://www.trustpilot.com/review/buyvm.net"] },
+    { "@type": "WebSite", "@id": "https://buyvm.net/#website", "url": "https://buyvm.net/", "name": "BuyVM", "publisher": { "@id": "https://buyvm.net/#org" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://buyvm.net/"},
+      {"@type":"ListItem","position":2,"name":"Features","item":"https://buyvm.net/features.html"}
+    ]},
+    { "@type": "FAQPage", "mainEntity": [
+      {"@type":"Question","name":"What is Stallion?","acceptedAnswer":{"@type":"Answer","text":"Stallion is BuyVM's custom, in-house control panel for managing your virtual servers — the result of more than five years of VPS experience and under constant development. Start, stop and reboot with a click; monitor CPU, RAM, bandwidth and disk in real time; configure failover/floating IPs, assign IPv6 and Anycast IPs, set reverse DNS; and deploy from 100+ OS templates. Stallion isn't for sale."}},
+      {"@type":"Question","name":"Is DirectAdmin really free?","acceptedAnswer":{"@type":"Answer","text":"Yes — a DirectAdmin website control panel license is included free with all Dedicated KVM Slice plans. DirectAdmin recommends at least 1 GB of RAM to run comfortably, and licenses are restricted to BuyVM IP addresses."}},
+      {"@type":"Question","name":"Do you have an API?","acceptedAnswer":{"@type":"Answer","text":"Yes. Stallion is fully compatible with SolusVM and is accessible via the same API methods, so existing SolusVM tooling and scripts work without changes."}},
+      {"@type":"Question","name":"What's the difference between snapshots and backups?","acceptedAnswer":{"@type":"Answer","text":"Every plan includes 5 free snapshots per location — instant restore points you create before a big change or to clone an instance. Optional automatic nightly backups are available at 10% of the base price (or $0.50/month on the 512 MB and 1 GB plans), taken every night with 7 days retained."}},
+      {"@type":"Question","name":"Do you offer managed databases?","acceptedAnswer":{"@type":"Answer","text":"Yes. Offloaded, managed SQL database servers are available in every datacenter for $1.00/month. They run MySQL on pure SSD, are tuned to handle thousands of queries per second, and are reachable over your private IP — so there are no bandwidth charges."}}
+    ]}
   ]
 }
 </script>
 </head>
 <body>
+
 <div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="promo">
+  Everything's included — Stallion, free DirectAdmin, 100+ OS templates &amp; 5 free snapshots. ❄️ Sold out? <a href="https://cloudzy.com/pricing?utm_source=buyvm&utm_medium=banner&utm_campaign=out_of_stock_banner" target="_blank" rel="noopener">Deploy instantly on Cloudzy →</a>
+</div>
 
 <header class="site-header" id="siteHeader">
   <div class="wrap">
@@ -65,37 +63,39 @@
         <div class="dd">
           <button>Products <span class="chev">▾</span></button>
           <div class="dd-menu">
-            <a href="kvm-slices.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span><span><span class="t">KVM Slices</span><span class="d">Full-root virtual servers from $2/mo</span></span></a>
+            <a href="kvm-slices.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span><span><span class="t">Dedicated KVM Slices</span><span class="d">Full-root virtual servers from $2/mo</span></span></a>
+            <a href="storage-vps.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></span><span><span class="t">Storage VPS</span><span class="d">Big-disk KVM up to 4 TB, free Windows</span></span></a>
             <a href="block-storage.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span><span class="t">Block Storage Slabs</span><span class="d">Up to 10 TB from $1.25/256GB</span></span></a>
-            <a href="ddos-protection.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></span><span><span class="t">DDoS Protection</span><span class="d">3.5 Tbps+ filtering, $3/mo per IP</span></span></a>
             <a href="anycast.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span><span class="t">Anycast Network</span><span class="d">Build a global CDN — free for VPS</span></span></a>
           </div>
         </div>
+        <a href="ddos-protection.html">DDoS Protection</a>
         <a href="features.html">Features</a>
         <a href="network.html">Network</a>
         <a href="about.html">About</a>
         <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
       </nav>
       <div class="nav-cta">
-        <a href="https://my.frantech.ca/clientarea.php" class="btn ghost" target="_blank" rel="noopener">Sign in</a>
-        <a href="#plans" class="btn green">Deploy →</a>
+        <a href="https://my.frantech.ca/clientarea.php" class="btn ghost" target="_blank" rel="noopener">Client area</a>
+        <a href="kvm-slices.html" class="btn green">Order now →</a>
         <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
   </div>
   <div class="mobile-nav">
     <div class="mwrap">
-      <a href="kvm-slices.html">KVM Slices</a>
-      <a href="block-storage.html">Block Storage</a>
+      <a href="kvm-slices.html">Dedicated KVM Slices</a>
+      <a href="storage-vps.html">Storage VPS</a>
+      <a href="block-storage.html">Block Storage Slabs</a>
+      <a href="anycast.html">Anycast VPS</a>
       <a href="ddos-protection.html">DDoS Protection</a>
-      <a href="anycast.html">Anycast</a>
       <a href="features.html">Features</a>
       <a href="network.html">Network</a>
       <a href="about.html">About</a>
       <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
       <div class="mcta">
-        <a href="https://my.frantech.ca/clientarea.php" class="btn outline" target="_blank" rel="noopener">Sign in</a>
-        <a href="#plans" class="btn green">Deploy →</a>
+        <a href="https://my.frantech.ca/clientarea.php" class="btn outline" target="_blank" rel="noopener">Client area</a>
+        <a href="kvm-slices.html" class="btn green">Order now →</a>
       </div>
     </div>
   </div>
@@ -105,7 +105,7 @@
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span>Features</div>
     <h1>Everything you'd build yourself, <em>already built in.</em></h1>
-    <p>A control panel that doesn't fight you, snapshots and DNS that don't cost extra, encryption and IPv6 turned on by default, and 100+ images one click away. The boring infrastructure work, done — so you can get to the interesting part.</p>
+    <p>The in-house Stallion control panel, a free DirectAdmin license, 100+ one-click OS templates, free snapshots, dollar-a-month managed databases and free internal networking — all standard, on pure-SSD hardware we never oversell. We're the founding fathers of affordable VPS, and we've spent since 2010 packing the box.</p>
     <div class="actions">
       <a href="kvm-slices.html" class="btn green lg">Deploy a slice →</a>
       <a href="https://wiki.buyvm.net/" class="btn outline lg" target="_blank" rel="noopener">Read the docs</a>
@@ -113,168 +113,163 @@
   </div>
 </section>
 
-<!-- THE PLATFORM -->
+<!-- FEATURE GRID -->
 <section class="s">
   <div class="wrap">
     <div class="sec-head">
-      <div class="label">— The platform</div>
-      <h2>Nine things you'd otherwise <em>cobble together.</em></h2>
-      <p>Every slice ships with the same foundation. No tiers that paywall the basics, no add-on cart for things that should just work.</p>
+      <div class="label">— What's in the box</div>
+      <h2>Nine things <em>you don't pay extra for.</em></h2>
+      <p>Most hosts nickel-and-dime you for the panel, the OS images, the control-panel license and the backups. We bundled them. It's a little embarrassing how free it all is.</p>
     </div>
     <div class="feat-grid">
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 17h18M9 21h6M12 17v4"/></svg></div>
-        <h3>Stallion <em>control panel</em></h3>
-        <p>Our in-house panel, voted best on the market. Deploy, snapshot, rescue, reinstall and rebuild — all in a click, all from one place.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 7h2M7 11h6"/></svg></div>
+        <h3>Stallion control panel</h3>
+        <p>Our custom in-house panel — 5+ years of VPS experience, under constant development. Start/stop/reboot in a click, watch CPU, RAM, bandwidth and disk in real time, set reverse DNS and floating IPs. And it isn't for sale.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></div>
-        <h3>Full root <em>KVM</em></h3>
-        <p>Real hardware virtualization with your own kernel. Your iptables, your sysctls, your modules — not a container wearing a VM costume.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="m6 8 2 2-2 2M11 12h4"/></svg></div>
+        <h3>100+ OS templates</h3>
+        <p>Over 100 pre-built, one-click templates: every major Linux distro, FreeBSD/OpenBSD/NetBSD, blogging platforms, OpenVPN-AS, cPanel, file-sharing and the entire TurnKey Linux lineup. Click and go.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h4l2-7 4 14 2-7h6"/></svg></div>
-        <h3>1 Gbps <em>unmetered</em></h3>
-        <p>Unmetered transfer on every slice. Mirror a repo, ship a backup, serve real traffic — we metered the port, not your packets.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Free DirectAdmin</h3>
+        <p>A DirectAdmin website control-panel license is included free with every KVM Slice — manage sites, databases and email without being a full-time sysadmin. We recommend 1 GB+ RAM; licenses are restricted to BuyVM IPs.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <h3>Free <em>snapshots</em> &amp; backups</h3>
-        <p>Five free snapshots per location, taken in seconds. Want them automatic? Nightly backups run at just 10% of your plan cost.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
+        <h3>Free snapshots &amp; nightly backups</h3>
+        <p>5 free snapshots per location with every plan — instant restore points before a big change. Want set-and-forget? Add automatic nightly backups for 10% of the base price (or $0.50/mo on 512 MB &amp; 1 GB), 7 days retained.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
-        <h3>Free <em>DNS</em> hosting</h3>
-        <p>Authoritative DNS for your domains, hosted on our network at no charge. Point your nameservers and forget the monthly DNS bill.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></div>
+        <h3>Managed SQL servers — $1/mo</h3>
+        <p>Offloaded, managed SQL database servers in every datacenter for $1.00/month. MySQL on pure SSD, tuned for thousands of queries per second, reachable over your private IP — so no bandwidth charges.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M6 8.5v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-3M12 13.5v2"/></svg></div>
-        <h3>Free <em>internal</em> networking</h3>
-        <p>Private networking between your slices, free of charge. Wire up a database tier, a cache, or a whole cluster without touching the public side.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="14" width="6" height="6" rx="1"/><rect x="16" y="14" width="6" height="6" rx="1"/><rect x="9" y="4" width="6" height="6" rx="1"/><path d="M12 10v4M5 14v-2h14v2"/></svg></div>
+        <h3>Free private internal network</h3>
+        <p>Run several services in the same location? Talk between them over our private internal network and pay nothing for the bandwidth. Your internal IPs are listed right inside Stallion.</p>
       </div>
       <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.5" fill="currentColor"/></svg></div>
-        <h3>Full disk <em>encryption</em></h3>
-        <p>Encrypt the whole disk so a pulled drive is just noise. Real KVM means real LUKS — not a checkbox that lives on someone else's hypervisor.</p>
-      </div>
-      <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.5 6.5c2 1.5 11 1.5 13 0M5.5 17.5c2-1.5 11-1.5 13 0"/></svg></div>
-        <h3>IPv6 on <em>everything</em></h3>
-        <p>We were an early adopter, long before the rest caught on. Every slice gets an IPv6 allocation by default — no ticket, no surcharge.</p>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></div>
+        <h3>DDoS protection</h3>
+        <p>Add filtered IPv4 against 3500 Gbps+ / 700M+ pps of Layer 4–7 attacks for $3/mo per IP, available in every location. We pioneered affordable DDoS filtering.</p>
+        <a href="ddos-protection.html" class="more">More about DDoS →</a>
       </div>
       <div class="fcard">
         <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
-        <h3>100+ <em>OS</em> templates</h3>
-        <p>Debian, Ubuntu, the RedHat family, the BSDs, Windows and TurnKey appliances — one-click, or mount your own ISO and go.</p>
+        <h3>Block Storage add-on</h3>
+        <p>Need more room? Attach Block Storage Slabs at $1.25/mo per 256 GB and hot-migrate them between slices in the same facility — no downtime, no reboots.</p>
+        <a href="block-storage.html" class="more">More about storage →</a>
+      </div>
+      <div class="fcard">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>Full disk encryption</h3>
+        <p>Hosting something sensitive? KVM supports full disk encryption out of the box, so your data is only ever accessible with your passphrase. Privacy isn't a premium tier here.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STALLION SPLIT -->
+<!-- STALLION DEEP DIVE -->
 <section class="s alt">
   <div class="wrap">
     <div class="split">
       <div class="split-text">
-        <div class="label">Stallion</div>
-        <h2>A control panel that <em>respects your time.</em></h2>
-        <p>Most panels are a tax you pay between you and the server. Stallion isn't — it's the panel our own engineers reach for, and the one customers keep voting best on the market. Everything is a click or an API call away.</p>
+        <div class="label">— Stallion</div>
+        <h2>The panel <em>we built for ourselves.</em></h2>
+        <p>Stallion is our custom, in-house control panel — the result of more than five years in the VPS industry, and we're still adding to it. It does everything you need to run a virtual server, and it's part of the BuyVM stable of solutions you can't buy anywhere else.</p>
         <ul>
-          <li><span class="ck">✓</span><span><b>One-click deploy &amp; rebuild.</b> Spin up, reinstall or rebuild a slice without a support ticket.</span></li>
-          <li><span class="ck">✓</span><span><b>Snapshots &amp; rescue mode.</b> Roll back a bad change, or boot into rescue to fix the unbootable.</span></li>
-          <li><span class="ck">✓</span><span><b>Real cloud-init &amp; full API.</b> Bootstrap on first boot and drive every action programmatically.</span></li>
-          <li><span class="ck">✓</span><span><b>VNC console.</b> A real out-of-band screen for when SSH won't save you.</span></li>
+          <li><span class="ck">✓</span> <b>Start, stop and reboot</b> your server with the click of a button</li>
+          <li><span class="ck">✓</span> <b>Real-time monitoring</b> of CPU, RAM, bandwidth and hard-drive usage</li>
+          <li><span class="ck">✓</span> Configure <b>failover / floating IPs</b>, assign <b>IPv6 &amp; Anycast IPs</b> and set <b>reverse DNS</b> in a few clicks</li>
+          <li><span class="ck">✓</span> Deploy from <b>100+ distributions &amp; OS templates</b>, and find your private internal IPs</li>
+          <li><span class="ck">✓</span> <b>Fully compatible with SolusVM</b> — accessible via the same API methods, so your existing tooling just works</li>
         </ul>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+          <a href="kvm-slices.html" class="btn green">Deploy a slice →</a>
+          <a href="https://wiki.buyvm.net/" class="btn outline" target="_blank" rel="noopener">API &amp; docs</a>
+        </div>
       </div>
       <div class="split-media">
         <div class="term">
-          <div class="bar"><div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div><div class="title">stallion — deploy</div></div>
-          <div class="body"><span class="prompt">stallion</span> deploy slice-2048 <span class="flag">--region</span> <span class="arg">lux</span> <span class="flag">--image</span> <span class="arg">debian-12</span>
-<span class="ok">✓</span> Allocated IP <span class="ip">2604:1380:::1</span>
-<span class="ok">✓</span> Booted in 41s
-<span class="prompt">ssh</span> root@<span class="ip">2604:1380:::1</span><span class="caret"></span></div>
+          <div class="bar"><div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div><div class="title">stallion · vps control</div></div>
+          <div class="body"><span class="prompt">stallion vps reboot slice-2048</span>
+<span class="ok">✓</span> Power cycle issued — back up in <span class="arg">9s</span>
+<span class="prompt">stallion vps stats</span>
+<span class="ok">✓</span> CPU <span class="arg">7%</span> · RAM <span class="arg">412/2048 MB</span> · disk <span class="arg">11/40 GB</span>
+<span class="ok">✓</span> Bandwidth: <span class="arg">unmetered</span> · internal IP <span class="ip">10.0.0.14</span>
+<span class="prompt">stallion os deploy turnkey-wordpress</span>
+<span class="ok">✓</span> Template ready — <span class="arg">1 of 100+</span>
+<span class="prompt"></span><span class="caret"></span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- OPERATING SYSTEMS SPLIT -->
+<!-- OPERATING SYSTEMS -->
 <section class="s">
   <div class="wrap">
     <div class="split flip">
       <div class="split-text">
-        <div class="label">Operating systems</div>
-        <h2>Run <em>anything.</em></h2>
-        <p>Over 100 templates, one click from running. Pick a clean base image, drop in a TurnKey appliance, or mount your own ISO when you have opinions we haven't met yet.</p>
+        <div class="label">— Operating systems</div>
+        <h2>100+ templates. <em>Click and go.</em></h2>
+        <p>Our templates give you a selection of over 100 pre-built, easy-to-use OS images, so you can knock out your most common needs without the technical barriers. And if you'd rather start from scratch, full-root KVM lets you bring your own ISO.</p>
         <ul>
-          <li><span class="ck">✓</span><span><b>Debian &amp; Ubuntu</b> — the dependable defaults.</span></li>
-          <li><span class="ck">✓</span><span><b>Rocky &amp; Alma</b> (and the rest of the RedHat family).</span></li>
-          <li><span class="ck">✓</span><span><b>FreeBSD &amp; OpenBSD</b> — yes, the real BSDs.</span></li>
-          <li><span class="ck">✓</span><span><b>Windows</b> on slices with 1 GB RAM and up.</span></li>
-          <li><span class="ck">✓</span><span><b>TurnKey appliances</b>, or <b>bring your own ISO</b>.</span></li>
+          <li><span class="ck">✓</span> Every major <b>Linux distribution</b> — Debian, Ubuntu, the RedHat / CentOS / Fedora family and more</li>
+          <li><span class="ck">✓</span> <b>FreeBSD, OpenBSD &amp; NetBSD</b> for when you need a real BSD</li>
+          <li><span class="ck">✓</span> <b>Blogging platforms, OpenVPN-AS, cPanel</b> and file-sharing, ready to run</li>
+          <li><span class="ck">✓</span> The <b>entire TurnKey Linux lineup</b> of appliances, one click away</li>
         </ul>
-      </div>
-      <div class="split-media">
-        <div class="rack-art">
-          <div class="bg-glow"></div>
-          <div class="rack" data-label="BUYVM · 100+ TEMPLATES">
-            <span class="pill">● READY</span>
-            <div class="u head"><span class="led g"></span><div class="vent"></div><span class="label">IMAGE LIBRARY</span></div>
-            <div class="u"><span class="led g"></span><span class="led"></span><div class="vent"></div><span class="label">DEBIAN · UBUNTU</span><div class="nvme"><i class="lit"></i><i class="lit"></i><i class="lit"></i><i></i></div></div>
-            <div class="u"><span class="led g"></span><span class="led"></span><div class="vent"></div><span class="label">ROCKY · ALMA</span><div class="nvme"><i class="lit"></i><i class="lit"></i><i></i><i></i></div></div>
-            <div class="u"><span class="led g"></span><span class="led y"></span><div class="vent"></div><span class="label">FREEBSD · OPENBSD</span><div class="nvme"><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i></div></div>
-            <div class="u"><span class="led g"></span><span class="led"></span><div class="vent"></div><span class="label">WINDOWS</span><div class="nvme"><i class="lit"></i><i class="lit"></i><i></i><i></i></div></div>
-            <div class="u"><span class="led g"></span><div class="vent"></div><span class="label">TURNKEY · BYO ISO</span></div>
-          </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+          <a href="kvm-slices.html" class="btn green">Deploy a slice →</a>
+          <a href="https://wiki.buyvm.net/" class="btn outline" target="_blank" rel="noopener">View OS templates</a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOFTWARE LICENSES -->
-<section class="s alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="label">— Software licenses</div>
-      <h2>The licenses you'd buy anyway, <em>cheaper.</em></h2>
-      <p>Add the control-panel and automation software you already use, billed alongside your slice — and one of them is simply free.</p>
-    </div>
-    <div class="feat-grid">
-      <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 8h18M3 17h18M9 21h6M12 17v4"/></svg></div>
-        <h3>DirectAdmin <em>free</em></h3>
-        <p>A full DirectAdmin license, free on every slice with 1 GB of RAM or more. The web hosting panel of choice, with nothing added to your bill.</p>
-      </div>
-      <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg></div>
-        <h3><em>Softaculous</em></h3>
-        <p>One-click installs for hundreds of apps — WordPress, Nextcloud, Ghost and the long tail. Add a license straight from the cart.</p>
-      </div>
-      <div class="fcard">
-        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h5"/><circle cx="16.5" cy="14" r="1" fill="currentColor"/></svg></div>
-        <h3><em>Blesta</em></h3>
-        <p>Billing and client management for anyone reselling what we host. Clean, scriptable, and ready to license alongside your slice.</p>
+      <div class="split-media">
+        <div class="term">
+          <div class="bar"><div class="dots"><i class="r"></i><i class="y"></i><i class="g"></i></div><div class="title">stallion · os templates</div></div>
+          <div class="body"><span class="prompt">stallion os list</span>
+<span class="ok">✓</span> <span class="arg">debian</span> · <span class="arg">ubuntu</span> · <span class="arg">rocky</span> · <span class="arg">alma</span> · <span class="arg">fedora</span>
+<span class="ok">✓</span> <span class="arg">freebsd</span> · <span class="arg">openbsd</span> · <span class="arg">netbsd</span>
+<span class="ok">✓</span> <span class="arg">openvpn-as</span> · <span class="arg">cpanel</span> · <span class="arg">turnkey-*</span>
+<span class="ok">✓</span> <span class="arg">100+</span> templates total — or bring your own ISO
+<span class="prompt"></span><span class="caret"></span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- STATBAND -->
-<section class="s">
+<section class="s alt">
   <div class="wrap">
     <div class="statband">
-      <div class="cell"><div class="v">100<small>+</small></div><div class="l">OS templates</div></div>
-      <div class="cell"><div class="v">5<small> free</small></div><div class="l">Snapshots per location</div></div>
-      <div class="cell"><div class="v">1<small> Gbps</small></div><div class="l">Unmetered bandwidth</div></div>
-      <div class="cell"><div class="v">24/7<small></small></div><div class="l">Humans on support</div></div>
+      <div class="cell">
+        <div class="v">100<small>+</small></div>
+        <div class="l">one-click OS templates</div>
+      </div>
+      <div class="cell">
+        <div class="v">5 <small>free</small></div>
+        <div class="l">snapshots per location, every plan</div>
+      </div>
+      <div class="cell">
+        <div class="v">$1<small>/mo</small></div>
+        <div class="l">managed SQL database servers</div>
+      </div>
+      <div class="cell">
+        <div class="v">BTC</div>
+        <div class="l">crypto accepted — ETH, LTC, DOGE, XMR &amp; more</div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="s alt" id="faq">
+<section class="s" id="faq">
   <div class="wrap">
     <div class="sec-head">
       <div class="label">— FAQ</div>
@@ -282,49 +277,40 @@
     </div>
     <div class="faq">
       <details open>
-        <summary>What exactly is Stallion? <span class="plus"></span></summary>
-        <div class="ans">Stallion is BuyVM's in-house control panel — the one we built for ourselves and kept improving for over a decade. It handles deploy, reinstall, rebuild, snapshots, rescue mode and a VNC console, with real cloud-init and a full API behind it. Customers keep voting it the best panel on the market, and we're inclined to agree.</div>
+        <summary>What is Stallion? <span class="plus"></span></summary>
+        <div class="ans">Stallion is BuyVM's custom, in-house control panel for managing your virtual servers — the result of more than five years of VPS experience, and under constant development. Start, stop and reboot with a click; monitor CPU, RAM, bandwidth and disk in real time; configure failover/floating IPs, assign IPv6 &amp; Anycast IPs, set reverse DNS; and deploy from 100+ OS templates. It isn't for sale — it's part of the BuyVM stable of solutions other hosts follow.</div>
       </details>
       <details>
-        <summary>Do you really include DirectAdmin for free? <span class="plus"></span></summary>
-        <div class="ans">Yes — every slice with 1 GB of RAM or more comes with a free DirectAdmin license, no promo code and no expiry. Smaller slices can add one, and Softaculous and Blesta licenses are available across the board if you want them.</div>
+        <summary>Is DirectAdmin free? <span class="plus"></span></summary>
+        <div class="ans">Yes — a DirectAdmin website control-panel license is included free with all Dedicated KVM Slice plans, so you can manage sites, databases and email without being a full-time sysadmin. DirectAdmin recommends at least 1 GB of RAM to run comfortably, and licenses are restricted to BuyVM IP addresses.</div>
       </details>
       <details>
-        <summary>Is there an API? <span class="plus"></span></summary>
-        <div class="ans">There is, and it's the real thing — every action you can take in the panel, you can script. Deploy slices, trigger snapshots, manage networking and more, straight from your own tooling or CI pipeline.</div>
+        <summary>Do you have an API? <span class="plus"></span></summary>
+        <div class="ans">Yes. Stallion is fully compatible with SolusVM and is accessible via the same API methods, so your existing SolusVM scripts and tooling keep working without changes.</div>
       </details>
       <details>
-        <summary>Do you support cloud-init? <span class="plus"></span></summary>
-        <div class="ans">We do, properly. Pass user-data at deploy time to configure users, SSH keys, packages and bootstrap scripts so a slice is fully provisioned the moment it boots — no manual first-login ritual.</div>
+        <summary>What's the difference between snapshots and backups? <span class="plus"></span></summary>
+        <div class="ans">Snapshots are instant restore points you create yourself — 5 free per location with every plan — perfect before a big software-stack update or OS upgrade, and great for cloning a template. Backups are automatic: an optional nightly addon at 10% of the base price (or $0.50/month on the 512 MB &amp; 1 GB plans), taken every night with 7 days retained.</div>
+      </details>
+      <details>
+        <summary>Do you offer managed databases? <span class="plus"></span></summary>
+        <div class="ans">Yes. Offloaded, managed SQL database servers are available in every datacenter for $1.00/month. They run MySQL on pure SSD, are tuned to handle thousands of queries per second, and are accessible over your private IP — so you incur no bandwidth charges.</div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="final">
-  <div class="wrap">
-    <h2>Stop duct-taping. <em>Start shipping.</em></h2>
-    <p>The panel, the snapshots, the DNS, the encryption, the IPv6 — it's all already on. Pick a slice and put it to work.</p>
-    <div class="actions">
-      <a href="kvm-slices.html" class="btn green lg">Deploy a slice →</a>
-      <a href="contact.html" class="btn outline lg">Talk to a human</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- CLOUDZY BAND (injected) -->
+<!-- CLOUDZY BAND -->
 <section class="cz-band" id="cloudzy">
   <div class="wrap">
     <div class="cz-inner">
       <div>
-        <div class="cz-eyebrow"><span class="dot"></span> BuyVM is part of Cloudzy</div>
-        <h2>Sold out here? <em>Spin it up on Cloudzy</em> in 60 seconds.</h2>
-        <p>BuyVM's slices are famously cheap &mdash; and famously <b>sold out</b>. When stock runs dry, our parent company <b>Cloudzy</b> has you covered: instant deployment across <b>13 global regions</b>, AMD EPYC + NVMe, and a 14-day money-back guarantee.</p>
+        <div class="cz-eyebrow"><span class="dot"></span> BuyVM is a division of Cloudzy</div>
+        <h2>Out of stock? <em>It's available on Cloudzy.</em></h2>
+        <p>When a slice sells out, discover plans on our sister company <b>Cloudzy</b>: instant deployment across <b>13 global regions</b>, AMD EPYC + NVMe, no egress fees, and a 14-day money-back guarantee.</p>
         <div class="cz-actions">
-          <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=band&utm_campaign=parent" class="btn cz lg" target="_blank" rel="noopener"><span class="cz-logo"><span class="mk">C</span></span> Explore Cloudzy &rarr;</a>
-          <a href="https://cloudzy.com/vps-hosting?utm_source=buyvm&utm_medium=band&utm_campaign=vps" class="btn cz-ghost lg" target="_blank" rel="noopener">See Cloudzy VPS plans</a>
+          <a href="https://cloudzy.com/pricing?utm_source=buyvm&utm_medium=band&utm_campaign=out_of_stock_banner" class="btn cz lg" target="_blank" rel="noopener"><span class="cz-logo"><span class="mk">C</span></span> Discover Cloudzy plans →</a>
+          <a href="https://cloudzy.com/vps-hosting?utm_source=buyvm&utm_medium=band&utm_campaign=vps" class="btn cz-ghost lg" target="_blank" rel="noopener">Cloudzy VPS hosting</a>
         </div>
       </div>
       <div class="cz-stats">
@@ -337,12 +323,24 @@
   </div>
 </section>
 
+<!-- CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>It's all already in there. <em>Go deploy a slice.</em></h2>
+    <p>The panel, the OS images, the DirectAdmin license, the snapshots — already built in, on hardware we never oversell, backed by highly trained nerds 24/7. Pick a plan and be online in seconds.</p>
+    <div class="actions">
+      <a href="kvm-slices.html" class="btn green lg">Deploy a slice →</a>
+      <a href="https://wiki.buyvm.net/" class="btn outline lg" target="_blank" rel="noopener">Read the docs</a>
+    </div>
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
       <div class="brand">
         <a href="index.html" class="logo"><span class="glyph">B</span> BuyVM</a>
-        <p>Affordable hosting with a touch of insanity. A division of <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer_text&utm_campaign=parent" target="_blank" rel="noopener" style="color:var(--ink);font-weight:600">Cloudzy</a>, running KVM VPS since 2010 — Las Vegas, New York, Luxembourg &amp; Miami.</p>
+        <p>Affordable hosting with a touch of insanity. Founding fathers of the affordable VPS market, running KVM VPS continuously since 2010 — Las Vegas, New Jersey &amp; Luxembourg.</p>
         <div class="foot-cz" style="margin-bottom:18px"><span class="mk">C</span> A <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer&utm_campaign=parent" target="_blank" rel="noopener">Cloudzy</a> company</div>
         <div class="social">
           <a href="https://twitter.com/frantechca" target="_blank" rel="noopener" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.2h3.6l-7.9 9 9.2 12.2h-7.2l-5.6-7.4-6.5 7.4H1.3l8.4-9.6L.9 1.2h7.4l5.1 6.7zM17.6 20.1h2L6.5 3.2h-2z"/></svg></a>
@@ -351,16 +349,16 @@
         </div>
       </div>
       <div>
-        <h5>Products</h5>
-        <ul><li><a href="kvm-slices.html">KVM Slices</a></li><li><a href="block-storage.html">Block Storage</a></li><li><a href="ddos-protection.html">DDoS Protection</a></li><li><a href="anycast.html">Anycast</a></li></ul>
+        <h5>Services</h5>
+        <ul><li><a href="kvm-slices.html">Dedicated KVM Slices</a></li><li><a href="storage-vps.html">Storage VPS</a></li><li><a href="block-storage.html">Block Storage Slabs</a></li><li><a href="anycast.html">Anycast VPS</a></li><li><a href="ddos-protection.html">DDoS Protection</a></li></ul>
       </div>
       <div>
         <h5>Company</h5>
-        <ul><li><a href="about.html">About us</a></li><li><a href="network.html">Network &amp; datacenters</a></li><li><a href="features.html">Features</a></li><li><a href="https://www.trustpilot.com/review/buyvm.net" target="_blank" rel="noopener">Reviews</a></li></ul>
+        <ul><li><a href="about.html">About us</a></li><li><a href="network.html">Data centers</a></li><li><a href="features.html">Awesome features</a></li><li><a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer_nav&utm_campaign=parent" target="_blank" rel="noopener">Cloudzy (parent)</a></li></ul>
       </div>
       <div>
         <h5>Support</h5>
-        <ul><li><a href="https://my.frantech.ca/clientarea.php" target="_blank" rel="noopener">Client area</a></li><li><a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Wiki &amp; docs</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://manage.buyvm.net/login" target="_blank" rel="noopener">Stallion login</a></li></ul>
+        <ul><li><a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Wiki</a></li><li><a href="https://my.frantech.ca/register.php" target="_blank" rel="noopener">Sign up</a></li><li><a href="https://my.frantech.ca/clientarea.php" target="_blank" rel="noopener">Client area</a></li><li><a href="contact.html">Contact us</a></li></ul>
       </div>
       <div>
         <h5>Legal</h5>
@@ -368,7 +366,7 @@
       </div>
     </div>
     <div class="foot-bot">
-      <span class="status"><span class="dot"></span> All systems operational · <span data-year>2010–2026</span> Frantech Solutions, a Cloudzy company</span>
+      <span class="status"><span class="dot"></span> © 2010–2026 BuyVM. All rights reserved. A division of Cloudzy.</span>
       <span class="links"><a href="explorations/index.html">Design explorations</a></span>
     </div>
   </div>

@@ -4,18 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Acceptable Use Policy | BuyVM</title>
-<meta name="description" content="The BuyVM Acceptable Use Policy — what you can and can't run on our network, fair-share resource rules, our stance on spam and network abuse, DMCA handling and how to report abuse." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
+<meta name="description" content="BuyVM (Frantech Solutions) Acceptable Use Policy — abuse definitions, remedial action, and our guidelines for running Tor and I2P anonymity-network nodes." />
 <link rel="canonical" href="https://buyvm.net/acceptable-use.html" />
 <meta name="theme-color" content="#282B30" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="BuyVM" />
 <meta property="og:title" content="Acceptable Use Policy | BuyVM" />
-<meta property="og:description" content="The BuyVM Acceptable Use Policy — what you can and can't run on our network, fair-share resource rules, our stance on spam and network abuse, DMCA handling and how to report abuse." />
+<meta property="og:description" content="BuyVM (Frantech Solutions) Acceptable Use Policy — abuse definitions, remedial action, and our guidelines for running Tor and I2P anonymity-network nodes." />
 <meta property="og:url" content="https://buyvm.net/acceptable-use.html" />
 <meta property="og:image" content="https://buyvm.net/assets/og.png" />
 <meta property="og:image:width" content="1200" />
@@ -23,38 +19,35 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@frantechca" />
 <meta name="twitter:title" content="Acceptable Use Policy | BuyVM" />
-<meta name="twitter:description" content="The BuyVM Acceptable Use Policy — what you can and can't run on our network, fair-share resource rules, our stance on spam and network abuse, DMCA handling and how to report abuse." />
+<meta name="twitter:description" content="BuyVM (Frantech Solutions) Acceptable Use Policy — abuse definitions, remedial action, and Tor/I2P node guidelines." />
 <meta name="twitter:image" content="https://buyvm.net/assets/og.png" />
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://buyvm.net/#org",
-      "name": "BuyVM",
-      "alternateName": "Frantech Solutions",
-      "url": "https://buyvm.net/",
-      "logo": "https://buyvm.net/assets/og.png",
-      "foundingDate": "2010",
-      "parentOrganization": { "@type": "Organization", "name": "Cloudzy", "url": "https://cloudzy.com/" },
-      "sameAs": ["https://twitter.com/frantechca","https://facebook.com/frantech/","https://www.trustpilot.com/review/buyvm.net"]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://buyvm.net/#website",
-      "url": "https://buyvm.net/",
-      "name": "BuyVM",
-      "publisher": { "@id": "https://buyvm.net/#org" }
-    },
-    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://buyvm.net/"},{"@type":"ListItem","position":2,"name":"Acceptable Use Policy","item":"https://buyvm.net/acceptable-use.html"}]}
+    { "@type": "Organization", "@id": "https://buyvm.net/#org", "name": "BuyVM", "alternateName": "Frantech Solutions", "url": "https://buyvm.net/", "logo": "https://buyvm.net/assets/og.png", "foundingDate": "2010", "parentOrganization": { "@type": "Organization", "name": "Cloudzy", "url": "https://cloudzy.com/" }, "sameAs": ["https://twitter.com/frantechca","https://facebook.com/frantech/","https://www.trustpilot.com/review/buyvm.net"] },
+    { "@type": "WebSite", "@id": "https://buyvm.net/#website", "url": "https://buyvm.net/", "name": "BuyVM", "publisher": { "@id": "https://buyvm.net/#org" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://buyvm.net/"},
+      {"@type":"ListItem","position":2,"name":"Legal","item":"https://buyvm.net/acceptable-use.html"},
+      {"@type":"ListItem","position":3,"name":"Acceptable Use Policy","item":"https://buyvm.net/acceptable-use.html"}
+    ]}
   ]
 }
 </script>
 </head>
 <body>
+
 <div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="promo">
+  ❄️ Sold out? <a href="https://cloudzy.com/pricing?utm_source=buyvm&utm_medium=banner&utm_campaign=out_of_stock_banner" target="_blank" rel="noopener">Deploy instantly on Cloudzy →</a>
+</div>
 
 <header class="site-header" id="siteHeader">
   <div class="wrap">
@@ -64,37 +57,39 @@
         <div class="dd">
           <button>Products <span class="chev">▾</span></button>
           <div class="dd-menu">
-            <a href="kvm-slices.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span><span><span class="t">KVM Slices</span><span class="d">Full-root virtual servers from $2/mo</span></span></a>
+            <a href="kvm-slices.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><circle cx="7" cy="7" r="1" fill="currentColor"/><circle cx="7" cy="17" r="1" fill="currentColor"/></svg></span><span><span class="t">Dedicated KVM Slices</span><span class="d">Full-root virtual servers from $2/mo</span></span></a>
+            <a href="storage-vps.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></span><span><span class="t">Storage VPS</span><span class="d">Big-disk KVM up to 4 TB, free Windows</span></span></a>
             <a href="block-storage.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span><span class="t">Block Storage Slabs</span><span class="d">Up to 10 TB from $1.25/256GB</span></span></a>
-            <a href="ddos-protection.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></span><span><span class="t">DDoS Protection</span><span class="d">3.5 Tbps+ filtering, $3/mo per IP</span></span></a>
             <a href="anycast.html"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span><span class="t">Anycast Network</span><span class="d">Build a global CDN — free for VPS</span></span></a>
           </div>
         </div>
+        <a href="ddos-protection.html">DDoS Protection</a>
         <a href="features.html">Features</a>
         <a href="network.html">Network</a>
         <a href="about.html">About</a>
         <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
       </nav>
       <div class="nav-cta">
-        <a href="https://my.frantech.ca/clientarea.php" class="btn ghost" target="_blank" rel="noopener">Sign in</a>
-        <a href="#plans" class="btn green">Deploy →</a>
+        <a href="https://my.frantech.ca/clientarea.php" class="btn ghost" target="_blank" rel="noopener">Client area</a>
+        <a href="#plans" class="btn green">Order now →</a>
         <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
   </div>
   <div class="mobile-nav">
     <div class="mwrap">
-      <a href="kvm-slices.html">KVM Slices</a>
-      <a href="block-storage.html">Block Storage</a>
+      <a href="kvm-slices.html">Dedicated KVM Slices</a>
+      <a href="storage-vps.html">Storage VPS</a>
+      <a href="block-storage.html">Block Storage Slabs</a>
+      <a href="anycast.html">Anycast VPS</a>
       <a href="ddos-protection.html">DDoS Protection</a>
-      <a href="anycast.html">Anycast</a>
       <a href="features.html">Features</a>
       <a href="network.html">Network</a>
       <a href="about.html">About</a>
       <a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Docs</a>
       <div class="mcta">
-        <a href="https://my.frantech.ca/clientarea.php" class="btn outline" target="_blank" rel="noopener">Sign in</a>
-        <a href="#plans" class="btn green">Deploy →</a>
+        <a href="https://my.frantech.ca/clientarea.php" class="btn outline" target="_blank" rel="noopener">Client area</a>
+        <a href="#plans" class="btn green">Order now →</a>
       </div>
     </div>
   </div>
@@ -102,9 +97,9 @@
 
 <section class="page-hero">
   <div class="wrap">
-    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span>Legal<span class="sep">/</span>Acceptable Use</div>
-    <h1>Acceptable <em>Use</em> Policy.</h1>
-    <p>We give you full root and stay out of your way. In return, we ask that you don't make the network a worse place for everyone else. Here's where the lines are — firm, but fair.</p>
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span>Legal<span class="sep">/</span>Acceptable Use Policy</div>
+    <h1>Acceptable Use <em>Policy.</em></h1>
+    <p>BuyVM lets customers use all the resources they subscribe to. If you think your usage might be too intense for your plan, open a support ticket to discuss your options — we do our best to follow a "Law of the Land" stance on hosted content.</p>
   </div>
 </section>
 
@@ -113,73 +108,85 @@
     <div class="prose">
       <p class="updated">Last updated: 1 May 2026</p>
 
-      <h2>Overview</h2>
-      <p>This Acceptable Use Policy ("AUP") sets out the activities that are not permitted on BuyVM services, operated by Frantech Solutions, a division of Cloudzy. It applies to everyone using our network and forms part of our <a href="terms.html">Terms of Service</a>. Our goal is simple: keep the network fast, reputable and safe for all customers. We'd rather not police your server, and in the overwhelming majority of cases we never have to.</p>
+      <p>BuyVM allows customers to use all the resources they subscribe to in their hosting plans. If you think your resource use could be too intense for your service plan — or for a plan you are considering — please open a support ticket to discuss your options with BuyVM. We do our best to follow a "Law of the Land" stance when it comes to content hosted within our services.</p>
 
-      <h2>Prohibited Activities</h2>
-      <p>You may not use a BuyVM service to host, transmit or facilitate any of the following:</p>
+      <h2>1. Abuse definitions</h2>
+      <h3>1.1 Resource abuse</h3>
+      <p>Resource abuse consists of any activity, intentional or otherwise, that consumes sufficient system resources to negatively affect other clients or equipment.</p>
+
+      <h3>1.2 Unsolicited communication</h3>
       <ul>
-        <li><b>Illegal content or activity</b> — anything that violates applicable law, including child sexual abuse material (zero tolerance), and content that infringes the rights of others.</li>
-        <li><b>Spam and unsolicited commercial email (UCE)</b> — bulk or unsolicited messaging, list-bombing, or supporting infrastructure (such as URL shorteners or hosted images) for spam campaigns.</li>
-        <li><b>Network abuse</b> — any activity that degrades, disrupts or interferes with our network or systems, or those of third parties.</li>
-        <li><b>Denial-of-service attacks</b> — launching, participating in, or knowingly providing infrastructure for DoS/DDoS attacks originating from your service.</li>
-        <li><b>Copyright and trademark infringement</b> — distributing material you do not have the right to distribute.</li>
-        <li><b>Malware and phishing</b> — distributing viruses, ransomware, exploit kits, or operating phishing pages and credential-harvesting sites.</li>
-        <li><b>Unauthorised scanning and intrusion</b> — port scanning, vulnerability scanning, brute-forcing or attempting to access systems without permission.</li>
+        <li>Any email-based communication sent without the consent of the recipient.</li>
+        <li>Knowingly permitting or initiating unsolicited communications is grounds for immediate termination and a permanent ban from any future service.</li>
       </ul>
 
-      <h2>Resource Usage &amp; Fair Share</h2>
-      <p>Many of our plans share CPU capacity fairly between neighbours on the same node. That's great for typical workloads, but it means no single customer may consume resources in a way that materially degrades performance for others. Sustained, abusive consumption of CPU, disk I/O or network capacity on a fair-share plan may prompt us to ask you to optimise, throttle, or move to a plan with dedicated resources. If you need guaranteed performance, our dedicated-core slices exist for exactly that.</p>
+      <h3>1.3 Malicious content</h3>
+      <ul>
+        <li>Any type of script, code, or other file that performs a harmful action — either to the affected user or as a bulk action triggered by the user.</li>
+        <li>Any content that violates the laws of the country it resides in.</li>
+        <li>Knowingly permitting or hosting malicious content is grounds for immediate termination and a permanent ban from any future service.</li>
+      </ul>
 
-      <h2>Network Abuse &amp; Open Relays</h2>
-      <p>You are responsible for securing your own server. Running an open mail relay, an open DNS resolver, an open proxy, or any other service that can be abused by third parties is prohibited. Keep your software patched, lock down your services, and don't let your slice become a tool for someone else's attack. Compromised servers that are actively causing harm may be suspended without prior notice until secured.</p>
+      <h2>2. Remedial action</h2>
+      <h3>2.1 Intentional or malicious abuse</h3>
+      <ul>
+        <li>Intentional or malicious usage is defined as any action knowingly performed by the user, or by persons the user has authorized to access the service, that falls under the abuse definitions above.</li>
+        <li>All services on the user's account will immediately be terminated without compensation, save for situations where a court order demands evidence be turned over to law enforcement.</li>
+        <li>The user will be permanently banned from holding any further service with Frantech Solutions, BuyVM, BuyShared, and related companies.</li>
+      </ul>
 
-      <h2>DMCA / Copyright</h2>
-      <p>We respond to valid notices of claimed copyright infringement under the Digital Millennium Copyright Act (DMCA) and equivalent frameworks. If you believe content hosted on our network infringes your copyright, send a complete notice including identification of the work, the allegedly infringing material and its location, your contact details, and the statements required by law. We will forward valid notices and, where appropriate, act on them. Repeat infringers may have their services terminated.</p>
+      <h3>2.2 Order of execution during abuse offenses</h3>
+      <ul>
+        <li>The offending service is brought offline and left in a suspended state.</li>
+        <li>A support ticket is opened to the service owner detailing the offense and the steps required to resolve the situation.</li>
+        <li>Once the service owner replies acknowledging the issue and how to correct it, the service is reactivated and the owner has 24 hours to prevent any further abuse.</li>
+      </ul>
+      <p>Failure to address abuse cases will result in your services being suspended and, in extreme cases, terminated.</p>
 
-      <h2>Reporting Abuse</h2>
-      <p>If you encounter abuse originating from our network, please report it. The fastest way is to open a ticket from our <a href="https://my.frantech.ca/clientarea.php" target="_blank" rel="noopener">client area</a>, or reach us through our <a href="contact.html">contact page</a>. Please include relevant logs, headers, timestamps (with time zone) and IP addresses so we can investigate quickly. The more detail you provide, the faster we can act.</p>
+      <h2>3. Tor &amp; I2P (anonymity networks)</h2>
+      <p>Frantech is a strong believer in and supporter of freedom of speech, and has taken a strong — and in some cases very public — stance against censorship. You're welcome to run Exit, Relay, and Bridge nodes; just follow the rules when doing so.</p>
 
-      <h2>Consequences</h2>
-      <p>How we respond depends on the severity of the violation:</p>
-      <ol>
-        <li><b>Warning</b> — for minor or first-time issues, we'll typically contact you and give you a chance to fix the problem.</li>
-        <li><b>Suspension</b> — for ongoing, serious or unresolved violations, we may suspend the affected service until the issue is resolved.</li>
-        <li><b>Termination</b> — for severe abuse, illegality, or repeated violations, we may terminate the service. In cases of active attacks or clear illegality, we may suspend or terminate immediately and without prior notice.</li>
-      </ol>
-
-      <h2>Appeals</h2>
-      <p>If your service has been suspended or terminated and you believe we got it wrong, you can appeal by opening a ticket in the client area. Explain the situation, provide any evidence that supports your case, and describe the steps you've taken to remedy the issue. We review appeals in good faith — we're far more interested in keeping a legitimate customer online than in losing one over a misunderstanding.</p>
-
-      <h2>Changes</h2>
-      <p>We may update this AUP from time to time as threats and best practices evolve. The "Last updated" date above reflects the current version. Material changes will be communicated through the client area or by email, and your continued use of our services after changes take effect constitutes acceptance of the revised policy.</p>
+      <h3>3.1 Tor &amp; I2P guidelines</h3>
+      <ul>
+        <li>Please open a support ticket informing us that you're running an Exit node. This allows us to keep track of incoming abuse complaints and handle them accordingly.</li>
+        <li>Frantech is extremely fair when it comes to abuse complaints for Tor users. This is not an invitation to be malicious.</li>
+        <li>Please apply reverse DNS to your IP address through the control panel if you're operating an Exit node — this can help curb many abuse complaints. Something as simple as <code>$network.your-domain.tld</code> is likely sufficient.</li>
+        <li>If you're operating an Exit node, please make sure your exit policy blocks the following ports:
+          <ul>
+            <li>TCP 25 (SMTP)</li>
+            <li>TCP 465 (SMTP over SSL)</li>
+            <li>TCP 587 (SMTP over TLS)</li>
+            <li>TCP 6660–6667 (IRC — optional, but you may save yourself from DDoS attacks)</li>
+            <li>TCP 6697 (IRC over SSL — optional, but you may save yourself from DDoS attacks)</li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
 
 <section class="final">
   <div class="wrap">
-    <h2>Build something <em>worth hosting.</em></h2>
-    <p>Full root, your kernel, your rules — within reason. Deploy a slice in under a minute, or reach out if you've got a question first.</p>
+    <h2>Have questions? <em>We'll help answer all of them.</em></h2>
+    <p>Not sure whether your workload fits your plan, or planning to run an Exit node? Open a ticket and our team will help you get set up the right way.</p>
     <div class="actions">
-      <a href="kvm-slices.html" class="btn green lg">Deploy a slice →</a>
-      <a href="contact.html" class="btn outline lg">Contact us</a>
+      <a href="kvm-slices.html" class="btn green lg">View KVM Slices →</a>
+      <a href="contact.html" class="btn outline lg">Contact support</a>
     </div>
   </div>
 </section>
 
-
-<!-- CLOUDZY BAND (injected) -->
+<!-- CLOUDZY BAND -->
 <section class="cz-band" id="cloudzy">
   <div class="wrap">
     <div class="cz-inner">
       <div>
-        <div class="cz-eyebrow"><span class="dot"></span> BuyVM is part of Cloudzy</div>
-        <h2>Sold out here? <em>Spin it up on Cloudzy</em> in 60 seconds.</h2>
-        <p>BuyVM's slices are famously cheap &mdash; and famously <b>sold out</b>. When stock runs dry, our parent company <b>Cloudzy</b> has you covered: instant deployment across <b>13 global regions</b>, AMD EPYC + NVMe, and a 14-day money-back guarantee.</p>
+        <div class="cz-eyebrow"><span class="dot"></span> BuyVM is a division of Cloudzy</div>
+        <h2>Out of stock? <em>It's available on Cloudzy.</em></h2>
+        <p>When a slice sells out, discover plans on our sister company <b>Cloudzy</b>: instant deployment across <b>13 global regions</b>, AMD EPYC + NVMe, no egress fees, and a 14-day money-back guarantee.</p>
         <div class="cz-actions">
-          <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=band&utm_campaign=parent" class="btn cz lg" target="_blank" rel="noopener"><span class="cz-logo"><span class="mk">C</span></span> Explore Cloudzy &rarr;</a>
-          <a href="https://cloudzy.com/vps-hosting?utm_source=buyvm&utm_medium=band&utm_campaign=vps" class="btn cz-ghost lg" target="_blank" rel="noopener">See Cloudzy VPS plans</a>
+          <a href="https://cloudzy.com/pricing?utm_source=buyvm&utm_medium=band&utm_campaign=out_of_stock_banner" class="btn cz lg" target="_blank" rel="noopener"><span class="cz-logo"><span class="mk">C</span></span> Discover Cloudzy plans →</a>
+          <a href="https://cloudzy.com/vps-hosting?utm_source=buyvm&utm_medium=band&utm_campaign=vps" class="btn cz-ghost lg" target="_blank" rel="noopener">Cloudzy VPS hosting</a>
         </div>
       </div>
       <div class="cz-stats">
@@ -197,7 +204,7 @@
     <div class="foot-grid">
       <div class="brand">
         <a href="index.html" class="logo"><span class="glyph">B</span> BuyVM</a>
-        <p>Affordable hosting with a touch of insanity. A division of <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer_text&utm_campaign=parent" target="_blank" rel="noopener" style="color:var(--ink);font-weight:600">Cloudzy</a>, running KVM VPS since 2010 — Las Vegas, New York, Luxembourg &amp; Miami.</p>
+        <p>Affordable hosting with a touch of insanity. Founding fathers of the affordable VPS market, running KVM VPS continuously since 2010 — Las Vegas, New Jersey &amp; Luxembourg.</p>
         <div class="foot-cz" style="margin-bottom:18px"><span class="mk">C</span> A <a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer&utm_campaign=parent" target="_blank" rel="noopener">Cloudzy</a> company</div>
         <div class="social">
           <a href="https://twitter.com/frantechca" target="_blank" rel="noopener" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.2h3.6l-7.9 9 9.2 12.2h-7.2l-5.6-7.4-6.5 7.4H1.3l8.4-9.6L.9 1.2h7.4l5.1 6.7zM17.6 20.1h2L6.5 3.2h-2z"/></svg></a>
@@ -206,16 +213,16 @@
         </div>
       </div>
       <div>
-        <h5>Products</h5>
-        <ul><li><a href="kvm-slices.html">KVM Slices</a></li><li><a href="block-storage.html">Block Storage</a></li><li><a href="ddos-protection.html">DDoS Protection</a></li><li><a href="anycast.html">Anycast</a></li></ul>
+        <h5>Services</h5>
+        <ul><li><a href="kvm-slices.html">Dedicated KVM Slices</a></li><li><a href="storage-vps.html">Storage VPS</a></li><li><a href="block-storage.html">Block Storage Slabs</a></li><li><a href="anycast.html">Anycast VPS</a></li><li><a href="ddos-protection.html">DDoS Protection</a></li></ul>
       </div>
       <div>
         <h5>Company</h5>
-        <ul><li><a href="about.html">About us</a></li><li><a href="network.html">Network &amp; datacenters</a></li><li><a href="features.html">Features</a></li><li><a href="https://www.trustpilot.com/review/buyvm.net" target="_blank" rel="noopener">Reviews</a></li></ul>
+        <ul><li><a href="about.html">About us</a></li><li><a href="network.html">Data centers</a></li><li><a href="features.html">Awesome features</a></li><li><a href="https://cloudzy.com/?utm_source=buyvm&utm_medium=footer_nav&utm_campaign=parent" target="_blank" rel="noopener">Cloudzy (parent)</a></li></ul>
       </div>
       <div>
         <h5>Support</h5>
-        <ul><li><a href="https://my.frantech.ca/clientarea.php" target="_blank" rel="noopener">Client area</a></li><li><a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Wiki &amp; docs</a></li><li><a href="contact.html">Contact</a></li><li><a href="https://manage.buyvm.net/login" target="_blank" rel="noopener">Stallion login</a></li></ul>
+        <ul><li><a href="https://wiki.buyvm.net/" target="_blank" rel="noopener">Wiki</a></li><li><a href="https://my.frantech.ca/register.php" target="_blank" rel="noopener">Sign up</a></li><li><a href="https://my.frantech.ca/clientarea.php" target="_blank" rel="noopener">Client area</a></li><li><a href="contact.html">Contact us</a></li></ul>
       </div>
       <div>
         <h5>Legal</h5>
@@ -223,7 +230,7 @@
       </div>
     </div>
     <div class="foot-bot">
-      <span class="status"><span class="dot"></span> All systems operational · <span data-year>2010–2026</span> Frantech Solutions, a Cloudzy company</span>
+      <span class="status"><span class="dot"></span> © 2010–2026 BuyVM. All rights reserved. A division of Cloudzy.</span>
       <span class="links"><a href="explorations/index.html">Design explorations</a></span>
     </div>
   </div>
